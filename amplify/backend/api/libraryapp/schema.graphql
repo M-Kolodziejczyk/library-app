@@ -1,0 +1,128 @@
+type Author
+  @model
+  @auth(
+    rules: [
+      # allow admin to create, update, delete authors
+      { allow: groups, groups: ["Admin"] }
+      # allow all authenticated users to view books
+      { allow: private, operations: [read] }
+      # allow all guest userrs (not authenticated) to view books
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  birthDate: String!
+  description: String
+  books: [Book] @connection(keyName: "byAuthor", fields: ["id"])
+}
+
+type Book
+  @model
+  @key(name: "byAuthor", fields: ["authorID"])
+  @auth(
+    rules: [
+      # allow admin to create, update and delete books
+      { allow: groups, groups: ["Admin"] }
+      # allow all authenticated users to view books
+      { allow: private, operations: [read] }
+      # allow all guest users (not authenticated) to view books
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  title: String!
+  authorID: ID!
+  createdAt: String!
+  author: Author @connection(fields: ["authorID"])
+  publisher: String
+  publishedDate: String!
+  language: String!
+  description: String!
+  category: String!
+  totalPgaes: String!
+  isbn: String!
+  tags: [String]
+  totalCopies: String!
+  status: String!
+  orders: [BookOrder] @connection(keyName: "byBook", fields: ["id"])
+  # locations: [Location] @connection
+  # requests: [Request] @connection
+}
+
+type BookOrder
+  @model(queries: null, subscriptions: null)
+  @key(name: "byBook", fields: ["book_id", "order_id"])
+  @key(name: "byOrder", fields: ["order_id", "book_id"])
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "customer" }
+      { allow: groups, groups: ["Admin"] }
+    ]
+  ) {
+  id: ID!
+  book_id: ID!
+  order_id: ID!
+  status: String!
+  book: Book @connection(fields: ["book_id"])
+}
+
+type Order
+  @model(subscriptions: null)
+  @key(name: "ByCustomerByDate", fields: ["customerID", "date"])
+  @key(
+    name: "ByCustomerByStatusByDate"
+    fields: ["customerID", "status", "date"]
+  )
+  @auth(
+    rules: [
+      { allow: owner, identityClaim: "email", ownerField: "customer" }
+      { allow: groups, groups: ["Admin"] }
+    ]
+  ) {
+  id: ID!
+  customerID: ID!
+  status: String!
+  date: String!
+  books: [BookOrder] @connection(keyName: "byOrder", fields: ["id"])
+}
+
+type Customer @model @auth(rules: [{ allow: groups, groups: ["Admin"] }]) {
+  id: ID!
+  name: String!
+  phoneNumber: String
+  email: String!
+  ordersByDate: [Order] @connection(keyName: "ByCustomerByDate", fields: ["id"])
+  ordersByStatus: [Order]
+    @connection(keyName: "ByCustomerByStatusByDate", fields: ["id"])
+}
+
+# type Employee @model {
+#   id: ID!
+#   name: String!
+#   startDate: String!
+#   phoneNumber: String!
+#   jobTitile: String!
+# }
+
+# type Request @model {
+#   id: ID!
+# }
+
+# type Location
+#   @model
+#   @key(name: "byRow", fields: ["row"])
+#   @key(name: "byRack", fields: ["rack"])
+#   @key(name: "byShelf", fields: ["shelf"]) {
+#   id: ID!
+#   row: String!
+#   rack: String!
+#   shelf: String!
+#   books: [Book] @connection
+# }
+
+# enum orderStatus {
+#   SUCCESS
+#   FAILED
+# }
