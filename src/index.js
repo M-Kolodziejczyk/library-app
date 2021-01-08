@@ -1,11 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import Amplify from "aws-amplify";
 import reportWebVitals from "./reportWebVitals";
+import { AuthState } from "./context/auth/AuthState";
+import awsconfig from "./aws-exports";
+
+Amplify.configure(awsconfig);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AuthState>
+      <App />
+    </AuthState>
   </React.StrictMode>,
   document.getElementById("root")
 );

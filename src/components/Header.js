@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AmplifyAuthenticator, AmplifyGreetings } from "@aws-amplify/ui-react";
+
 import "./Header.css";
 
 const Header = () => {
@@ -18,7 +20,7 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-link">
+                <Link to="/books" className="nav-link">
                   Books
                 </Link>
               </li>
