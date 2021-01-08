@@ -6,7 +6,7 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <div className="container">
+    <div className="header">
       <nav className="navbar">
         <div className="container-fluid flex-nowrap">
           <Link to="#" className="navbar-brand">
@@ -25,7 +25,7 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-link">
+                <Link to="/signup" className="nav-link">
                   Contact
                 </Link>
               </li>

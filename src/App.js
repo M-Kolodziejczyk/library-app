@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Home from "./pages/HomePage/HomePage";
 import SigninPage from "./pages/SigninPage/SigninPage";
 import BooksPage from "./pages/BooksPage/BooksPage";
+import SignupPage from "./pages/SignupPage/SignupPage";
 
 import { AmplifyAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { AuthState, onAuthUIStateChange } from "@aws-amplify/ui-components";
@@ -34,6 +35,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/signin" component={SigninPage} />
+        <Route exact path="/signup" component={SignupPage} />
 
         <AmplifyAuthenticator>
           <Route exact path="/books" component={BooksPage} />
