@@ -1,38 +1,120 @@
 import React, { useState, useEffect } from "react";
-import {
-  AmplifyAuthenticator,
-  AmplifySignUp,
-  AmplifySignIn,
-  AmplifySignOut
-} from "@aws-amplify/ui-react";
-import { AuthState, onAuthUIStateChange } from "@aws-amplify/ui-components";
-import Signup from "../../components/Signup/Signup";
+import { Link, useHistory } from "react-router-dom";
+import { useAuthContext } from "../../context/auth/AuthState";
+
+import "./SigninPage.css";
 
 const SigninPage = () => {
-  const [authState, setAuthState] = useState();
-  const [user, setUser] = useState();
+  const defaultState = {
+    email: "",
+    password: ""
+  };
+
+  const [values, setValues] = useState(defaultState);
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onChange = e => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value
+    });
+  };
+
+  const validate = values => {
+    let errors = {};
+
+    if (!values.email) {
+      errors.email = "Email address is required!";
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = "Email address is invalid";
+    }
+
+    if (!values.password) {
+      errors.password = "Password is required!";
+    } else if (values.password.length < 6) {
+      errors.password = "Password needs to be more than 6 characters!";
+    }
+
+    return errors;
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    setErrors(validate(values));
+    setIsSubmitting(true);
+  };
 
   useEffect(() => {
-    onAuthUIStateChange((nextAuthState, authData) => {
-      setAuthState(nextAuthState);
-      setUser(authData);
-      console.log("auth Data", authData);
-    });
-  }, []);
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      console.log("LOGIN");
+      setValues(defaultState);
+    }
+  }, [errors, isSubmitting]);
 
-  return authState === AuthState.SignedIn && user ? (
-    <div className="App">
-      <h1>Hello, {user.attributes.name}</h1>
-      <AmplifyAuthenticator usernameAlias="email">
-        <AmplifySignOut />
-      </AmplifyAuthenticator>
+  return (
+    <div className="signinPage">
+      <h1>Signin Page</h1>
+      <div className="signinPage__container">
+        <div className="signinPage__content">
+          <h2>Sign In</h2>
+          <form onSubmit={handleSubmit} className="signInPage__form">
+            <div className="signinPage__formGroup">
+              <input
+                className={`signinPage__formGroupInput ${errors.email &&
+                  "form-control is-invalid"} `}
+                type="email"
+                id="email"
+                name="email"
+                placeholder=" Your Email"
+                onChange={onChange}
+              />
+              {errors.email && (
+                <label className="singupPage__formLabel" htmlFor="email">
+                  {errors.email}
+                </label>
+              )}
+            </div>
+            <div className="signinPage__formGroup">
+              <input
+                className={`signinPage__formGroupInput 
+                ${errors.password && "form-control is-invalid"}`}
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                onChange={onChange}
+              />
+              {errors.password && (
+                <label className="singupPage__formLabel" htmlFor="password">
+                  {errors.password}
+                </label>
+              )}
+            </div>
+            <div className="signinPage__formGroup">
+              <input
+                type="submit"
+                className="signinPage__formSubmit"
+                placeholder="SUBMIT"
+                name="submit"
+              />
+              {/* {registerFail && (
+                <label className="signinPage__formLabel" htmlFor="submit">
+                  {errorMessage}
+                </label>
+              )} */}
+            </div>
+          </form>
+          <p className="signinPage__register">
+            Don't have account?{" "}
+            <Link to="/signup" className="signinPage__link">
+              Signup Here
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
-  ) : (
-    <AmplifyAuthenticator usernameAlias="email">
-      <Signup />
-      <AmplifySignIn slot="sign-in" usernameAlias="email" />
-      <AmplifySignOut />
-    </AmplifyAuthenticator>
   );
 };
 

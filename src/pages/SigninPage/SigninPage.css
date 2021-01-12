@@ -1,0 +1,65 @@
+.signinPage > h1 {
+  text-align: center;
+  margin: 50px auto 100px;
+}
+
+.signinPage__container {
+  width: 660px;
+  margin: 0 auto;
+}
+
+.signinPage__content {
+  background: white;
+  padding: 50px 85px;
+  border-radius: 5px;
+}
+
+.signinPage__content > h2 {
+  margin: 0;
+  margin-bottom: 40px;
+  padding: 0px;
+  color: #222222;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.signinPage__formGroup {
+  margin-bottom: 20px;
+}
+
+.signinPage__formGroupInput {
+  width: 100%;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  padding: 17px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222222;
+}
+
+.signinPage__formGroup > input:focus {
+  outline: none;
+}
+
+.signinPage__formLabel {
+  width: 100%;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.signinPage__formSubmit {
+  background-color: #99c1de;
+  color: #fff;
+  width: 100%;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+}

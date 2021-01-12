@@ -80,7 +80,7 @@ const SignupPage = () => {
   }, [registerSuccess]);
 
   return (
-    <div className="SignupPage">
+    <div className="signupPage">
       <h1>Signup Page</h1>
       <div className="signupPage__container">
         <div className="singupPage__content">
