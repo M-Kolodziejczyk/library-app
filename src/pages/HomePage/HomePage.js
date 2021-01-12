@@ -16,7 +16,7 @@ const HomePage = () => {
   // }, []);
 
   return (
-    <div className="container">
+    <div className="homePage">
       <h1>Home Page</h1>
     </div>
   );

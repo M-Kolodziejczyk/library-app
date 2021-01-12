@@ -5,6 +5,7 @@ import Home from "./pages/HomePage/HomePage";
 import SigninPage from "./pages/SigninPage/SigninPage";
 import BooksPage from "./pages/BooksPage/BooksPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
+import Welcome from "./pages/Welcome/Welcome";
 
 import { AmplifyAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { AuthState, onAuthUIStateChange } from "@aws-amplify/ui-components";
@@ -23,10 +24,7 @@ function App() {
     onAuthUIStateChange((nextAuthState, authData) => {
       setAuthState(nextAuthState);
       setUser(authData);
-      console.log("XXXXXX");
     });
-
-    console.log("App load user");
   }, []);
 
   return (
@@ -36,6 +34,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/signin" component={SigninPage} />
         <Route exact path="/signup" component={SignupPage} />
+        <Route exact path="/welcome" component={Welcome} />
 
         <AmplifyAuthenticator>
           <Route exact path="/books" component={BooksPage} />

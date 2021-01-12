@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useAuthContext } from "../../context/auth/AuthState";
 
 import "./SignupPage.css";
 
@@ -11,9 +12,17 @@ const SignupPage = () => {
     password2: ""
   };
 
+  const history = useHistory();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState(defaultState);
+  const {
+    registerUser,
+    registerFail,
+    errorMessage,
+    registerSuccess,
+    user
+  } = useAuthContext();
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -57,10 +66,18 @@ const SignupPage = () => {
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      console.log("working");
+      registerUser(values);
       setValues(defaultState);
     }
+
+    // eslint-disable-next-line
   }, [errors, isSubmitting]);
+
+  useEffect(() => {
+    if (registerSuccess && user) {
+      history.push("/welcome", { user: user.username });
+    }
+  }, [registerSuccess]);
 
   return (
     <div className="SignupPage">
@@ -96,9 +113,10 @@ const SignupPage = () => {
                 value={values.email}
                 onChange={onChange}
                 placeholder="Your Email"
+                autoComplete="username"
               />
               {errors.email && (
-                <label className="singupPage__formLabel" htmlFor="name">
+                <label className="singupPage__formLabel" htmlFor="email">
                   {errors.email}
                 </label>
               )}
@@ -113,9 +131,10 @@ const SignupPage = () => {
                 values={values.password}
                 onChange={onChange}
                 placeholder="Password"
+                autoComplete="new-password"
               />
               {errors.password && (
-                <label className="singupPage__formLabel" htmlFor="name">
+                <label className="singupPage__formLabel" htmlFor="password">
                   {errors.password}
                 </label>
               )}
@@ -130,9 +149,10 @@ const SignupPage = () => {
                 values={values.password2}
                 onChange={onChange}
                 placeholder="Repeat your password"
+                autoComplete="new-password"
               />
               {errors.password2 && (
-                <label className="singupPage__formLabel" htmlFor="name">
+                <label className="singupPage__formLabel" htmlFor="password2">
                   {errors.password2}
                 </label>
               )}
@@ -142,7 +162,13 @@ const SignupPage = () => {
                 type="submit"
                 className="signupPage__formSubmit"
                 placeholder="SUBMIT"
+                name="submit"
               />
+              {registerFail && (
+                <label className="singupPage__formLabel" htmlFor="submit">
+                  {errorMessage}
+                </label>
+              )}
             </div>
           </form>
           <p className="signupPage__login">

@@ -28,6 +28,25 @@ export default (state, action) => {
         ...state,
         isLogged: true
       };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        registerSuccess: true,
+        user: action.payload
+      };
+    case REGISTER_FAIL:
+      return {
+        ...state,
+        registerFail: true,
+        errorMessage: action.payload
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        registerSuccess: false,
+        registerFail: false,
+        errorMessage: ""
+      };
     default:
       return state;
   }

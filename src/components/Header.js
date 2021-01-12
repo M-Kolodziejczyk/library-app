@@ -31,7 +31,10 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <Link className="d-flex btn btn-outline-primary singupBtn" to="/">
+          <Link
+            className="d-flex btn btn-outline-primary singupBtn"
+            to="/signup"
+          >
             Sign up
           </Link>
         </div>

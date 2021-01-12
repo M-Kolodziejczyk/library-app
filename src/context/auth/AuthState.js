@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useContext } from "react";
+import { Auth } from "aws-amplify";
 import authReducer from "./authReducer";
 
 import {
@@ -27,7 +28,11 @@ import {
 export const AuthState = props => {
   const initialState = {
     isLogged: null,
-    formSuccess: false
+    formSuccess: false,
+    registerSuccess: false,
+    registerFail: false,
+    errorMessage: "",
+    user: null
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -44,12 +49,46 @@ export const AuthState = props => {
     }
   };
 
+  const registerUser = async ({ name, email, password }) => {
+    try {
+      const res = await Auth.signUp({
+        username: email,
+        password,
+        attributes: {
+          email,
+          name: name
+        }
+      });
+      dispatch({
+        type: REGISTER_SUCCESS,
+        payload: res.user
+      });
+    } catch (error) {
+      dispatch({
+        type: REGISTER_FAIL,
+        payload: error.message
+      });
+    }
+  };
+
+  const clearErros = () => {
+    dispatch({
+      type: CLEAR_ERRORS
+    });
+  };
+
   return (
     <AuthContext.Provider
       value={{
         isLogged: state.isLogged,
         formSuccess: state.formSuccess,
-        loadUser
+        registerSuccess: state.registerSuccess,
+        registerFail: state.registerFail,
+        user: state.user,
+        errorMessage: state.errorMessage,
+        loadUser,
+        registerUser,
+        clearErros
       }}
     >
       {props.children}
