@@ -41,13 +41,16 @@ export const AuthState = props => {
 
   const loadUser = async () => {
     try {
-      const res = "loaded";
+      const user = await Auth.currentAuthenticatedUser();
       dispatch({
         type: USER_LOADED,
-        payload: res
+        payload: user
       });
     } catch (error) {
-      dispatch({ type: AUTH_ERROR });
+      dispatch({
+        type: AUTH_ERROR,
+        payload: error.message
+      });
     }
   };
 

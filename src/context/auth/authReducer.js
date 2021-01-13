@@ -26,7 +26,8 @@ export default (state, action) => {
     case USER_LOADED:
       return {
         ...state,
-        isLogged: true
+        isLogged: true,
+        user: action.payload.attributes
       };
     case REGISTER_SUCCESS:
       return {
@@ -45,6 +46,7 @@ export default (state, action) => {
         ...state,
         loginSuccess: true,
         loginFail: false,
+        isLogged: true,
         user: action.payload.attributes
       };
     case LOGIN_FAIL:
