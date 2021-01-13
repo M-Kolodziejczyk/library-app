@@ -5,13 +5,7 @@ import { useAuthContext } from "../context/auth/AuthState";
 import "./Header.css";
 
 const Header = () => {
-  const { user } = useAuthContext();
-
-  const logout = () => {
-    if (user) {
-      console.log("log out");
-    }
-  };
+  const { user, logout } = useAuthContext();
 
   return (
     <div className="header">
@@ -46,7 +40,7 @@ const Header = () => {
             </Link>
           )}
           <Link className="header__link d-flex " to={!user ? "/signin" : "#"}>
-            <div onClick={logout} className="header__linkOption">
+            <div onClick={() => logout()} className="header__linkOption">
               <span>{user ? "Sign Out" : "Sign In"}</span>
             </div>
           </Link>

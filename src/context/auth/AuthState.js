@@ -11,7 +11,7 @@ import {
   LOGIN_FAIL,
   USER_LOADED,
   AUTH_ERROR,
-  LOGOUT,
+  LOGOUT_SUCCESS,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAIL,
   RESET_PASSWORD_SUCCESS,
@@ -91,6 +91,17 @@ export const AuthState = props => {
     }
   };
 
+  const logout = async () => {
+    try {
+      await Auth.signOut();
+      dispatch({
+        type: LOGOUT_SUCCESS
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const clearErros = () => {
     dispatch({
       type: CLEAR_ERRORS
@@ -111,6 +122,7 @@ export const AuthState = props => {
         loadUser,
         registerUser,
         loginUser,
+        logout,
         clearErros
       }}
     >

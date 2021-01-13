@@ -7,7 +7,7 @@ import {
   LOGIN_FAIL,
   USER_LOADED,
   AUTH_ERROR,
-  LOGOUT,
+  LOGOUT_SUCCESS,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAIL,
   RESET_PASSWORD_SUCCESS,
@@ -55,6 +55,13 @@ export default (state, action) => {
         errorMessage: action.payload,
         loginFail: true,
         loginSuccess: false
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        user: null,
+        loginSuccess: false,
+        isLogged: false
       };
     case CLEAR_ERRORS:
       return {
