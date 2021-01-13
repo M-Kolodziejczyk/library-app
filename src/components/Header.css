@@ -19,7 +19,27 @@
   color: #468fc3;
 }
 
-.btn-outline-primary {
+.header__user {
+  min-width: 150px;
   color: #468fc3;
-  border-color: #468fc3;
+  text-decoration: none;
+}
+
+.header__link {
+  color: #468fc3;
+  min-width: 100px;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #468fc3;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.header__link:hover {
+  color: skyblue;
+  border-color: skyblue;
+}
+
+.header__linkOption {
+  margin: 0 auto;
 }

@@ -1,10 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AmplifyAuthenticator, AmplifyGreetings } from "@aws-amplify/ui-react";
+import { useAuthContext } from "../context/auth/AuthState";
 
 import "./Header.css";
 
 const Header = () => {
+  const { user } = useAuthContext();
+
+  const logout = () => {
+    if (user) {
+      console.log("log out");
+    }
+  };
+
   return (
     <div className="header">
       <nav className="navbar">
@@ -31,11 +39,16 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <Link
-            className="d-flex btn btn-outline-primary singupBtn"
-            to="/signup"
-          >
-            Sign up
+
+          {user && (
+            <Link to="/user" className="header__user">
+              Hello, {user.name}
+            </Link>
+          )}
+          <Link className="header__link d-flex " to={!user ? "/signin" : "#"}>
+            <div onClick={logout} className="header__linkOption">
+              <span>{user ? "Sign Out" : "Sign In"}</span>
+            </div>
           </Link>
         </div>
       </nav>
