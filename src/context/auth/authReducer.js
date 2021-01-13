@@ -40,6 +40,20 @@ export default (state, action) => {
         registerFail: true,
         errorMessage: action.payload
       };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        loginSuccess: true,
+        loginFail: false,
+        user: action.payload.attributes
+      };
+    case LOGIN_FAIL:
+      return {
+        ...state,
+        errorMessage: action.payload,
+        loginFail: true,
+        loginSuccess: false
+      };
     case CLEAR_ERRORS:
       return {
         ...state,

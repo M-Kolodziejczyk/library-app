@@ -31,6 +31,8 @@ export const AuthState = props => {
     formSuccess: false,
     registerSuccess: false,
     registerFail: false,
+    loginSuccess: false,
+    loginFail: false,
     errorMessage: "",
     user: null
   };
@@ -71,6 +73,21 @@ export const AuthState = props => {
     }
   };
 
+  const loginUser = async ({ email, password }) => {
+    try {
+      const user = await Auth.signIn(email, password);
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: user
+      });
+    } catch (error) {
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: error.message
+      });
+    }
+  };
+
   const clearErros = () => {
     dispatch({
       type: CLEAR_ERRORS
@@ -84,10 +101,13 @@ export const AuthState = props => {
         formSuccess: state.formSuccess,
         registerSuccess: state.registerSuccess,
         registerFail: state.registerFail,
+        loginSuccess: state.loginSuccess,
+        loginFail: state.loginFail,
         user: state.user,
         errorMessage: state.errorMessage,
         loadUser,
         registerUser,
+        loginUser,
         clearErros
       }}
     >

@@ -9,10 +9,11 @@ const SigninPage = () => {
     email: "",
     password: ""
   };
-
+  const history = useHistory();
   const [values, setValues] = useState(defaultState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { loginUser, loginFail, loginSuccess, errorMessage } = useAuthContext();
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -48,10 +49,18 @@ const SigninPage = () => {
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      console.log("LOGIN");
+      loginUser(values);
       setValues(defaultState);
     }
+
+    // eslint-disable-next-line
   }, [errors, isSubmitting]);
+
+  useEffect(() => {
+    if (loginSuccess) {
+      history.push("/");
+    }
+  }, [loginSuccess, history]);
 
   return (
     <div className="signinPage">
@@ -69,6 +78,7 @@ const SigninPage = () => {
                 name="email"
                 placeholder=" Your Email"
                 onChange={onChange}
+                autoComplete="username"
               />
               {errors.email && (
                 <label className="singupPage__formLabel" htmlFor="email">
@@ -85,6 +95,7 @@ const SigninPage = () => {
                 name="password"
                 placeholder="Password"
                 onChange={onChange}
+                autoComplete="current-password"
               />
               {errors.password && (
                 <label className="singupPage__formLabel" htmlFor="password">
@@ -99,11 +110,11 @@ const SigninPage = () => {
                 placeholder="SUBMIT"
                 name="submit"
               />
-              {/* {registerFail && (
+              {loginFail && (
                 <label className="signinPage__formLabel" htmlFor="submit">
                   {errorMessage}
                 </label>
-              )} */}
+              )}
             </div>
           </form>
           <p className="signinPage__register">
