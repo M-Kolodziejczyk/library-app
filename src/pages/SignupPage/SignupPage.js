@@ -75,7 +75,7 @@ const SignupPage = () => {
 
   useEffect(() => {
     if (registerSuccess && user) {
-      history.push("/welcome", { user: user.username });
+      history.push(`/confirm/${user.username}`);
     }
   }, [registerSuccess]);
 

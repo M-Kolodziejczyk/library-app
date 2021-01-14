@@ -50,7 +50,7 @@ export default (state, action) => {
       return {
         ...state,
         confirmRegister: false,
-        errorMessage: action.payload.attributes
+        errorMessage: action.payload
       };
     case LOGIN_SUCCESS:
       return {

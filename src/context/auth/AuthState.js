@@ -80,12 +80,11 @@ export const AuthState = props => {
   const confirmRegisterUser = async ({ username, code }) => {
     try {
       const res = await Auth.confirmSignUp(username, code);
-      console.log(res);
       dispatch({
-        type: CONFIRM_REGISTER_SUCCESS
+        type: CONFIRM_REGISTER_SUCCESS,
+        payload: res
       });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: CONFIRM_REGISTER_FAIL,
         payload: error.message
