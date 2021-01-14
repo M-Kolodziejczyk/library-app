@@ -8,6 +8,7 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import ConfirmPage from "./pages/ConfirmPage/ConfirmPage";
 import ResendcodePage from "./pages/ResendcodePage/ResendcodePage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage/ForgotPasswordPage";
+import NewPasswordPage from "./pages/NewPasswordPage/NewPasswordPage";
 import Welcome from "./pages/Welcome/Welcome";
 
 import { useAuthContext } from "./context/auth/AuthState";
@@ -37,6 +38,12 @@ function App() {
         <Route exact path="/confirm" component={ConfirmPage} />
         <Route exact path="/resendcode" component={ResendcodePage} />
         <Route exact path="/forgot-password" component={ForgotPasswordPage} />
+        <Route
+          exact
+          path="/new-password/:username"
+          component={NewPasswordPage}
+        />
+        <Route exact path="/new-password" component={NewPasswordPage} />
 
         <Route exact path="/books" component={BooksPage} />
       </Switch>

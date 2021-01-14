@@ -101,12 +101,12 @@ export default (state, action) => {
     case NEW_PASSWORD_SUCCESS:
       return {
         ...state,
-        newPassword: true
+        newPasswordSuccess: true
       };
     case NEW_PASSWORD_FAIL:
       return {
         ...state,
-        newPassword: false,
+        newPasswordSuccess: false,
         errorMessage: action.payload
       };
     case CLEAR_ERRORS:

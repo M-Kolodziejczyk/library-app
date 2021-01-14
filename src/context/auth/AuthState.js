@@ -40,7 +40,7 @@ export const AuthState = props => {
     loginSuccess: false,
     loginFail: false,
     forgotPasswordSuccess: false,
-    newPasswordSucces: false,
+    newPasswordSuccess: false,
     errorMessage: "",
     user: null
   };
@@ -154,9 +154,9 @@ export const AuthState = props => {
     }
   };
 
-  const newPassword = async ({ username, code, new_password }) => {
+  const newPassword = async ({ username, code, newPassword }) => {
     try {
-      await Auth.forgotPasswordSubmit(username, code, new_password);
+      Auth.forgotPasswordSubmit(username, code, newPassword);
       dispatch({
         type: NEW_PASSWORD_SUCCESS
       });
@@ -186,7 +186,7 @@ export const AuthState = props => {
         loginSuccess: state.loginSuccess,
         loginFail: state.loginFail,
         forgotPasswordSuccess: state.forgotPasswordSuccess,
-        newPasswordSucces: state.newPasswordSucces,
+        newPasswordSuccess: state.newPasswordSuccess,
         errorMessage: state.errorMessage,
         user: state.user,
         loadUser,
