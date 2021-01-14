@@ -3,6 +3,8 @@ import {
   REGISTER_FAIL,
   CONFIRM_REGISTER_SUCCESS,
   CONFIRM_REGISTER_FAIL,
+  RESEND_CODE_SUCCESS,
+  RESEND_CODE_FAIL,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   USER_LOADED,
@@ -50,6 +52,15 @@ export default (state, action) => {
       return {
         ...state,
         confirmRegister: false,
+        errorMessage: action.payload
+      };
+    case RESEND_CODE_SUCCESS:
+      return {
+        ...state
+      };
+    case RESEND_CODE_FAIL:
+      return {
+        ...state,
         errorMessage: action.payload
       };
     case LOGIN_SUCCESS:

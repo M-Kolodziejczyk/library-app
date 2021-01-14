@@ -7,6 +7,8 @@ import {
   REGISTER_FAIL,
   CONFIRM_REGISTER_SUCCESS,
   CONFIRM_REGISTER_FAIL,
+  RESEND_CODE_SUCCESS,
+  RESEND_CODE_FAIL,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   USER_LOADED,
@@ -32,6 +34,7 @@ export const AuthState = props => {
     registerSuccess: false,
     registerFail: false,
     confirmRegister: false,
+    resendCode: false,
     loginSuccess: false,
     loginFail: false,
     errorMessage: "",
@@ -92,6 +95,23 @@ export const AuthState = props => {
     }
   };
 
+  const resendConfirmCode = async ({ username }) => {
+    try {
+      const res = await Auth.resendSignUp(username);
+      console.log(res);
+      dispatch({
+        type: RESEND_CODE_SUCCESS,
+        payload: res
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: RESEND_CODE_FAIL,
+        payload: error.message
+      });
+    }
+  };
+
   const loginUser = async ({ email, password }) => {
     try {
       const user = await Auth.signIn(email, password);
@@ -132,6 +152,7 @@ export const AuthState = props => {
         registerSuccess: state.registerSuccess,
         registerFail: state.registerFail,
         confirmRegister: state.confirmRegister,
+        resendCode: state.resendCode,
         loginSuccess: state.loginSuccess,
         loginFail: state.loginFail,
         user: state.user,
@@ -139,6 +160,7 @@ export const AuthState = props => {
         loadUser,
         registerUser,
         confirmRegisterUser,
+        resendConfirmCode,
         loginUser,
         logout,
         clearErros
