@@ -16,6 +16,8 @@ import {
   LOGOUT_SUCCESS,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAIL,
+  NEW_PASSWORD_SUCCESS,
+  NEW_PASSWORD_FAIL,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAIL,
   CHANGE_PASSWORD_SUCCESS,
@@ -38,6 +40,7 @@ export const AuthState = props => {
     loginSuccess: false,
     loginFail: false,
     forgotPasswordSuccess: false,
+    newPasswordSucces: false,
     errorMessage: "",
     user: null
   };
@@ -144,9 +147,22 @@ export const AuthState = props => {
         type: FORGOT_PASSWORD_SUCCESS
       });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: FORGOT_PASSWORD_FAIL,
+        payload: error.message
+      });
+    }
+  };
+
+  const newPassword = async ({ username, code, new_password }) => {
+    try {
+      await Auth.forgotPasswordSubmit(username, code, new_password);
+      dispatch({
+        type: NEW_PASSWORD_SUCCESS
+      });
+    } catch (error) {
+      dispatch({
+        type: NEW_PASSWORD_FAIL,
         payload: error.message
       });
     }
@@ -170,8 +186,9 @@ export const AuthState = props => {
         loginSuccess: state.loginSuccess,
         loginFail: state.loginFail,
         forgotPasswordSuccess: state.forgotPasswordSuccess,
-        user: state.user,
+        newPasswordSucces: state.newPasswordSucces,
         errorMessage: state.errorMessage,
+        user: state.user,
         loadUser,
         registerUser,
         confirmRegisterUser,
@@ -179,6 +196,7 @@ export const AuthState = props => {
         loginUser,
         logout,
         forgotPassword,
+        newPassword,
         clearErros
       }}
     >

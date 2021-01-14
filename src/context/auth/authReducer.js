@@ -12,6 +12,8 @@ import {
   LOGOUT_SUCCESS,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAIL,
+  NEW_PASSWORD_SUCCESS,
+  NEW_PASSWORD_FAIL,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAIL,
   CHANGE_PASSWORD_SUCCESS,
@@ -94,6 +96,17 @@ export default (state, action) => {
     case FORGOT_PASSWORD_FAIL:
       return {
         ...state,
+        errorMessage: action.payload
+      };
+    case NEW_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        newPassword: true
+      };
+    case NEW_PASSWORD_FAIL:
+      return {
+        ...state,
+        newPassword: false,
         errorMessage: action.payload
       };
     case CLEAR_ERRORS:
