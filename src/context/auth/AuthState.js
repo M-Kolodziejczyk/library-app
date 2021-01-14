@@ -95,16 +95,13 @@ export const AuthState = props => {
     }
   };
 
-  const resendConfirmCode = async ({ username }) => {
+  const resendConfirmCode = async username => {
     try {
-      const res = await Auth.resendSignUp(username);
-      console.log(res);
+      await Auth.resendSignUp(username);
       dispatch({
-        type: RESEND_CODE_SUCCESS,
-        payload: res
+        type: RESEND_CODE_SUCCESS
       });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: RESEND_CODE_FAIL,
         payload: error.message

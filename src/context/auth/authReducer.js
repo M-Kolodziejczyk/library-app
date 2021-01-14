@@ -56,7 +56,8 @@ export default (state, action) => {
       };
     case RESEND_CODE_SUCCESS:
       return {
-        ...state
+        ...state,
+        resendCode: true
       };
     case RESEND_CODE_FAIL:
       return {

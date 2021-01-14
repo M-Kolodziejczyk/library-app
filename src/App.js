@@ -6,6 +6,7 @@ import SigninPage from "./pages/SigninPage/SigninPage";
 import BooksPage from "./pages/BooksPage/BooksPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import ConfirmPage from "./pages/ConfirmPage/ConfirmPage";
+import ResendcodePage from "./pages/ResendcodePage/ResendcodePage";
 import Welcome from "./pages/Welcome/Welcome";
 
 import { useAuthContext } from "./context/auth/AuthState";
@@ -32,6 +33,8 @@ function App() {
         <Route exact path="/signup" component={SignupPage} />
         <Route exact path="/welcome" component={Welcome} />
         <Route exact path="/confirm/:username" component={ConfirmPage} />
+        <Route exact path="/confirm" component={ConfirmPage} />
+        <Route exact path="/resendcode" component={ResendcodePage} />
 
         <Route exact path="/books" component={BooksPage} />
       </Switch>
