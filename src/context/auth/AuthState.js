@@ -37,7 +37,7 @@ export const AuthState = props => {
     resendCode: false,
     loginSuccess: false,
     loginFail: false,
-    forgotPassword: false,
+    forgotPasswordSuccess: false,
     errorMessage: "",
     user: null
   };
@@ -138,8 +138,8 @@ export const AuthState = props => {
 
   const forgotPassword = async username => {
     try {
-      const res = await Auth.forgotPassword(username);
-      console.log(res);
+      await Auth.forgotPassword(username);
+
       dispatch({
         type: FORGOT_PASSWORD_SUCCESS
       });
@@ -169,6 +169,7 @@ export const AuthState = props => {
         resendCode: state.resendCode,
         loginSuccess: state.loginSuccess,
         loginFail: state.loginFail,
+        forgotPasswordSuccess: state.forgotPasswordSuccess,
         user: state.user,
         errorMessage: state.errorMessage,
         loadUser,

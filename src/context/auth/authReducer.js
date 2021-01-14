@@ -89,7 +89,7 @@ export default (state, action) => {
     case FORGOT_PASSWORD_SUCCESS:
       return {
         ...state,
-        forgotPassword: true
+        forgotPasswordSuccess: true
       };
     case FORGOT_PASSWORD_FAIL:
       return {
