@@ -37,6 +37,7 @@ export const AuthState = props => {
     resendCode: false,
     loginSuccess: false,
     loginFail: false,
+    forgotPassword: false,
     errorMessage: "",
     user: null
   };
@@ -135,6 +136,22 @@ export const AuthState = props => {
     }
   };
 
+  const forgotPassword = async username => {
+    try {
+      const res = await Auth.forgotPassword(username);
+      console.log(res);
+      dispatch({
+        type: FORGOT_PASSWORD_SUCCESS
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: FORGOT_PASSWORD_FAIL,
+        payload: error.message
+      });
+    }
+  };
+
   const clearErros = () => {
     dispatch({
       type: CLEAR_ERRORS
@@ -160,6 +177,7 @@ export const AuthState = props => {
         resendConfirmCode,
         loginUser,
         logout,
+        forgotPassword,
         clearErros
       }}
     >

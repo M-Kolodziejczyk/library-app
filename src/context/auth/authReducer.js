@@ -86,6 +86,16 @@ export default (state, action) => {
         loginSuccess: false,
         isLogged: false
       };
+    case FORGOT_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        forgotPassword: true
+      };
+    case FORGOT_PASSWORD_FAIL:
+      return {
+        ...state,
+        errorMessage: action.payload
+      };
     case CLEAR_ERRORS:
       return {
         ...state,
