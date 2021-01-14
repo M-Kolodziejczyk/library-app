@@ -5,8 +5,8 @@ import authReducer from "./authReducer";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  ACTIVATION_FAIL,
-  ACTIVATION_SUCCESS,
+  CONFIRM_REGISTER_SUCCESS,
+  CONFIRM_REGISTER_FAIL,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   USER_LOADED,
@@ -31,6 +31,7 @@ export const AuthState = props => {
     formSuccess: false,
     registerSuccess: false,
     registerFail: false,
+    confirmRegister: false,
     loginSuccess: false,
     loginFail: false,
     errorMessage: "",
@@ -76,6 +77,22 @@ export const AuthState = props => {
     }
   };
 
+  const confirmRegisterUser = async ({ username, code }) => {
+    try {
+      const res = await Auth.confirmSignUp(username, code);
+      console.log(res);
+      dispatch({
+        type: CONFIRM_REGISTER_SUCCESS
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: CONFIRM_REGISTER_FAIL,
+        payload: error.message
+      });
+    }
+  };
+
   const loginUser = async ({ email, password }) => {
     try {
       const user = await Auth.signIn(email, password);
@@ -115,12 +132,14 @@ export const AuthState = props => {
         formSuccess: state.formSuccess,
         registerSuccess: state.registerSuccess,
         registerFail: state.registerFail,
+        confirmRegister: state.confirmRegister,
         loginSuccess: state.loginSuccess,
         loginFail: state.loginFail,
         user: state.user,
         errorMessage: state.errorMessage,
         loadUser,
         registerUser,
+        confirmRegisterUser,
         loginUser,
         logout,
         clearErros

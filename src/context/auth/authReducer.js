@@ -1,8 +1,8 @@
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  ACTIVATION_FAIL,
-  ACTIVATION_SUCCESS,
+  CONFIRM_REGISTER_SUCCESS,
+  CONFIRM_REGISTER_FAIL,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   USER_LOADED,
@@ -40,6 +40,17 @@ export default (state, action) => {
         ...state,
         registerFail: true,
         errorMessage: action.payload
+      };
+    case CONFIRM_REGISTER_SUCCESS:
+      return {
+        ...state,
+        confirmRegister: true
+      };
+    case CONFIRM_REGISTER_FAIL:
+      return {
+        ...state,
+        confirmRegister: false,
+        errorMessage: action.payload.attributes
       };
     case LOGIN_SUCCESS:
       return {
