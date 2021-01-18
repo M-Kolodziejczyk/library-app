@@ -36,7 +36,7 @@ const Header = () => {
 
           {user && (
             <Link to="/user" className="header__user">
-              Hello, {user.name}
+              Hello, {user.given_name}
             </Link>
           )}
           <Link className="header__link d-flex " to={!user ? "/signin" : "#"}>

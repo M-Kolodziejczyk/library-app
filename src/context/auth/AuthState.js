@@ -62,14 +62,15 @@ export const AuthState = props => {
     }
   };
 
-  const registerUser = async ({ name, email, password }) => {
+  const registerUser = async ({ given_name, family_name, email, password }) => {
     try {
       const res = await Auth.signUp({
         username: email,
         password,
         attributes: {
           email,
-          name: name
+          given_name,
+          family_name
         }
       });
       dispatch({

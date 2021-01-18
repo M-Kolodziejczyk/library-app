@@ -6,7 +6,8 @@ import "./SignupPage.css";
 
 const SignupPage = () => {
   const defaultState = {
-    name: "",
+    given_name: "",
+    family_name: "",
     email: "",
     password: "",
     password2: ""
@@ -34,8 +35,11 @@ const SignupPage = () => {
 
   const validate = values => {
     let errors = {};
-    if (!values.name) {
-      errors.name = "Name is required!";
+    if (!values.given_name) {
+      errors.given_name = "Name is required!";
+    }
+    if (!values.family_name) {
+      errors.family_name = "Last name is required!";
     }
 
     if (!values.email) {
@@ -89,17 +93,34 @@ const SignupPage = () => {
             <div className="signupPage__formGroup">
               <input
                 className={`signupPage__formGroupInput 
-                ${errors.name && "form-control is-invalid"}`}
+                ${errors.given_name && "form-control is-invalid"}`}
                 type="text"
-                id="name"
-                name="name"
-                value={values.name}
+                id="given_name"
+                name="given_name"
+                value={values.given_name}
                 onChange={onChange}
-                placeholder="Your Name"
+                placeholder="First Name"
               />
-              {errors.name && (
-                <label className="singupPage__formLabel" htmlFor="name">
-                  {errors.name}
+              {errors.given_name && (
+                <label className="singupPage__formLabel" htmlFor="given_name">
+                  {errors.given_name}
+                </label>
+              )}
+            </div>
+            <div className="signupPage__formGroup">
+              <input
+                className={`signupPage__formGroupInput 
+                ${errors.family_name && "form-control is-invalid"}`}
+                type="text"
+                id="family_name"
+                name="family_name"
+                value={values.family_name}
+                onChange={onChange}
+                placeholder="Last Name"
+              />
+              {errors.family_name && (
+                <label className="singupPage__formLabel" htmlFor="family_name">
+                  {errors.family_name}
                 </label>
               )}
             </div>
