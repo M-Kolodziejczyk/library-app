@@ -77,6 +77,7 @@ const SigninPage = () => {
                 id="email"
                 name="email"
                 placeholder=" Your Email"
+                value={values.email}
                 onChange={onChange}
                 autoComplete="username"
               />
@@ -94,6 +95,7 @@ const SigninPage = () => {
                 id="password"
                 name="password"
                 placeholder="Password"
+                value={values.password}
                 onChange={onChange}
                 autoComplete="current-password"
               />
