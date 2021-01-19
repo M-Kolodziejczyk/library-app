@@ -97,3 +97,7 @@ h5 {
 .myDetails__passwordFormSubmit:hover {
   background-color: #99c1de;
 }
+
+.myDetails__passwordFormSuccess {
+  color: green;
+}

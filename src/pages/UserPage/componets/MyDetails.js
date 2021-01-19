@@ -4,13 +4,19 @@ import "./MyDetails.css";
 
 const MyDetails = () => {
   const defaultState = {
-    password: "",
-    password2: ""
+    oldPassword: "",
+    newPassword: "",
+    confirmPassword: ""
   };
   const [values, setValues] = useState(defaultState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { user, errorMessage } = useAuthContext();
+  const {
+    user,
+    errorMessage,
+    changePassword,
+    changePasswordSuccess
+  } = useAuthContext();
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -23,16 +29,22 @@ const MyDetails = () => {
   const validate = values => {
     let errors = {};
 
-    if (!values.password) {
-      errors.password = "Password is required!";
-    } else if (values.password.length < 6) {
-      errors.password = "Password needs to be more than 6 characters!";
+    if (!values.oldPassword) {
+      errors.oldPassword = "Old password is required!";
+    } else if (values.oldPassword.length < 6) {
+      errors.oldPassword = "Old password needs to be more than 6 characters!";
     }
 
-    if (!values.password2) {
-      errors.password2 = "Confirm password!";
-    } else if (values.password !== values.password2) {
-      errors.password2 = "Passwords do not match!";
+    if (!values.newPassword) {
+      errors.newPassword = "Password is required!";
+    } else if (values.newPassword.length < 6) {
+      errors.newPassword = "Password needs to be more than 6 characters!";
+    }
+
+    if (!values.confirmPassword) {
+      errors.confirmPassword = "Confirm password is required!";
+    } else if (values.newPassword !== values.confirmPassword) {
+      errors.confirmPassword = "Passwords do not match!";
     }
 
     return errors;
@@ -46,7 +58,7 @@ const MyDetails = () => {
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      console.log("new password");
+      changePassword(values);
       setValues(defaultState);
     }
   }, [errors, isSubmitting]);
@@ -100,42 +112,63 @@ const MyDetails = () => {
             <div className="myDetails__passwordFormGroup">
               <input
                 className={`myDetails__passwordFormInput 
-                ${errors.password && "form-control is-invalid"}`}
+                ${errors.oldPassword && "form-control is-invalid"}`}
                 type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
-                value={values.password}
+                id="oldPassword"
+                name="oldPassword"
+                placeholder="Old Password"
+                value={values.oldPassword}
                 onChange={onChange}
                 autoComplete="current-password"
               />
-              {errors.password && (
+              {errors.oldPassword && (
                 <label
                   className="myDetails__passwordFormLabel"
-                  htmlFor="password"
+                  htmlFor="oldPassword"
                 >
-                  {errors.password}
+                  {errors.oldPassword}
                 </label>
               )}
             </div>
             <div className="myDetails__passwordFormGroup">
               <input
-                className={`myDetails__passwordFormInput ${errors.password2 &&
+                className={`myDetails__passwordFormInput 
+                ${errors.newPassword && "form-control is-invalid"}`}
+                type="password"
+                id="newPassword"
+                name="newPassword"
+                placeholder="Password"
+                value={values.newPassword}
+                onChange={onChange}
+                autoComplete="current-password"
+              />
+              {errors.newPassword && (
+                <label
+                  className="myDetails__passwordFormLabel"
+                  htmlFor="newPassword"
+                >
+                  {errors.newPassword}
+                </label>
+              )}
+            </div>
+            <div className="myDetails__passwordFormGroup">
+              <input
+                className={`myDetails__passwordFormInput ${errors.confirmPassword &&
                   "form-control is-invalid"} `}
                 type="password"
-                id="password2"
-                name="password2"
+                id="confirmPassword"
+                name="confirmPassword"
                 placeholder="Confirm Password"
-                value={values.password2}
+                value={values.confirmPassword}
                 onChange={onChange}
                 autoComplete="username"
               />
-              {errors.password2 && (
+              {errors.confirmPassword && (
                 <label
                   className="myDetails__passwordFormLabel"
-                  htmlFor="password2"
+                  htmlFor="confirmPassword"
                 >
-                  {errors.password2}
+                  {errors.confirmPassword}
                 </label>
               )}
             </div>
@@ -154,6 +187,11 @@ const MyDetails = () => {
                 >
                   {errorMessage}
                 </label>
+              )}
+              {changePasswordSuccess && (
+                <p className="myDetails__passwordFormSuccess">
+                  Password changed successfully!
+                </p>
               )}
             </div>
           </form>

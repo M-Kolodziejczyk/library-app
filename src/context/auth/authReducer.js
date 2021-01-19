@@ -109,6 +109,18 @@ export default (state, action) => {
         newPasswordSuccess: false,
         errorMessage: action.payload
       };
+    case CHANGE_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        changePasswordSuccess: true,
+        errorMessage: true
+      };
+    case CHANGE_PASSWORD_FAIL:
+      return {
+        ...state,
+        changePasswordSuccess: false,
+        errorMessage: action.payload
+      };
     case CLEAR_ERRORS:
       return {
         ...state,

@@ -41,6 +41,7 @@ export const AuthState = props => {
     loginFail: false,
     forgotPasswordSuccess: false,
     newPasswordSuccess: false,
+    changePasswordSuccess: false,
     errorMessage: "",
     user: null
   };
@@ -169,6 +170,22 @@ export const AuthState = props => {
     }
   };
 
+  const changePassword = async ({ oldPassword, newPassword }) => {
+    try {
+      const user = await Auth.currentAuthenticatedUser();
+      const res = await Auth.changePassword(user, oldPassword, newPassword);
+      dispatch({
+        type: CHANGE_PASSWORD_SUCCESS,
+        payload: res
+      });
+    } catch (error) {
+      dispatch({
+        type: CHANGE_PASSWORD_FAIL,
+        payload: error.message
+      });
+    }
+  };
+
   const clearErros = () => {
     dispatch({
       type: CLEAR_ERRORS
@@ -188,6 +205,7 @@ export const AuthState = props => {
         loginFail: state.loginFail,
         forgotPasswordSuccess: state.forgotPasswordSuccess,
         newPasswordSuccess: state.newPasswordSuccess,
+        changePasswordSuccess: state.changePasswordSuccess,
         errorMessage: state.errorMessage,
         user: state.user,
         loadUser,
@@ -198,6 +216,7 @@ export const AuthState = props => {
         logout,
         forgotPassword,
         newPassword,
+        changePassword,
         clearErros
       }}
     >
