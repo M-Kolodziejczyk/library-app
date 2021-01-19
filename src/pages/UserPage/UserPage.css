@@ -1,0 +1,27 @@
+.userPage__container > h1 {
+  margin: 50px 0;
+}
+
+.userPage__content {
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.userPage__navLink {
+  display: block;
+  color: #65a2cd;
+  padding: 10px 40px;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  border-radius: 0.25rem;
+}
+
+.userPage__navLink:hover {
+  color: #99c1de;
+}
+
+.userPage__navLink.active {
+  color: #ffffff;
+  background-color: #65a2cd;
+}
