@@ -12,6 +12,7 @@ import UserPage from "./pages/UserPage/UserPage";
 import NewPasswordPage from "./pages/NewPasswordPage/NewPasswordPage";
 import Welcome from "./pages/Welcome/Welcome";
 
+import PrivateRoute from "./components/routing/PrivateRoute";
 import { useAuthContext } from "./context/auth/AuthState";
 
 import "./App.css";
@@ -45,7 +46,7 @@ function App() {
           component={NewPasswordPage}
         />
         <Route exact path="/new-password" component={NewPasswordPage} />
-        <Route exact path="/user" component={UserPage} />
+        <PrivateRoute exact path="/user" component={UserPage} />
 
         <Route exact path="/books" component={BooksPage} />
       </Switch>

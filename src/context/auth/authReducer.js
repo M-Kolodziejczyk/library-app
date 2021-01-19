@@ -31,6 +31,7 @@ export default (state, action) => {
       return {
         ...state,
         isLogged: true,
+        loading: false,
         user: action.payload.attributes
       };
     case REGISTER_SUCCESS:

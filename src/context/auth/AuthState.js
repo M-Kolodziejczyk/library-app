@@ -31,7 +31,8 @@ import {
 
 export const AuthState = props => {
   const initialState = {
-    isLogged: null,
+    loading: true,
+    isLogged: false,
     formSuccess: false,
     registerSuccess: false,
     registerFail: false,
@@ -195,6 +196,7 @@ export const AuthState = props => {
   return (
     <AuthContext.Provider
       value={{
+        loading: state.loading,
         isLogged: state.isLogged,
         formSuccess: state.formSuccess,
         registerSuccess: state.registerSuccess,
