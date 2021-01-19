@@ -1,0 +1,28 @@
+.myDetails {
+  margin: 0 20px;
+}
+
+.myDetails > h2 {
+  margin-top: 40px;
+}
+
+.myDetails__personalInformation {
+  margin-top: 30px;
+}
+
+h5 {
+  border-bottom: 2px solid #d7e3ea;
+  margin-bottom: 20px;
+}
+
+.myDetails__personalInformationLabel {
+  margin: 0;
+}
+
+.myDetails__personalInformationContent {
+  max-width: 50%;
+  padding: 10px;
+  background-color: #f2f6f8;
+  border: 1px solid #d7e3ea;
+  border-radius: 0.25rem;
+}

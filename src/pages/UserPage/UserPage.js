@@ -1,4 +1,5 @@
 import React from "react";
+import MyDetails from "./componets/MyDetails";
 import "./UserPage.css";
 
 const UserPage = () => {
@@ -59,7 +60,7 @@ const UserPage = () => {
                 role="tabpanel"
                 aria-labelledby="myDetails-tab"
               >
-                <h2>My Details</h2>
+                <MyDetails />
               </div>
               <div
                 className="tab-pane fade"
