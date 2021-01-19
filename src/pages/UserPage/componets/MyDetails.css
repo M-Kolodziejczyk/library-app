@@ -15,14 +15,85 @@ h5 {
   margin-bottom: 20px;
 }
 
-.myDetails__personalInformationLabel {
+.myDetails__personalInformationLabel,
+.myDetails__passwordLabel {
   margin: 0;
 }
 
-.myDetails__personalInformationContent {
+.myDetails__personalInformationContent,
+.myDetails__passwordContent {
   max-width: 50%;
   padding: 10px;
   background-color: #f2f6f8;
   border: 1px solid #d7e3ea;
   border-radius: 0.25rem;
+}
+
+.myDetails__password {
+  margin-top: 50px;
+  height: 600px;
+}
+
+.myDetails__passwordCollapseBtn {
+  display: block;
+  color: #ffffff;
+  background-color: #65a2cd;
+  border: none;
+  padding: 10px 40px;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+.myDetails__passwordCollapseBtn:hover {
+  background-color: #99c1de;
+}
+
+.myDetails__passwordCollapse {
+  margin-top: 30px;
+}
+
+.myDetails__passwordForm {
+  width: 50%;
+}
+
+.myDetails__passwordFormGroup {
+  margin-bottom: 20px;
+}
+
+.myDetails__passwordFormInput {
+  width: 100%;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  padding: 17px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222222;
+}
+
+.myDetails__passwordFormLabel {
+  width: 100%;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.myDetails__passwordFormSubmit {
+  background-color: #65a2cd;
+  color: #fff;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  /* font-size: 16px; */
+  /* font-weight: 500; */
+}
+
+.myDetails__passwordFormSubmit:hover {
+  background-color: #99c1de;
 }
