@@ -32,6 +32,7 @@ import {
 export const AuthState = props => {
   const initialState = {
     loading: true,
+    group: "",
     isLogged: false,
     formSuccess: false,
     registerSuccess: false,
@@ -197,6 +198,7 @@ export const AuthState = props => {
     <AuthContext.Provider
       value={{
         loading: state.loading,
+        group: state.group,
         isLogged: state.isLogged,
         formSuccess: state.formSuccess,
         registerSuccess: state.registerSuccess,

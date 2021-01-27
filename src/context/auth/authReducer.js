@@ -32,7 +32,9 @@ export default (state, action) => {
         ...state,
         isLogged: true,
         loading: false,
-        user: action.payload.attributes
+        user: action.payload.attributes,
+        group:
+          action.payload.signInUserSession.idToken.payload["cognito:groups"]
       };
     case REGISTER_SUCCESS:
       return {
