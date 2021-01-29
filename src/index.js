@@ -9,11 +9,9 @@ import awsconfig from "./aws-exports";
 Amplify.configure(awsconfig);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AuthState>
-      <App />
-    </AuthState>
-  </React.StrictMode>,
+  <AuthState>
+    <App />
+  </AuthState>,
   document.getElementById("root")
 );
 

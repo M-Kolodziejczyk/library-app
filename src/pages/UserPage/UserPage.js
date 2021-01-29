@@ -1,8 +1,14 @@
 import React from "react";
 import MyDetails from "./componets/MyDetails";
+import AddBook from "./componets/AddBook";
+import { useAuthContext } from "../../context/auth/AuthState";
 import "./UserPage.css";
 
 const UserPage = () => {
+  const { group } = useAuthContext();
+
+  console.log(group);
+
   return (
     <div className="userPage">
       <div className="userPage__container container-xl">
@@ -50,6 +56,22 @@ const UserPage = () => {
                   Settings
                 </a>
               </li>
+
+              {group.includes("Admin") && (
+                <li className="nav-item" role="presentation">
+                  <a
+                    className="userPage__navLink"
+                    id="addBook-tab"
+                    data-bs-toggle="pill"
+                    href="#addBook"
+                    role="tab"
+                    aria-controls="adBook"
+                    aria-selected="false"
+                  >
+                    Add Book
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
           <div className="col-9 userPage__content">
@@ -78,6 +100,16 @@ const UserPage = () => {
               >
                 <h2>Settings</h2>
               </div>
+              {group.includes("Admin") && (
+                <div
+                  className="tab-pane fade"
+                  id="addBook"
+                  role="tabpanel"
+                  aria-labelledby="addBook-tab"
+                >
+                  <AddBook />
+                </div>
+              )}
             </div>
           </div>
         </div>
