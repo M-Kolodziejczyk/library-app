@@ -1,6 +1,7 @@
 import React from "react";
 import MyDetails from "./componets/MyDetails";
 import AddBook from "./componets/AddBook";
+import AddAuthor from "./componets/AddAuthor";
 import { useAuthContext } from "../../context/auth/AuthState";
 import "./UserPage.css";
 
@@ -65,10 +66,25 @@ const UserPage = () => {
                     data-bs-toggle="pill"
                     href="#addBook"
                     role="tab"
-                    aria-controls="adBook"
+                    aria-controls="addBook"
                     aria-selected="false"
                   >
                     Add Book
+                  </a>
+                </li>
+              )}
+              {group.includes("Admin") && (
+                <li className="nav-item" role="presentation">
+                  <a
+                    className="userPage__navLink"
+                    id="addAuthor-tab"
+                    data-bs-toggle="pill"
+                    href="#addAuthor"
+                    role="tab"
+                    aria-controls="addAuthor"
+                    aria-selected="false"
+                  >
+                    Add Author
                   </a>
                 </li>
               )}
@@ -108,6 +124,16 @@ const UserPage = () => {
                   aria-labelledby="addBook-tab"
                 >
                   <AddBook />
+                </div>
+              )}
+              {group.includes("Admin") && (
+                <div
+                  className="tab-pane fade"
+                  id="addAuthor"
+                  role="tabpanel"
+                  aria-labelledby="addAuthor-tab"
+                >
+                  <AddAuthor />
                 </div>
               )}
             </div>

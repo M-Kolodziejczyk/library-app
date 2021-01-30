@@ -1,0 +1,158 @@
+import React, { useState, useEffect } from "react";
+import { useAuthContext } from "../../../context/auth/AuthState";
+import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import "./AddAuthor.css";
+
+const materialTheme = createMuiTheme({
+  overrides: {
+    MuiFormControl: {
+      root: {
+        padding: "17px 20px"
+      }
+    },
+    MuiFormLabel: {
+      root: {
+        fontFamily: "Mulish, sans-serif",
+        paddingLeft: "20px",
+        fontSize: "14px",
+        fontWeight: "500"
+      },
+      formControl: {
+        transform: "none"
+      }
+    },
+    MuiInputLabel: {
+      shrink: {
+        transform: "none !important"
+      }
+    }
+  }
+});
+
+const AddAuthor = () => {
+  const defaultState = {
+    firstName: "",
+    lastName: "",
+    birthDate: new Date(),
+    description: ""
+  };
+
+  const [values, setValues] = useState(defaultState);
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onChange = e => {
+    console.log(e);
+    if (e.target) {
+      const { name, value } = e.target;
+      setValues({
+        ...values,
+        [name]: value
+      });
+    } else {
+      setValues({
+        ...values,
+        publishedDate: e
+      });
+    }
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(values);
+    console.log("add Book");
+  };
+
+  return (
+    <div className="addAuthor">
+      <h2>Add Author</h2>
+      <form className="addAuthor__form" onSubmit={handleSubmit}>
+        <div className="addAuthor__formGroup">
+          <input
+            className={`addAuthor__formGroupInput ${errors.firstName &&
+              "form-control is-invalid"}`}
+            type="text"
+            id="firstName"
+            name="firstName"
+            placeholder="First Name"
+            value={values.firstName}
+            onChange={onChange}
+          />
+          {errors.firstName && (
+            <label className="addAuthor__formLabel" htmlFor="firstName">
+              {errors.firstName}
+            </label>
+          )}
+        </div>
+        <div className="addAuthor__formGroup">
+          <input
+            className={`addAuthor__formGroupInput ${errors.lastName &&
+              "form-control is-invalid"}`}
+            type="text"
+            id="lastName"
+            name="lastName"
+            placeholder="Last Name"
+            value={values.lastName}
+            onChange={onChange}
+          />
+          {errors.lastName && (
+            <label className="addAuthor__formLabel" htmlFor="lastName">
+              {errors.lastName}
+            </label>
+          )}
+        </div>
+        <div className="addAuthor__formGroup">
+          <ThemeProvider theme={materialTheme}>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <DatePicker
+                disableFuture
+                openTo="year"
+                format="dd/MM/yyyy"
+                label="Date of birth"
+                views={["year", "month", "date"]}
+                name="birthDate"
+                value={values.birthDate}
+                onChange={onChange}
+              />
+            </MuiPickersUtilsProvider>
+          </ThemeProvider>
+          {errors.birthDate && (
+            <label className="addAuthor__formLabel" htmlFor="birthDate">
+              {errors.birthDate}
+            </label>
+          )}
+        </div>
+        <div className="addAuthor__formGroup">
+          <textarea
+            className={`addAuthor__formGroupInput ${errors.description &&
+              "form-control is-invalid"}`}
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Description"
+            value={values.description}
+            onChange={onChange}
+          />
+          {errors.description && (
+            <label className="addAuthor__formLabel" htmlFor="description">
+              {errors.description}
+            </label>
+          )}
+        </div>
+        <div className="addAuthor__formGroup">
+          <input
+            className="addAuthor__formSubmit"
+            type="submit"
+            name="submit"
+            placeholder="Submit"
+          />
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default AddAuthor;
