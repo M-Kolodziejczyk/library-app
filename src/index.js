@@ -4,13 +4,16 @@ import App from "./App";
 import Amplify from "aws-amplify";
 import reportWebVitals from "./reportWebVitals";
 import { AuthState } from "./context/auth/AuthState";
+import { BookState } from "./context/book/BookState";
 import awsconfig from "./aws-exports";
 
 Amplify.configure(awsconfig);
 
 ReactDOM.render(
   <AuthState>
-    <App />
+    <BookState>
+      <App />
+    </BookState>
   </AuthState>,
   document.getElementById("root")
 );

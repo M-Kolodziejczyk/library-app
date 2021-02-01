@@ -8,8 +8,6 @@ import "./UserPage.css";
 const UserPage = () => {
   const { group } = useAuthContext();
 
-  console.log(group);
-
   return (
     <div className="userPage">
       <div className="userPage__container container-xl">

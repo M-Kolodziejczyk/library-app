@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useAuthContext } from "../../../context/auth/AuthState";
+import { useBookContext } from "../../../context/book/BookState";
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
@@ -39,13 +39,12 @@ const AddAuthor = () => {
     birthDate: new Date(),
     description: ""
   };
-
   const [values, setValues] = useState(defaultState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { author, createAuthor } = useBookContext();
 
   const onChange = e => {
-    console.log(e);
     if (e.target) {
       const { name, value } = e.target;
       setValues({
@@ -55,16 +54,45 @@ const AddAuthor = () => {
     } else {
       setValues({
         ...values,
-        publishedDate: e
+        birthDate: e
       });
     }
   };
 
+  const validate = values => {
+    let errors = {};
+
+    if (!values.firstName) {
+      errors.firstName = "First Name is required!";
+    }
+
+    if (!values.lastName) {
+      errors.lastName = "Last Name is required!";
+    }
+
+    if (!values.birthDate) {
+      errors.birthDate = "Date of birth is required!";
+    }
+
+    if (!values.description) {
+      errors.description = "Description is required!";
+    }
+
+    return errors;
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(values);
-    console.log("add Book");
+    setErrors(validate(values));
+    setIsSubmitting(true);
   };
+
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      createAuthor(values);
+      setValues(defaultState);
+    }
+  }, [errors, isSubmitting]);
 
   return (
     <div className="addAuthor">
