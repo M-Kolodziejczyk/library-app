@@ -1,4 +1,10 @@
-import { CREATE_BOOK, CREATE_AUTHOR_FAIL, CLEAR_FORM } from "../types";
+import {
+  CREATE_BOOK,
+  CREATE_AUTHOR_FAIL,
+  LIST_AUTHORS,
+  LIST_AUTHORS_FAIL,
+  CLEAR_FORM
+} from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -13,6 +19,16 @@ export default (state, action) => {
         ...state,
         formFail: true,
         formErrorMessage: action.payload.message
+      };
+    case LIST_AUTHORS:
+      return {
+        ...state,
+        authors: action.payload
+      };
+    case LIST_AUTHORS_FAIL:
+      return {
+        ...state,
+        errorMessage: action.payload
       };
     case CLEAR_FORM:
       return {
