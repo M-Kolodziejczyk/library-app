@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useAuthContext } from "../../../context/auth/AuthState";
+import { useBookContext } from "../../../context/book/BookState";
 import {
   KeyboardDatePicker,
   DatePicker,
@@ -16,20 +16,40 @@ const AddBook = () => {
     authorId: "",
     publisher: "",
     publishedDate: new Date(),
+    language: "",
     description: "",
     category: "",
     totalPages: "",
     isbn: "",
-    tags: [""],
     totalCopies: "",
     status: ""
   };
+
+  const categories = [
+    "Action and Adventure",
+    "Classics",
+    "Comic Book or Graphic Novel",
+    "Detective and Mystery",
+    "Fantasy",
+    "Horror",
+    "Literary Fiction",
+    "Romance",
+    "Science Fiction",
+    "Thrillers",
+    "Biographies and Autobiographies",
+    "History",
+    "Poetry",
+    "Travel"
+  ];
+  const statuses = ["available", "not available"];
+
+  const languages = ["English", "Polish"];
   const [values, setValues] = useState(defaultState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { authors, listAuthors } = useBookContext();
 
   const onChange = e => {
-    console.log(e);
     if (e.target) {
       const { name, value } = e.target;
       setValues({
@@ -50,6 +70,12 @@ const AddBook = () => {
     console.log("add Book");
   };
 
+  useEffect(() => {
+    if (authors.length === 0) {
+      listAuthors();
+    }
+  }, []);
+
   return (
     <div className="addBook">
       <h2>Add Book</h2>
@@ -68,6 +94,32 @@ const AddBook = () => {
           {errors.title && (
             <label className="addBook__formLabel" htmlFor="title">
               {errors.title}
+            </label>
+          )}
+        </div>
+        <div className="addBook__formGroup">
+          <select
+            className={`addBook__formGroupSelect ${errors.authorId &&
+              "form-control is-invalid"}`}
+            type="text"
+            id="authorId"
+            name="authorId"
+            placeholder="Author"
+            value={values.authorId}
+            onChange={onChange}
+          >
+            <option key="1" value="" disabled>
+              Author
+            </option>
+            {authors.map(e => (
+              <option key={e.id} value={e.id}>
+                {e.firstName} {e.lastName}
+              </option>
+            ))}
+          </select>
+          {errors.authorId && (
+            <label className="addBook__formLabel" htmlFor="authorId">
+              {errors.authorId}
             </label>
           )}
         </div>
@@ -93,7 +145,7 @@ const AddBook = () => {
             <KeyboardDatePicker
               openTo="year"
               views={["year", "month"]}
-              label="Year and Month"
+              label="Published Date"
               name="publishedDate"
               value={values.publishedDate}
               onChange={onChange}
@@ -107,19 +159,148 @@ const AddBook = () => {
           )}
         </div>
         <div className="addBook__formGroup">
+          <select
+            className={`addBook__formGroupSelect ${errors.language &&
+              "form-control is-invalid"}`}
+            type="text"
+            id="language"
+            name="language"
+            placeholder="Language"
+            value={values.language}
+            onChange={onChange}
+          >
+            <option key="1" value="" disabled>
+              Language
+            </option>
+            {languages.map(language => (
+              <option key={language} value={language}>
+                {language}
+              </option>
+            ))}
+          </select>
+          {errors.language && (
+            <label className="addBook__formLabel" htmlFor="language">
+              {errors.language}
+            </label>
+          )}
+        </div>
+        <div className="addBook__formGroup">
           <textarea
             className={`addBook__formGroupInput ${errors.description &&
               "form-control is-invalid"}`}
             type="text"
-            id="description"
+            id="bookDescription"
             name="description"
             placeholder="Description"
             value={values.description}
             onChange={onChange}
           />
           {errors.description && (
-            <label className="addBook__formLabel" htmlFor="description">
+            <label className="addBook__formLabel" htmlFor="bookDescription">
               {errors.description}
+            </label>
+          )}
+        </div>
+        <div className="addBook__formGroup">
+          <select
+            className={`addBook__formGroupSelect ${errors.category &&
+              "form-control is-invalid"}`}
+            type="text"
+            id="category"
+            name="category"
+            placeholder="Category"
+            value={values.category}
+            onChange={onChange}
+          >
+            <option key="1" value="" disabled>
+              Category
+            </option>
+            {categories.map(category => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+          {errors.category && (
+            <label className="addBook__formLabel" htmlFor="category">
+              {errors.category}
+            </label>
+          )}
+        </div>
+        <div className="addBook__formGroup">
+          <input
+            className={`addBook__formGroupInput ${errors.totalPages &&
+              "form-control is-invalid"}`}
+            type="text"
+            id="totalPages"
+            name="totalPages"
+            placeholder="Total Pages"
+            value={values.totalPages}
+            onChange={onChange}
+          />
+          {errors.totalPages && (
+            <label className="addBook__formLabel" htmlFor="totalPages">
+              {errors.totalPages}
+            </label>
+          )}
+        </div>
+        <div className="addBook__formGroup">
+          <input
+            className={`addBook__formGroupInput ${errors.isbn &&
+              "form-control is-invalid"}`}
+            type="text"
+            id="isbn"
+            name="isbn"
+            placeholder="ISBN Number"
+            value={values.isbn}
+            onChange={onChange}
+          />
+          {errors.isbn && (
+            <label className="addBook__formLabel" htmlFor="isbn">
+              {errors.isbn}
+            </label>
+          )}
+        </div>
+        <div className="addBook__formGroup">
+          <input
+            className={`addBook__formGroupInput ${errors.totalCopies &&
+              "form-control is-invalid"}`}
+            type="text"
+            id="totalCopies"
+            name="totalCopies"
+            placeholder="Total Copies"
+            value={values.totalCopies}
+            onChange={onChange}
+          />
+          {errors.totalCopies && (
+            <label className="addBook__formLabel" htmlFor="totalCopies">
+              {errors.totalCopies}
+            </label>
+          )}
+        </div>
+        <div className="addBook__formGroup">
+          <select
+            className={`addBook__formGroupSelect ${errors.status &&
+              "form-control is-invalid"}`}
+            type="text"
+            id="status"
+            name="status"
+            placeholder="Category"
+            value={values.status}
+            onChange={onChange}
+          >
+            <option key="1" value="" disabled>
+              Status
+            </option>
+            {statuses.map(status => (
+              <option key={status} value={status}>
+                {status}
+              </option>
+            ))}
+          </select>
+          {errors.status && (
+            <label className="addBook__formLabel" htmlFor="status">
+              {errors.status}
             </label>
           )}
         </div>

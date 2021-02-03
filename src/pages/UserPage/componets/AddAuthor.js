@@ -19,9 +19,6 @@ const materialTheme = createMuiTheme({
         paddingLeft: "20px",
         fontSize: "14px",
         fontWeight: "500"
-      },
-      formControl: {
-        transform: "none"
       }
     },
     MuiInputLabel: {
@@ -42,7 +39,7 @@ const AddAuthor = () => {
   const [values, setValues] = useState(defaultState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { author, createAuthor } = useBookContext();
+  const { createAuthor } = useBookContext();
 
   const onChange = e => {
     if (e.target) {
@@ -92,6 +89,8 @@ const AddAuthor = () => {
       createAuthor(values);
       setValues(defaultState);
     }
+
+    // eslint-disable-next-line
   }, [errors, isSubmitting]);
 
   return (

@@ -52,7 +52,7 @@ export const BookState = props => {
       });
       dispatch({
         type: LIST_AUTHORS,
-        payload: res.data
+        payload: res.data.listAuthors.items
       });
     } catch (error) {
       dispatch({

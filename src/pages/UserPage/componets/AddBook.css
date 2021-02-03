@@ -18,11 +18,26 @@
   box-sizing: border-box;
   font-size: 14px;
   font-weight: 500;
-  color: #222222;
 }
 
+.addBook__formGroupSelect {
+  width: 100%;
+  border: 1px solid #ebebeb;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 17px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6f7071;
+}
+.addBook__formGroupSelect:focus,
 .addBook__formGroup > input:focus {
   outline: none;
+}
+
+.addBook__formGroupInput::placeholder {
+  color: #6f7071;
 }
 
 .addBook__formLabel {

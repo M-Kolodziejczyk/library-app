@@ -43,7 +43,6 @@ type Book
   category: String!
   totalPgaes: String!
   isbn: String!
-  tags: [String]
   totalCopies: String!
   status: String!
   orders: [BookOrder] @connection(keyName: "byBook", fields: ["id"])
