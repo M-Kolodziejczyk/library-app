@@ -99,7 +99,7 @@ export const BookState = props => {
     } catch (error) {
       dispatch({
         type: LIST_BOOKS_FAIL,
-        payload: error.errors[0].message
+        payload: error
       });
     }
   };
