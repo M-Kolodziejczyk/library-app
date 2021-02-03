@@ -124,6 +124,8 @@ const AddBook = () => {
       createBook(values);
       setValues(defaultState);
     }
+
+    // eslint-disable-next-line
   }, [errors, isSubmitting]);
 
   return (

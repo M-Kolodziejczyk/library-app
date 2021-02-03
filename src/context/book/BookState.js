@@ -10,6 +10,8 @@ import {
   LIST_AUTHORS_FAIL,
   CREATE_BOOK,
   CREATE_BOOK_FAIL,
+  LIST_BOOKS,
+  LIST_BOOKS_FAIL,
   CLEAR_FORM
 } from "../types";
 
@@ -85,6 +87,23 @@ export const BookState = props => {
     }
   };
 
+  const listBooks = async () => {
+    try {
+      const res = await API.graphql({
+        query: queries.listBooks
+      });
+      dispatch({
+        type: LIST_BOOKS,
+        payload: res.data.listBooks.items
+      });
+    } catch (error) {
+      dispatch({
+        type: LIST_BOOKS_FAIL,
+        payload: error.errors[0].message
+      });
+    }
+  };
+
   const clearForm = () => {
     dispatch({
       type: CLEAR_FORM
@@ -105,6 +124,7 @@ export const BookState = props => {
         createAuthor,
         listAuthors,
         createBook,
+        listBooks,
         clearForm
       }}
     >

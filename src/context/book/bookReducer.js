@@ -5,6 +5,8 @@ import {
   LIST_AUTHORS_FAIL,
   CREATE_BOOK,
   CREATE_BOOK_FAIL,
+  LIST_BOOKS,
+  LIST_BOOKS_FAIL,
   CLEAR_FORM
 } from "../types";
 
@@ -43,6 +45,16 @@ const bookReducer = (state, action) => {
         ...state,
         formFail: true,
         formErrorMessage: action.payload.message
+      };
+    case LIST_BOOKS:
+      return {
+        ...state,
+        books: action.payload
+      };
+    case LIST_BOOKS_FAIL:
+      return {
+        ...state,
+        errorMessage: action.payload
       };
     case CLEAR_FORM:
       return {
