@@ -41,7 +41,7 @@ type Book
   language: String!
   description: String!
   category: String!
-  totalPgaes: String!
+  totalPages: String!
   isbn: String!
   totalCopies: String!
   status: String!

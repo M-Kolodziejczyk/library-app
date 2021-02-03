@@ -127,7 +127,7 @@ export const listBooks = /* GraphQL */ `
         language
         description
         category
-        totalPgaes
+        totalPages
         isbn
         totalCopies
         status
@@ -149,7 +149,7 @@ export const getBook = /* GraphQL */ `
       language
       description
       category
-      totalPgaes
+      totalPages
       isbn
       totalCopies
       status

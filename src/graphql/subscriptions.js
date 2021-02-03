@@ -115,7 +115,7 @@ export const onCreateBook = /* GraphQL */ `
       language
       description
       category
-      totalPgaes
+      totalPages
       isbn
       totalCopies
       status
@@ -147,7 +147,7 @@ export const onUpdateBook = /* GraphQL */ `
       language
       description
       category
-      totalPgaes
+      totalPages
       isbn
       totalCopies
       status
@@ -179,7 +179,7 @@ export const onDeleteBook = /* GraphQL */ `
       language
       description
       category
-      totalPgaes
+      totalPages
       isbn
       totalCopies
       status

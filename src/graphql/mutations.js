@@ -73,7 +73,7 @@ export const createBook = /* GraphQL */ `
       language
       description
       category
-      totalPgaes
+      totalPages
       isbn
       totalCopies
       status
@@ -108,7 +108,7 @@ export const updateBook = /* GraphQL */ `
       language
       description
       category
-      totalPgaes
+      totalPages
       isbn
       totalCopies
       status
@@ -143,7 +143,7 @@ export const deleteBook = /* GraphQL */ `
       language
       description
       category
-      totalPgaes
+      totalPages
       isbn
       totalCopies
       status
@@ -185,7 +185,7 @@ export const createBookOrder = /* GraphQL */ `
         language
         description
         category
-        totalPgaes
+        totalPages
         isbn
         totalCopies
         status
@@ -217,7 +217,7 @@ export const updateBookOrder = /* GraphQL */ `
         language
         description
         category
-        totalPgaes
+        totalPages
         isbn
         totalCopies
         status
@@ -249,7 +249,7 @@ export const deleteBookOrder = /* GraphQL */ `
         language
         description
         category
-        totalPgaes
+        totalPages
         isbn
         totalCopies
         status

@@ -75,12 +75,12 @@ export const BookState = props => {
 
       dispatch({
         tpye: CREATE_BOOK,
-        payload: res.data
+        payload: res.data.createBook
       });
     } catch (error) {
       dispatch({
         type: CREATE_BOOK_FAIL,
-        payload: error.message
+        payload: error.errors[0].message
       });
     }
   };

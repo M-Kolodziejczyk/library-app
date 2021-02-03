@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useBookContext } from "../../../context/book/BookState";
 import {
   KeyboardDatePicker,
-  DatePicker,
-  TimePicker,
-  DateTimePicker,
   MuiPickersUtilsProvider
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
@@ -13,7 +10,7 @@ import "./AddBook.css";
 const AddBook = () => {
   const defaultState = {
     title: "",
-    authorId: "",
+    authorID: "",
     publisher: "",
     publishedDate: new Date(),
     language: "",
@@ -47,7 +44,7 @@ const AddBook = () => {
   const [values, setValues] = useState(defaultState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { authors, listAuthors } = useBookContext();
+  const { authors, listAuthors, createBook } = useBookContext();
 
   const onChange = e => {
     if (e.target) {
@@ -64,17 +61,70 @@ const AddBook = () => {
     }
   };
 
+  const validate = values => {
+    let errors = {};
+
+    if (!values.title) {
+      errors.title = "Title is required!";
+    }
+    if (!values.authorID) {
+      errors.authorID = "Author is required!";
+    }
+    if (!values.publisher) {
+      errors.publisher = "Publisher is required!";
+    }
+    if (!values.publishedDate) {
+      errors.publishedDate = "Publish Date is required!";
+    }
+    if (!values.language) {
+      errors.language = "Language is required!";
+    }
+    if (!values.description) {
+      errors.description = "Description is required!";
+    }
+    if (!values.category) {
+      errors.category = "Category is required!";
+    }
+    if (!values.totalPages) {
+      errors.totalPages = "Total Pages is required!";
+    } else if (!/^[0-9]*$/.test(values.totalPages)) {
+      errors.totalPages = "Only numbers!";
+    }
+    if (!values.isbn) {
+      errors.isbn = "ISBN is required!";
+    }
+    if (!values.totalCopies) {
+      errors.totalCopies = "Total copies is required!";
+    } else if (!/^[0-9]*$/.test(values.totalCopies)) {
+      errors.totalCopies = "Only numbers!";
+    }
+    if (!values.status) {
+      errors.status = "Status is required!";
+    }
+
+    return errors;
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(values);
-    console.log("add Book");
+    setErrors(validate(values));
+    setIsSubmitting(true);
   };
 
   useEffect(() => {
     if (authors.length === 0) {
       listAuthors();
     }
-  }, []);
+
+    // eslint-disable-next-line
+  }, [authors]);
+
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      createBook(values);
+      setValues(defaultState);
+    }
+  }, [errors, isSubmitting]);
 
   return (
     <div className="addBook">
@@ -99,13 +149,13 @@ const AddBook = () => {
         </div>
         <div className="addBook__formGroup">
           <select
-            className={`addBook__formGroupSelect ${errors.authorId &&
+            className={`addBook__formGroupSelect ${errors.authorID &&
               "form-control is-invalid"}`}
             type="text"
-            id="authorId"
-            name="authorId"
+            id="authorID"
+            name="authorID"
             placeholder="Author"
-            value={values.authorId}
+            value={values.authorID}
             onChange={onChange}
           >
             <option key="1" value="" disabled>
@@ -117,9 +167,9 @@ const AddBook = () => {
               </option>
             ))}
           </select>
-          {errors.authorId && (
-            <label className="addBook__formLabel" htmlFor="authorId">
-              {errors.authorId}
+          {errors.authorID && (
+            <label className="addBook__formLabel" htmlFor="authorID">
+              {errors.authorID}
             </label>
           )}
         </div>
