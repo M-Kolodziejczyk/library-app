@@ -129,7 +129,6 @@ export const listBooks = /* GraphQL */ `
         category
         totalPgaes
         isbn
-        tags
         totalCopies
         status
         updatedAt
@@ -152,7 +151,6 @@ export const getBook = /* GraphQL */ `
       category
       totalPgaes
       isbn
-      tags
       totalCopies
       status
       orders {

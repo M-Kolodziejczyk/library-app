@@ -75,7 +75,6 @@ export const createBook = /* GraphQL */ `
       category
       totalPgaes
       isbn
-      tags
       totalCopies
       status
       orders {
@@ -111,7 +110,6 @@ export const updateBook = /* GraphQL */ `
       category
       totalPgaes
       isbn
-      tags
       totalCopies
       status
       orders {
@@ -147,7 +145,6 @@ export const deleteBook = /* GraphQL */ `
       category
       totalPgaes
       isbn
-      tags
       totalCopies
       status
       orders {
@@ -190,7 +187,6 @@ export const createBookOrder = /* GraphQL */ `
         category
         totalPgaes
         isbn
-        tags
         totalCopies
         status
         updatedAt
@@ -223,7 +219,6 @@ export const updateBookOrder = /* GraphQL */ `
         category
         totalPgaes
         isbn
-        tags
         totalCopies
         status
         updatedAt
@@ -256,7 +251,6 @@ export const deleteBookOrder = /* GraphQL */ `
         category
         totalPgaes
         isbn
-        tags
         totalCopies
         status
         updatedAt

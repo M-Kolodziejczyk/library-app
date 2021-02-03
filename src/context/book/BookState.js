@@ -4,12 +4,12 @@ import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
 import bookReducer from "./bookReducer";
 import {
-  CREATE_BOOK,
-  CREATE_BOOK_FAIL,
   CREATE_AUTHOR,
   CREATE_AUTHOR_FAIL,
   LIST_AUTHORS,
   LIST_AUTHORS_FAIL,
+  CREATE_BOOK,
+  CREATE_BOOK_FAIL,
   CLEAR_FORM
 } from "../types";
 
@@ -17,6 +17,8 @@ export const BookState = props => {
   const initialState = {
     author: {},
     authors: [],
+    book: {},
+    books: [],
     formErrorMessage: "",
     formFail: false,
     formSuccess: false,
@@ -62,6 +64,27 @@ export const BookState = props => {
     }
   };
 
+  const createBook = async book => {
+    clearForm();
+
+    try {
+      const res = await API.graphql({
+        query: mutations.createBook,
+        variables: { input: book }
+      });
+
+      dispatch({
+        tpye: CREATE_BOOK,
+        payload: res.data
+      });
+    } catch (error) {
+      dispatch({
+        type: CREATE_BOOK_FAIL,
+        payload: error.message
+      });
+    }
+  };
+
   const clearForm = () => {
     dispatch({
       type: CLEAR_FORM
@@ -73,12 +96,15 @@ export const BookState = props => {
       value={{
         author: state.author,
         authors: state.authors,
+        book: state.book,
+        books: state.books,
         formErrorMessage: state.formErrorMessage,
         formSuccess: state.formSuccess,
         formFail: state.formFail,
         errorMessage: state.errorMessage,
         createAuthor,
         listAuthors,
+        createBook,
         clearForm
       }}
     >
