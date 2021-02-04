@@ -4,7 +4,7 @@ import "./Book.css";
 
 const Book = ({ book }) => {
   return (
-    <Link to="/" className="book">
+    <Link to={{ pathname: `/book/${book.id}`, book: book }} className="book">
       <div className="row">
         <div className="col-2">
           <div className="book__img">
