@@ -32,4 +32,6 @@ export const LIST_AUTHORS = "LIST_AUTHORS";
 export const LIST_AUTHORS_FAIL = "LIST_AUTHORS_FAIL";
 export const LIST_BOOKS = "LIST_BOOKS";
 export const LIST_BOOKS_FAIL = "LIST_BOOKS_FAIL";
+export const GET_BOOK = "GET_BOOK";
+export const GET_BOOK_FAIL = "GET_BOOK_FAIL";
 export const CLEAR_FORM = "CLEAR_FORM";

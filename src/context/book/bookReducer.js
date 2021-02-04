@@ -7,6 +7,8 @@ import {
   CREATE_BOOK_FAIL,
   LIST_BOOKS,
   LIST_BOOKS_FAIL,
+  GET_BOOK,
+  GET_BOOK_FAIL,
   CLEAR_FORM
 } from "../types";
 
@@ -52,6 +54,16 @@ const bookReducer = (state, action) => {
         books: action.payload
       };
     case LIST_BOOKS_FAIL:
+      return {
+        ...state,
+        errorMessage: action.payload
+      };
+    case GET_BOOK:
+      return {
+        ...state,
+        book: action.payload
+      };
+    case GET_BOOK_FAIL:
       return {
         ...state,
         errorMessage: action.payload

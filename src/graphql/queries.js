@@ -132,10 +132,6 @@ export const listBooks = /* GraphQL */ `
         totalCopies
         status
         updatedAt
-        author {
-          firstName
-          lastName
-        }
       }
       nextToken
     }
