@@ -16,7 +16,9 @@ const Book = ({ book }) => {
         </div>
         <div className="col-8 d-flex flex-column justify-content-between">
           <p className="book__title">{book.title}</p>
-          <p className="book__author">George R.R. Martin</p>
+          <p className="book__author">
+            {`${book.author.firstName} ${book.author.lastName}`}
+          </p>
           <p className="book__category">{book.category}</p>
           <p className="book__totalPages">Total pages: {book.totalPages}</p>
         </div>
