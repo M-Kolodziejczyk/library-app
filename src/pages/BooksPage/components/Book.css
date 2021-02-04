@@ -1,0 +1,68 @@
+.book {
+  display: block;
+  text-decoration: none;
+  color: #222222;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.book:hover {
+  box-shadow: 0 0 10px 2px #bcd4e6;
+  color: #222222;
+}
+
+.book__img > img {
+  width: 100%;
+  max-width: 130px;
+}
+
+.book__title {
+  font-size: 26px;
+  margin-bottom: 0;
+}
+
+.book__author {
+  font-size: 18px;
+}
+
+.book__totalPages {
+  margin-bottom: 2px;
+}
+
+.book__status {
+  display: flex;
+  background-color: #198754;
+  padding: 10px 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 4px;
+  justify-content: center;
+}
+
+.book__cartBtn {
+  display: flex;
+  justify-content: center;
+  background-color: #65a2cd;
+  color: #ffffff;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  border: none;
+  padding: 10px 10px;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+.book__cartBtn:hover {
+  background-color: #99c1de;
+}
