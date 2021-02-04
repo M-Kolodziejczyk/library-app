@@ -109,7 +109,8 @@ export const BookState = props => {
   const getBook = async id => {
     try {
       const res = await API.graphql({
-        query: queries.getBook(id)
+        query: queries.getBook,
+        variables: { id: id }
       });
       dispatch({
         type: GET_BOOK,

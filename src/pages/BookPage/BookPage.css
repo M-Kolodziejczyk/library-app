@@ -1,3 +1,20 @@
+.bookPage__container {
+  position: relative;
+  height: calc(100vh - 56px);
+}
+
+.bookPage__containerSpinner {
+  position: absolute;
+  left: 50%;
+  top: calc(45% - 56px);
+}
+
+.bookPage__containerSpinner > div {
+  width: 4rem;
+  height: 4em;
+  color: #99c1de;
+}
+
 .bookPage {
   display: flex;
   margin: 30px auto;
@@ -46,12 +63,13 @@
 }
 
 .bookPage__contentBtn {
+  /* align-self: flex-end; */
   display: flex;
   justify-content: center;
   background-color: #65a2cd;
   color: #ffffff;
   width: 100%;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1;
   border: none;
