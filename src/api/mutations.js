@@ -80,6 +80,11 @@ export const createBook = /* GraphQL */ `
       orders {
         nextToken
       }
+      image {
+        bucket
+        region
+        key
+      }
       updatedAt
       author {
         id
@@ -115,6 +120,11 @@ export const updateBook = /* GraphQL */ `
       orders {
         nextToken
       }
+      image {
+        bucket
+        region
+        key
+      }
       updatedAt
       author {
         id
@@ -149,6 +159,11 @@ export const deleteBook = /* GraphQL */ `
       status
       orders {
         nextToken
+      }
+      image {
+        bucket
+        region
+        key
       }
       updatedAt
       author {

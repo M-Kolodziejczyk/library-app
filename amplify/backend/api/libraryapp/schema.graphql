@@ -18,6 +18,12 @@ type Author
   books: [Book] @connection(keyName: "byAuthor", fields: ["id"])
 }
 
+type S3BookImage {
+  bucket: String!
+  region: String!
+  key: String!
+}
+
 type Book
   @model
   @key(name: "byAuthor", fields: ["authorID"])
@@ -46,6 +52,9 @@ type Book
   totalCopies: String!
   status: String!
   orders: [BookOrder] @connection(keyName: "byBook", fields: ["id"])
+
+  # Reference the S3BookImage type from a field.
+  image: S3BookImage
   # locations: [Location] @connection
   # requests: [Request] @connection
 }

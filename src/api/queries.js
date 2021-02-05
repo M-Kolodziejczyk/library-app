@@ -136,6 +136,11 @@ export const listBooks = /* GraphQL */ `
           firstName
           lastName
         }
+        image {
+          bucket
+          region
+          key
+        }
       }
       nextToken
     }
@@ -159,6 +164,11 @@ export const getBook = /* GraphQL */ `
       status
       orders {
         nextToken
+      }
+      image {
+        bucket
+        region
+        key
       }
       updatedAt
       author {

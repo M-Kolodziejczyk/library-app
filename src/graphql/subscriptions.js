@@ -122,6 +122,11 @@ export const onCreateBook = /* GraphQL */ `
       orders {
         nextToken
       }
+      image {
+        bucket
+        region
+        key
+      }
       updatedAt
       author {
         id
@@ -154,6 +159,11 @@ export const onUpdateBook = /* GraphQL */ `
       orders {
         nextToken
       }
+      image {
+        bucket
+        region
+        key
+      }
       updatedAt
       author {
         id
@@ -185,6 +195,11 @@ export const onDeleteBook = /* GraphQL */ `
       status
       orders {
         nextToken
+      }
+      image {
+        bucket
+        region
+        key
       }
       updatedAt
       author {

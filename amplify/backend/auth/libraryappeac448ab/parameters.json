@@ -1,6 +1,6 @@
 {
     "identityPoolName": "libraryappeac448ab_identitypool_eac448ab",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "librareac448ab",
     "userPoolName": "libraryappeac448ab_userpool_eac448ab",
     "autoVerifiedAttributes": [
