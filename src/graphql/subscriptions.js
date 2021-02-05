@@ -123,6 +123,7 @@ export const onCreateBook = /* GraphQL */ `
         nextToken
       }
       image {
+        name
         bucket
         region
         key
@@ -160,6 +161,7 @@ export const onUpdateBook = /* GraphQL */ `
         nextToken
       }
       image {
+        name
         bucket
         region
         key
@@ -197,6 +199,7 @@ export const onDeleteBook = /* GraphQL */ `
         nextToken
       }
       image {
+        name
         bucket
         region
         key

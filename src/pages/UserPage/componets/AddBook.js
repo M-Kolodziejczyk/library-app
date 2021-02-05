@@ -5,6 +5,7 @@ import {
   MuiPickersUtilsProvider
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
+import awsExports from "../../../aws-exports";
 import "./AddBook.css";
 
 const AddBook = () => {
@@ -19,7 +20,8 @@ const AddBook = () => {
     totalPages: "",
     isbn: "",
     totalCopies: "",
-    status: ""
+    status: "",
+    image: {}
   };
 
   const categories = [
@@ -42,6 +44,8 @@ const AddBook = () => {
 
   const languages = ["English", "Polish"];
   const [values, setValues] = useState(defaultState);
+  const [image, setImage] = useState({});
+  const [imageUrl, setImageUrl] = useState();
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { authors, listAuthors, createBook } = useBookContext();
@@ -61,9 +65,38 @@ const AddBook = () => {
     }
   };
 
+  const onChangeImage = e => {
+    const file = e.target.files[0];
+    if (file) {
+      setValues({
+        ...values,
+        image: {
+          name: file.name,
+          bucket: awsExports.aws_user_files_s3_bucket,
+          region: awsExports.aws_user_files_s3_bucket_region,
+          key: "public/" + file.name
+        }
+      });
+      setImage(e.target.files[0]);
+      setImageUrl(URL.createObjectURL(e.target.files[0]));
+    } else {
+      setValues({
+        ...values,
+        image: {}
+      });
+      setImage({});
+      setImageUrl();
+    }
+  };
+
   const validate = values => {
     let errors = {};
 
+    if (Object.keys(values.image).length === 0) {
+      errors.image = "Image is required!";
+    } else if (image.type !== "image/jpeg" && image.type !== "image/png") {
+      errors.image = "Image format only jpeg or png!";
+    }
     if (!values.title) {
       errors.title = "Title is required!";
     }
@@ -121,7 +154,7 @@ const AddBook = () => {
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      createBook(values);
+      createBook(values, image);
       setValues(defaultState);
     }
 
@@ -132,6 +165,22 @@ const AddBook = () => {
     <div className="addBook">
       <h2>Add Book</h2>
       <form onSubmit={handleSubmit} className="addBook__form">
+        <div className="addBook__formGroup">
+          <input
+            className="addBook__formGroupInputImage"
+            type="file"
+            name="image"
+            id="image"
+            placeholder="Select book image"
+            onChange={onChangeImage}
+          />
+          <img src={imageUrl} alt="" className="addBook__formGroupImage" />
+          {errors.image && (
+            <label className="addBook__formLabel" htmlFor="image">
+              {errors.image}
+            </label>
+          )}
+        </div>
         <div className="addBook__formGroup">
           <input
             className={`addBook__formGroupInput ${errors.title &&

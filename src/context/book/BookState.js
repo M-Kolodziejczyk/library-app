@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useContext } from "react";
-import { API } from "aws-amplify";
+import { API, Storage } from "aws-amplify";
 import * as mutations from "../../api/mutations";
 import * as queries from "../../api/queries";
 import bookReducer from "./bookReducer";
@@ -68,10 +68,13 @@ export const BookState = props => {
     }
   };
 
-  const createBook = async book => {
+  const createBook = async (book, image) => {
     clearForm();
 
     try {
+      await Storage.put(image.name, image, {
+        contentType: image.type
+      });
       const res = await API.graphql({
         query: mutations.createBook,
         variables: { input: book }

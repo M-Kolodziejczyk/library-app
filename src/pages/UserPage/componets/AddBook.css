@@ -20,6 +20,36 @@
   font-weight: 500;
 }
 
+.addBook__formGroupInputImage {
+  color: transparent;
+}
+
+.addBook__formGroupInputImage::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.addBook__formGroupInputImage::before {
+  content: "Upload book image";
+  color: #ffffff;
+  background-color: #65a2cd;
+  padding: 10px 40px;
+  border-radius: 4px;
+  display: inline-block;
+  outline: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+
+.addBook__formGroupInputImage:hover::before {
+  background-color: #9ac1de;
+}
+
+.addBook__formGroupImage {
+  margin-top: 5px;
+  width: 100%;
+  max-width: 130px;
+}
+
 .addBook__formGroupSelect {
   width: 100%;
   border: 1px solid #ebebeb;

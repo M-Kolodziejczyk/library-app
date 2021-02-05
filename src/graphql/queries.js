@@ -157,6 +157,7 @@ export const getBook = /* GraphQL */ `
         nextToken
       }
       image {
+        name
         bucket
         region
         key

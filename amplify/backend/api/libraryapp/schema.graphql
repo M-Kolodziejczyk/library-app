@@ -19,6 +19,7 @@ type Author
 }
 
 type S3BookImage {
+  name: String!
   bucket: String!
   region: String!
   key: String!

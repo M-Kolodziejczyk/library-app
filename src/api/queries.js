@@ -137,6 +137,7 @@ export const listBooks = /* GraphQL */ `
           lastName
         }
         image {
+          name
           bucket
           region
           key
@@ -166,6 +167,7 @@ export const getBook = /* GraphQL */ `
         nextToken
       }
       image {
+        name
         bucket
         region
         key
