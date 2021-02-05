@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useContext } from "react";
 import { API } from "aws-amplify";
-import * as mutations from "../../graphql/mutations";
-import * as queries from "../../graphql/queries";
+import * as mutations from "../../api/mutations";
+import * as queries from "../../api/queries";
 import bookReducer from "./bookReducer";
 import {
   CREATE_AUTHOR,
