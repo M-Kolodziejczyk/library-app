@@ -1,0 +1,37 @@
+.author {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #222222;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  transition: box-shadow 0.3s ease-in-out;
+  position: relative;
+  height: 236px;
+}
+
+.author:hover {
+  box-shadow: 0 0 10px 2px #bcd4e6;
+  color: #222222;
+}
+
+.author__name {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.author__birthDate {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.author__description {
+  margin-bottom: 0px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
