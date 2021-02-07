@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Storage } from "aws-amplify";
 import { Link } from "react-router-dom";
 import "./Book.css";
 
 const Book = ({ book }) => {
+  const [img, setImg] = useState("");
+
+  const getBookImg = async id => {
+    try {
+      // const signedUrl = await Storage.get(id);
+      setImg(await Storage.get(id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getBookImg(book.image.name);
+
+    // eslint-disable-next-line
+  }, []);
+
+  if (img) {
+    book.link = img;
+  }
+
   return (
     <Link to={{ pathname: `/book/${book.id}`, book: book }} className="book">
       <div className="row">
         <div className="col-2">
           <div className="book__img">
-            <img
-              src="https://media.libris.to/jacket/04423361_game-of-thrones-reissue.jpg"
-              alt=""
-            />
+            <img src={img} alt="" />
           </div>
         </div>
         <div className="col-8 d-flex flex-column justify-content-between">

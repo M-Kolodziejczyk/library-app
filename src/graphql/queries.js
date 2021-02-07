@@ -132,6 +132,12 @@ export const listBooks = /* GraphQL */ `
         totalCopies
         status
         updatedAt
+        image {
+          name
+          bucket
+          region
+          key
+        }
       }
       nextToken
     }

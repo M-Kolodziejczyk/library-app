@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useBookContext } from "../../context/book/BookState";
 import Book from "./components/Book";
 import "./BooksPage.css";

@@ -43,7 +43,7 @@ const BookPage = props => {
     return (
       <div className="bookPage container-xl">
         <div className="bookPage__img">
-          <img src={book.link} alt="" />
+          <img src={state.link} alt="" />
         </div>
         <div className="bookPage__content">
           <div className="bookPage__contentHeader">
