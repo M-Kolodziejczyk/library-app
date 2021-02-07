@@ -13,6 +13,7 @@ import NewPasswordPage from "./pages/NewPasswordPage/NewPasswordPage";
 import Welcome from "./pages/Welcome/Welcome";
 import BookPage from "./pages/BookPage/BookPage";
 import AuthorsPage from "./pages/AuthorsPage/AuthorsPage";
+import AuthorPage from "./pages/AuthorPage/AuthorPage";
 
 import PrivateRoute from "./components/routing/PrivateRoute";
 import { useAuthContext } from "./context/auth/AuthState";
@@ -53,6 +54,7 @@ function App() {
         <Route exact path="/books" component={BooksPage} />
         <Route exact path="/book/:id" component={BookPage} />
         <Route exact path="/authors" component={AuthorsPage} />
+        <Route exact path="/author/:id" component={AuthorPage} />
       </Switch>
     </Router>
   );

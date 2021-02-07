@@ -7,7 +7,7 @@ const Author = ({ author }) => {
   return (
     <Link
       to={{
-        pathname: `author/${author.firstName}-${author.lastName}`,
+        pathname: `author/${author.id}`,
         author: author
       }}
       className="author"
