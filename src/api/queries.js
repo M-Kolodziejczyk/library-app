@@ -163,9 +163,6 @@ export const getBook = /* GraphQL */ `
       isbn
       totalCopies
       status
-      orders {
-        nextToken
-      }
       image {
         name
         bucket

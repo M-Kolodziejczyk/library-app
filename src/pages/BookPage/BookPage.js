@@ -43,10 +43,7 @@ const BookPage = props => {
     return (
       <div className="bookPage container-xl">
         <div className="bookPage__img">
-          <img
-            src="https://media.libris.to/jacket/04423361_game-of-thrones-reissue.jpg"
-            alt=""
-          />
+          <img src={book.link} alt="" />
         </div>
         <div className="bookPage__content">
           <div className="bookPage__contentHeader">

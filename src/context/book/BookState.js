@@ -16,6 +16,7 @@ import {
   GET_BOOK,
   GET_BOOK_FAIL
 } from "../types";
+import { publicDecrypt } from "crypto";
 
 export const BookState = props => {
   const initialState = {
@@ -95,7 +96,8 @@ export const BookState = props => {
   const listBooks = async () => {
     try {
       const res = await API.graphql({
-        query: queries.listBooks
+        query: queries.listBooks,
+        authMode: "API_KEY"
       });
       dispatch({
         type: LIST_BOOKS,
@@ -111,10 +113,17 @@ export const BookState = props => {
 
   const getBook = async id => {
     try {
-      const res = await API.graphql({
+      let res = await API.graphql({
         query: queries.getBook,
-        variables: { id: id }
+        variables: { id: id },
+        authMode: "API_KEY"
       });
+
+      const key = res.data.getBook.image.name;
+      const signedURL = await Storage.get(key);
+
+      res.data.getBook.link = signedURL;
+
       dispatch({
         type: GET_BOOK,
         payload: res.data.getBook
