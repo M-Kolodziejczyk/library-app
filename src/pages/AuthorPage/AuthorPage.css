@@ -1,0 +1,34 @@
+.authorPage__container {
+  position: relative;
+  height: calc(100vh - 56px);
+}
+
+.authorPage__containerSpinner {
+  position: absolute;
+  left: 50%;
+  top: calc(45% - 56px);
+}
+
+.authorPage__containerSpinner > div {
+  width: 4rem;
+  height: 4em;
+  color: #99c1de;
+}
+
+.authorPage {
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 2px #bcd4e6;
+  padding: 10px;
+}
+
+.authorPage__birthDate {
+  font-size: 20px;
+}
+
+.authorPage__description {
+  font-size: 20px;
+}
