@@ -8,7 +8,6 @@ const Book = ({ book }) => {
 
   const getBookImg = async id => {
     try {
-      // const signedUrl = await Storage.get(id);
       setImg(await Storage.get(id));
     } catch (error) {
       console.log(error);

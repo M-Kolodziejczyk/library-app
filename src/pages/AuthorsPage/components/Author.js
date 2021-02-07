@@ -1,22 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { format } from "date-fns";
 import "./Author.css";
 
-const Author = () => {
+const Author = ({ author }) => {
   return (
-    <Link to="/" className="author">
-      <p className="author__name">Gerorge R.R. Martin</p>
-      <p className="author__birthDate">Born: 1994.05.23</p>
-      <p className="author__description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quo
-        sed commodi, ab dicta debitis, suscipit delectus velit quisquam
-        repellendus neque quidem molestias, odit atque similique placeat quasi
-        consequuntur eius. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Repudiandae quo sed commodi, ab dicta debitis, suscipit delectus
-        velit quisquam repellendus neque quidem molestias, odit atque similique
-        placeat quasi consequuntur eius. similique placeat quasi consequuntur
-        eius.similique placeat quasi consequuntur eius.
+    <Link
+      to={{
+        pathname: `author/${author.firstName}-${author.lastName}`,
+        author: author
+      }}
+      className="author"
+    >
+      <p className="author__name">{`${author.firstName} ${author.lastName}`}</p>
+      <p className="author__birthDate">
+        Born: {format(new Date(author.birthDate), "yyyy-MM-dd")}
       </p>
+      <p className="author__description">{author.description}</p>
     </Link>
   );
 };

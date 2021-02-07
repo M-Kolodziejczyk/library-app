@@ -89,6 +89,15 @@ export const listAuthors = /* GraphQL */ `
         description
         createdAt
         updatedAt
+        books {
+          items {
+            id
+            title
+            category
+            totalPages
+            publishedDate
+          }
+        }
       }
       nextToken
     }
