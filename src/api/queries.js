@@ -114,7 +114,20 @@ export const getAuthor = /* GraphQL */ `
       createdAt
       updatedAt
       books {
-        nextToken
+        items {
+          id
+          title
+          publishedDate
+          category
+          totalPages
+          description
+          image {
+            name
+            bucket
+            region
+            key
+          }
+        }
       }
     }
   }

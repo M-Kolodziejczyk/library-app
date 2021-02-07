@@ -5,8 +5,10 @@ import { format } from "date-fns";
 import "./AuthorPage.css";
 
 const AuthorPage = props => {
-  const { author } = useBookContext();
+  const { author, getAuthor } = useBookContext();
   const [state, setState] = useState({});
+  let { id } = useParams();
+
   useEffect(() => {
     if (props.location.author) {
       setState(props.location.author);

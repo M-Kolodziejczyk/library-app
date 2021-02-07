@@ -1,6 +1,8 @@
 import {
   CREATE_AUTHOR,
   CREATE_AUTHOR_FAIL,
+  GET_AUTHOR,
+  GET_AUTHOR_FAIL,
   LIST_AUTHORS,
   LIST_AUTHORS_FAIL,
   CREATE_BOOK,
@@ -25,6 +27,16 @@ const bookReducer = (state, action) => {
         ...state,
         formFail: true,
         formErrorMessage: action.payload.message
+      };
+    case GET_AUTHOR:
+      return {
+        ...state,
+        author: action.payload
+      };
+    case GET_AUTHOR_FAIL:
+      return {
+        ...state,
+        errorMessage: action.payload
       };
     case LIST_AUTHORS:
       return {

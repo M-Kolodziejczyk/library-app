@@ -24,12 +24,14 @@ export const CHANGE_NAME_FAIL = "GOOGLE_LOGIN_FAIL";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 export const SET_LOADING = "SET_LOADING";
 
-export const CREATE_BOOK = "CREATE_BOOK";
-export const CREATE_BOOK_FAIL = "CREATE_BOOK_FAIL";
 export const CREATE_AUTHOR = "CREATE_AUTHOR";
 export const CREATE_AUTHOR_FAIL = "CREATE_AUTHOR_FAIL";
 export const LIST_AUTHORS = "LIST_AUTHORS";
 export const LIST_AUTHORS_FAIL = "LIST_AUTHORS_FAIL";
+export const GET_AUTHOR = "GET_AUTHOR";
+export const GET_AUTHOR_FAIL = "GET_AUTHOR_FAIL";
+export const CREATE_BOOK = "CREATE_BOOK";
+export const CREATE_BOOK_FAIL = "CREATE_BOOK_FAIL";
 export const LIST_BOOKS = "LIST_BOOKS";
 export const LIST_BOOKS_FAIL = "LIST_BOOKS_FAIL";
 export const GET_BOOK = "GET_BOOK";

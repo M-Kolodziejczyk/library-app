@@ -6,15 +6,17 @@ import bookReducer from "./bookReducer";
 import {
   CREATE_AUTHOR,
   CREATE_AUTHOR_FAIL,
+  GET_AUTHOR,
+  GET_AUTHOR_FAIL,
   LIST_AUTHORS,
   LIST_AUTHORS_FAIL,
   CREATE_BOOK,
   CREATE_BOOK_FAIL,
   LIST_BOOKS,
   LIST_BOOKS_FAIL,
-  CLEAR_FORM,
   GET_BOOK,
-  GET_BOOK_FAIL
+  GET_BOOK_FAIL,
+  CLEAR_FORM
 } from "../types";
 
 export const BookState = props => {
@@ -51,10 +53,31 @@ export const BookState = props => {
     }
   };
 
+  const getAuthor = async id => {
+    try {
+      const res = await API.graphql({
+        variables: { id: id },
+        authMode: "API_KEY",
+        query: queries.getAuthor
+      });
+
+      dispatch({
+        type: GET_AUTHOR,
+        payload: res.data.getAuthor
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_AUTHOR_FAIL,
+        payload: error
+      });
+    }
+  };
+
   const listAuthors = async () => {
     try {
       const res = await API.graphql({
-        query: queries.listAuthors
+        query: queries.listAuthors,
+        authMode: "API_KEY"
       });
       dispatch({
         type: LIST_AUTHORS,
@@ -153,6 +176,7 @@ export const BookState = props => {
         formFail: state.formFail,
         errorMessage: state.errorMessage,
         createAuthor,
+        getAuthor,
         listAuthors,
         createBook,
         listBooks,
