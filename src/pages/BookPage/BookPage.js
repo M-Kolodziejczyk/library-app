@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useBookContext } from "../../context/book/BookState";
 import { format } from "date-fns";
@@ -50,9 +51,12 @@ const BookPage = props => {
             <p className="bookPage__contentHeaderTitle">{state.title}</p>
             <span className="bookPage__contentHeaderStatus">Available</span>
           </div>
-          <p className="bookPage__contentAuthor">
+          <Link
+            to={{ pathname: `/author/${state.author.id}` }}
+            className="bookPage__contentAuthor"
+          >
             {state.author.firstName} {state.author.lastName}
-          </p>
+          </Link>
           <p className="bookPage__contentPublisher">{state.publisher}</p>
           <p className="bookPage__contentCategory">{state.category}</p>
           <p className="bookPage__contentPublishedDate">
