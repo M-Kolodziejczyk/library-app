@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useBookContext } from "../../context/book/BookState";
 import { format } from "date-fns";
+import AuthorBook from "./components/AuthorBook";
 import "./AuthorPage.css";
 
 const AuthorPage = props => {
@@ -47,8 +48,11 @@ const AuthorPage = props => {
           Born: {format(new Date(state.birthDate), "yyyy-MM-dd")}
         </p>
         <p className="authorPage__description">{state.description}</p>
+        <h2 className="authorPage__booksHeader">Books:</h2>
         <div className="authorPage__booksContainer">
-          <p>Books</p>
+          {state.books.items.map(book => (
+            <AuthorBook key={book.id} book={book} />
+          ))}
         </div>
       </div>
     );

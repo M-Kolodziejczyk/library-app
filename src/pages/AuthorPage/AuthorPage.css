@@ -32,3 +32,15 @@
 .authorPage__description {
   font-size: 20px;
 }
+
+.authorPage__booksHeader {
+  margin-bottom: 0;
+  padding-left: 0px;
+}
+
+.authorPage__booksContainer {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
