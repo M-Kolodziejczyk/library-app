@@ -28,6 +28,10 @@
   font-size: 18px;
 }
 
+.book__author:hover {
+  color: #65a2cd;
+}
+
 .book__totalPages {
   margin-bottom: 2px;
 }

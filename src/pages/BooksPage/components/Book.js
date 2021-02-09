@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Storage } from "aws-amplify";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Book.css";
 
 const Book = ({ book }) => {
+  const history = useHistory();
   const [img, setImg] = useState("");
 
   const getBookImg = async id => {
@@ -24,6 +25,11 @@ const Book = ({ book }) => {
     book.link = img;
   }
 
+  const handleClick = e => {
+    e.preventDefault();
+    history.push(`/author/${book.author.id}`);
+  };
+
   return (
     <Link to={{ pathname: `/book/${book.id}`, book: book }} className="book">
       <div className="row">
@@ -34,7 +40,7 @@ const Book = ({ book }) => {
         </div>
         <div className="col-8 d-flex flex-column justify-content-between">
           <p className="book__title">{book.title}</p>
-          <p className="book__author">
+          <p onClick={handleClick} className="book__author">
             {`${book.author.firstName} ${book.author.lastName}`}
           </p>
           <p className="book__category">{book.category}</p>
