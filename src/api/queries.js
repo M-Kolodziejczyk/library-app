@@ -144,6 +144,7 @@ export const listBooks = /* GraphQL */ `
         title
         authorID
         createdAt
+        authorName
         publisher
         publishedDate
         language
@@ -154,11 +155,6 @@ export const listBooks = /* GraphQL */ `
         totalCopies
         status
         updatedAt
-        author {
-          id
-          firstName
-          lastName
-        }
         image {
           name
           bucket
@@ -177,6 +173,7 @@ export const getBook = /* GraphQL */ `
       title
       authorID
       createdAt
+      authorName
       publisher
       publishedDate
       language

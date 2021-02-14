@@ -65,6 +65,15 @@ const AddBook = () => {
     }
   };
 
+  const onChangeAuthor = e => {
+    const { name, value, options } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+      authorName: options[options.selectedIndex].text
+    });
+  };
+
   const onChangeImage = e => {
     const file = e.target.files[0];
     if (file) {
@@ -207,7 +216,7 @@ const AddBook = () => {
             name="authorID"
             placeholder="Author"
             value={values.authorID}
-            onChange={onChange}
+            onChange={onChangeAuthor}
           >
             <option key="1" value="" disabled>
               Author

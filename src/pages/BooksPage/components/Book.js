@@ -27,7 +27,7 @@ const Book = ({ book }) => {
 
   const handleClick = e => {
     e.preventDefault();
-    history.push(`/author/${book.author.id}`);
+    history.push(`/author/${book.authorID}`);
   };
 
   return (
@@ -41,7 +41,7 @@ const Book = ({ book }) => {
         <div className="col-8 d-flex flex-column justify-content-between">
           <p className="book__title">{book.title}</p>
           <p onClick={handleClick} className="book__author">
-            {`${book.author.firstName} ${book.author.lastName}`}
+            {book.authorName}
           </p>
           <p className="book__category">{book.category}</p>
           <p className="book__totalPages">Total pages: {book.totalPages}</p>

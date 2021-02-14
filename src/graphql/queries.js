@@ -122,6 +122,7 @@ export const listBooks = /* GraphQL */ `
         title
         authorID
         createdAt
+        authorName
         publisher
         publishedDate
         language
@@ -144,6 +145,7 @@ export const getBook = /* GraphQL */ `
       title
       authorID
       createdAt
+      authorName
       publisher
       publishedDate
       language

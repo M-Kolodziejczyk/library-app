@@ -68,6 +68,7 @@ export const createBook = /* GraphQL */ `
       title
       authorID
       createdAt
+      authorName
       publisher
       publishedDate
       language
@@ -109,6 +110,7 @@ export const updateBook = /* GraphQL */ `
       title
       authorID
       createdAt
+      authorName
       publisher
       publishedDate
       language
@@ -150,6 +152,7 @@ export const deleteBook = /* GraphQL */ `
       title
       authorID
       createdAt
+      authorName
       publisher
       publishedDate
       language
@@ -198,6 +201,7 @@ export const createBookOrder = /* GraphQL */ `
         title
         authorID
         createdAt
+        authorName
         publisher
         publishedDate
         language
@@ -230,6 +234,7 @@ export const updateBookOrder = /* GraphQL */ `
         title
         authorID
         createdAt
+        authorName
         publisher
         publishedDate
         language
@@ -262,6 +267,7 @@ export const deleteBookOrder = /* GraphQL */ `
         title
         authorID
         createdAt
+        authorName
         publisher
         publishedDate
         language

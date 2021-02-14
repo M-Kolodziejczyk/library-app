@@ -110,6 +110,7 @@ export const onCreateBook = /* GraphQL */ `
       title
       authorID
       createdAt
+      authorName
       publisher
       publishedDate
       language
@@ -148,6 +149,7 @@ export const onUpdateBook = /* GraphQL */ `
       title
       authorID
       createdAt
+      authorName
       publisher
       publishedDate
       language
@@ -186,6 +188,7 @@ export const onDeleteBook = /* GraphQL */ `
       title
       authorID
       createdAt
+      authorName
       publisher
       publishedDate
       language

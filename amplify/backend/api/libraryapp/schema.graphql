@@ -42,6 +42,7 @@ type Book
   title: String!
   authorID: ID!
   createdAt: String!
+  authorName: String!
   author: Author @connection(fields: ["authorID"])
   publisher: String
   publishedDate: String!
