@@ -63,7 +63,10 @@ const bookReducer = (state, action) => {
     case LIST_BOOKS:
       return {
         ...state,
-        books: action.payload
+        books: {
+          ...state.books,
+          [action.payload.category]: action.payload.books
+        }
       };
     case LIST_BOOKS_FAIL:
       return {

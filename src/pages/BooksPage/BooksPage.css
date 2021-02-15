@@ -1,3 +1,8 @@
 .booksPage__content > h1 {
   margin: 20px 0;
 }
+
+.booksPage__nav > h2 {
+  margin: 20px 0;
+  font-size: 40px;
+}

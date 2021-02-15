@@ -115,15 +115,21 @@ export const BookState = props => {
     }
   };
 
-  const listBooks = async () => {
+  const listBooks = async categoryInput => {
     try {
       const res = await API.graphql({
-        query: queries.listBooks,
-        authMode: "API_KEY"
+        query: queries.booksByCategory,
+        authMode: "API_KEY",
+        variables: {
+          category: categoryInput
+        }
       });
       dispatch({
         type: LIST_BOOKS,
-        payload: res.data.listBooks.items
+        payload: {
+          books: res.data.booksByCategory.items,
+          category: categoryInput
+        }
       });
     } catch (error) {
       dispatch({
