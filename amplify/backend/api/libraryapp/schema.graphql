@@ -28,6 +28,7 @@ type S3BookImage {
 type Book
   @model
   @key(name: "byAuthor", fields: ["authorID"])
+  @key(name: "byCategory", fields: ["category"], queryField: "booksByCategory")
   @auth(
     rules: [
       # allow admin to create, update and delete books

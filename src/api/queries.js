@@ -202,3 +202,39 @@ export const getBook = /* GraphQL */ `
     }
   }
 `;
+export const booksByCategory = /* GraphQL */ `
+  query BooksByCategory(
+    $category: String
+    $sortDirection: ModelSortDirection
+    $filter: ModelBookFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    booksByCategory(
+      category: $category
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        title
+        authorID
+        createdAt
+        authorName
+        publisher
+        publishedDate
+        language
+        description
+        category
+        totalPages
+        isbn
+        totalCopies
+        status
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
