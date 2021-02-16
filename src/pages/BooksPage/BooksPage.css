@@ -6,3 +6,13 @@
   margin: 20px 0;
   font-size: 40px;
 }
+
+.booksPage__contentSearch {
+  width: 100%;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 500;
+}

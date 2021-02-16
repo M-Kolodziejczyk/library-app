@@ -6,6 +6,7 @@ import "./BooksPage.css";
 const BooksPage = () => {
   const { listBooks, books } = useBookContext();
   const [categoryInput, setCategoryInput] = useState("Action and Adventure");
+  const [search, setSearch] = useState("");
 
   const categories = [
     "Action and Adventure",
@@ -26,6 +27,10 @@ const BooksPage = () => {
 
   const handleCategory = e => {
     setCategoryInput(e.target.value);
+  };
+
+  const handleSearch = e => {
+    setSearch(e.target.value);
   };
 
   useEffect(() => {
@@ -63,11 +68,24 @@ const BooksPage = () => {
           </div>
           <div className="col-9 booksPage__content">
             <h1>Books</h1>
+            <input
+              type="text"
+              className="booksPage__contentSearch"
+              onChange={handleSearch}
+              value={search}
+              placeholder="Search Book"
+              autoFocus
+            />
             {Object.keys(books).includes(categoryInput) &&
               books[categoryInput].length > 0 &&
-              books[categoryInput].map(book => (
-                <Book key={book.id} book={book} />
-              ))}
+              books[categoryInput].map(
+                book =>
+                  book.title
+                    .toLowerCase()
+                    .includes(search.toLocaleLowerCase()) && (
+                    <Book key={book.id} book={book} />
+                  )
+              )}
           </div>
         </div>
       </div>
