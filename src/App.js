@@ -14,6 +14,7 @@ import Welcome from "./pages/Welcome/Welcome";
 import BookPage from "./pages/BookPage/BookPage";
 import AuthorsPage from "./pages/AuthorsPage/AuthorsPage";
 import AuthorPage from "./pages/AuthorPage/AuthorPage";
+import BasketPage from "./pages/BasketPage/BasketPage";
 
 import PrivateRoute from "./components/routing/PrivateRoute";
 import { useAuthContext } from "./context/auth/AuthState";
@@ -55,6 +56,7 @@ function App() {
         <Route exact path="/book/:id" component={BookPage} />
         <Route exact path="/authors" component={AuthorsPage} />
         <Route exact path="/author/:id" component={AuthorPage} />
+        <Route exact path="/user/basket" component={BasketPage} />
       </Switch>
     </Router>
   );
