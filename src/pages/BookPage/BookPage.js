@@ -6,9 +6,25 @@ import { format } from "date-fns";
 import "./BookPage.css";
 
 const BookPage = props => {
-  const { book, getBook } = useBookContext();
+  const { book, getBook, addToBasket, basket } = useBookContext();
   const [state, setState] = useState({});
+  const [error, setError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   let { id } = useParams();
+
+  const handleBasket = e => {
+    e.preventDefault();
+    if (basket.length === 0) {
+      addToBasket(state);
+    } else {
+      basket.map(e => {
+        if (e.id === state.id) {
+          setError(true);
+        }
+      });
+      setIsSubmitting(true);
+    }
+  };
 
   useEffect(() => {
     if (props.location.book) {
@@ -29,6 +45,22 @@ const BookPage = props => {
 
     // eslint-disable-next-line
   }, [book]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setError(false);
+    }, 2500);
+
+    return () => clearTimeout(timeout);
+  }, [error]);
+
+  useEffect(() => {
+    if (isSubmitting && !error) {
+      addToBasket(state);
+    } else {
+      setIsSubmitting(false);
+    }
+  }, [isSubmitting]);
 
   if (Object.keys(state).length === 0) {
     return (
@@ -52,10 +84,10 @@ const BookPage = props => {
             <span className="bookPage__contentHeaderStatus">Available</span>
           </div>
           <Link
-            to={{ pathname: `/author/${state.author.id}` }}
+            to={{ pathname: `/author/${state.authorID}` }}
             className="bookPage__contentAuthor"
           >
-            {state.author.firstName} {state.author.lastName}
+            {state.authorName}
           </Link>
           <p className="bookPage__contentPublisher">{state.publisher}</p>
           <p className="bookPage__contentCategory">{state.category}</p>
@@ -67,7 +99,18 @@ const BookPage = props => {
           </p>
           <p className="bookPage__contentPages">{state.totalPages} pages</p>
           <p className="bookPage__contentDescription">{state.description} </p>
-          <button className="bookPage__contentBtn">Add to cart</button>
+          {error ? (
+            <span className="bookPage__contentError">
+              Already added to basket!
+            </span>
+          ) : (
+            <span className="bookPage__contentError hide">
+              Already added to basket!
+            </span>
+          )}
+          <button onClick={handleBasket} className="bookPage__contentBtn">
+            Add to cart
+          </button>
         </div>
       </div>
     );

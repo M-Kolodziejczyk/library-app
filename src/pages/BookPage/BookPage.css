@@ -32,6 +32,9 @@
 
 .bookPage__content {
   margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .bookPage__contentHeader {
@@ -69,7 +72,21 @@
   color: #65a2cd;
 }
 
+.bookPage__contentDescription {
+  margin-bottom: 0;
+}
+
+.bookPage__contentError {
+  color: red;
+  /* margin-bottom: 10px; */
+}
+
+.bookPage__contentError.hide {
+  opacity: 0;
+}
+
 .bookPage__contentBtn {
+  /* margin-top: 5px; */
   /* align-self: flex-end; */
   display: flex;
   justify-content: center;
