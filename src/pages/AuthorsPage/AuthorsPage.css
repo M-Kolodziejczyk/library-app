@@ -1,0 +1,17 @@
+.authorsPage__content {
+  margin: 0 auto;
+}
+
+.authorsPage__content > h1 {
+  margin: 20px 0;
+}
+
+.authorsPage__contentSearch {
+  width: 100%;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 500;
+}
