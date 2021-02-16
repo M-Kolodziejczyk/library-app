@@ -11,6 +11,8 @@ import {
   LIST_BOOKS_FAIL,
   GET_BOOK,
   GET_BOOK_FAIL,
+  ADD_TO_BASKET,
+  ADD_TO_BASKET_FAIL,
   CLEAR_FORM
 } from "../types";
 
@@ -79,6 +81,16 @@ const bookReducer = (state, action) => {
         book: action.payload
       };
     case GET_BOOK_FAIL:
+      return {
+        ...state,
+        errorMessage: action.payload
+      };
+    case ADD_TO_BASKET:
+      return {
+        ...state,
+        basket: [...state.basket, action.payload]
+      };
+    case ADD_TO_BASKET_FAIL:
       return {
         ...state,
         errorMessage: action.payload

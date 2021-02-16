@@ -16,6 +16,8 @@ import {
   LIST_BOOKS_FAIL,
   GET_BOOK,
   GET_BOOK_FAIL,
+  ADD_TO_BASKET,
+  ADD_TO_BASKET_FAIL,
   CLEAR_FORM
 } from "../types";
 
@@ -25,6 +27,7 @@ export const BookState = props => {
     authors: [],
     book: {},
     books: [],
+    basket: [],
     formErrorMessage: "",
     formFail: false,
     formSuccess: false,
@@ -164,6 +167,20 @@ export const BookState = props => {
     }
   };
 
+  const addToBasket = async book => {
+    try {
+      dispatch({
+        type: ADD_TO_BASKET,
+        payload: book
+      });
+    } catch (error) {
+      dispatch({
+        type: ADD_TO_BASKET_FAIL,
+        payload: error
+      });
+    }
+  };
+
   const clearForm = () => {
     dispatch({
       type: CLEAR_FORM
@@ -177,6 +194,7 @@ export const BookState = props => {
         authors: state.authors,
         book: state.book,
         books: state.books,
+        basket: state.basket,
         formErrorMessage: state.formErrorMessage,
         formSuccess: state.formSuccess,
         formFail: state.formFail,
@@ -187,6 +205,7 @@ export const BookState = props => {
         createBook,
         listBooks,
         getBook,
+        addToBasket,
         clearForm
       }}
     >

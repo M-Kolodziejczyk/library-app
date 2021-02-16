@@ -34,6 +34,12 @@
 
 .book__totalPages {
   margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.book__basketError {
+  color: red;
 }
 
 .book__status {
