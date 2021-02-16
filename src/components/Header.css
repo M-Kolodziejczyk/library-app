@@ -43,3 +43,26 @@
 .header__linkOption {
   margin: 0 auto;
 }
+
+.header__basket {
+  display: flex;
+  text-decoration: none;
+  color: #468fc3;
+  fill: #468fc3;
+}
+
+.header__basket:hover {
+  color: #87ceeb;
+  fill: #87ceeb;
+}
+
+.header__basketIcon {
+  width: 35px;
+  margin-left: 20px;
+}
+
+.header__basketCount {
+  font-size: 26px;
+  text-decoration: none;
+  margin-left: 5px;
+}
