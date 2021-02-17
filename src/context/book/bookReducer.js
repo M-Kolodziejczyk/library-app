@@ -13,6 +13,7 @@ import {
   GET_BOOK_FAIL,
   ADD_TO_BASKET,
   ADD_TO_BASKET_FAIL,
+  DELETE_FROM_BASKET,
   CLEAR_FORM
 } from "../types";
 
@@ -94,6 +95,11 @@ const bookReducer = (state, action) => {
       return {
         ...state,
         errorMessage: action.payload
+      };
+    case DELETE_FROM_BASKET:
+      return {
+        ...state,
+        basket: action.payload
       };
     case CLEAR_FORM:
       return {

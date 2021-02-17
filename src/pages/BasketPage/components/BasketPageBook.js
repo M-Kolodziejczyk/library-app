@@ -1,9 +1,13 @@
 import React from "react";
 import "./BasketPageBook.css";
 
-const BasketPageBook = ({ book }) => {
+const BasketPageBook = ({ book, basket, deleteElement }) => {
   const handleDelete = e => {
     e.preventDefault();
+    const newBasket = basket.filter(item => {
+      return item.id !== book.id;
+    });
+    deleteElement(newBasket);
   };
 
   return (
