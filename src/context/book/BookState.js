@@ -19,7 +19,8 @@ import {
   ADD_TO_BASKET,
   ADD_TO_BASKET_FAIL,
   CLEAR_FORM,
-  DELETE_FROM_BASKET
+  DELETE_FROM_BASKET,
+  DELETE_BASKET
 } from "../types";
 
 export const BookState = props => {
@@ -183,10 +184,15 @@ export const BookState = props => {
   };
 
   const deleteFromBasket = basket => {
-    console.log("1");
     dispatch({
       type: DELETE_FROM_BASKET,
       payload: basket
+    });
+  };
+
+  const deleteBasket = () => {
+    dispatch({
+      type: DELETE_BASKET
     });
   };
 
@@ -216,6 +222,7 @@ export const BookState = props => {
         getBook,
         addToBasket,
         deleteFromBasket,
+        deleteBasket,
         clearForm
       }}
     >

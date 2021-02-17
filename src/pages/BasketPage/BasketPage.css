@@ -3,6 +3,45 @@
   max-width: 960px;
 }
 
-.basketPage > h1 {
+.basketPage__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.basketPage__headerH1 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.basketPage__header > h1 {
   margin-top: 30px;
+}
+
+.basketPage__headerBtn {
+  flex: 0 0 auto;
+  width: 20%;
+}
+
+.basketPage__headerBtn > button {
+  display: flex;
+  justify-content: center;
+  background-color: #65a2cd;
+  color: #ffffff;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  border: none;
+  padding: 10px 10px;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+.basketPage__headerBtn > button:hover {
+  background-color: #99c1de;
 }

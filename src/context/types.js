@@ -39,4 +39,5 @@ export const GET_BOOK_FAIL = "GET_BOOK_FAIL";
 export const ADD_TO_BASKET = "ADD_TO_BASKET";
 export const ADD_TO_BASKET_FAIL = "ADD_TO_BASKET_FAIL";
 export const DELETE_FROM_BASKET = "DELETE_FROM_BASKET";
+export const DELETE_BASKET = "DELETE_BASKET";
 export const CLEAR_FORM = "CLEAR_FORM";
