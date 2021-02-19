@@ -347,8 +347,8 @@ export const createCustomer = /* GraphQL */ `
   ) {
     createCustomer(input: $input, condition: $condition) {
       id
-      name
-      phoneNumber
+      firstName
+      lastName
       email
       ordersByDate {
         nextToken
@@ -368,8 +368,8 @@ export const updateCustomer = /* GraphQL */ `
   ) {
     updateCustomer(input: $input, condition: $condition) {
       id
-      name
-      phoneNumber
+      firstName
+      lastName
       email
       ordersByDate {
         nextToken
@@ -389,8 +389,8 @@ export const deleteCustomer = /* GraphQL */ `
   ) {
     deleteCustomer(input: $input, condition: $condition) {
       id
-      name
-      phoneNumber
+      firstName
+      lastName
       email
       ordersByDate {
         nextToken

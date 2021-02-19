@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "libraryappeac448ab": {}
+      },
+      "function": {
+        "libraryapp2411714d": {
+          "deploymentBucketName": "amplify-libraryapp-dev-113318-deployment",
+          "s3Key": "amplify-builds/libraryapp2411714d-707a645570517448567a-build.zip"
+        }
       }
     }
   }

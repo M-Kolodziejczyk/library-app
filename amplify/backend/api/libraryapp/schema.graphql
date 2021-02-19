@@ -101,8 +101,8 @@ type Order
 
 type Customer @model @auth(rules: [{ allow: groups, groups: ["Admin"] }]) {
   id: ID!
-  name: String!
-  phoneNumber: String
+  firstName: String!
+  lastName: String!
   email: String!
   ordersByDate: [Order] @connection(keyName: "ByCustomerByDate", fields: ["id"])
   ordersByStatus: [Order]
