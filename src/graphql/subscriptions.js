@@ -2,8 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateCustomer = /* GraphQL */ `
-  subscription OnCreateCustomer {
-    onCreateCustomer {
+  subscription OnCreateCustomer($id: String) {
+    onCreateCustomer(id: $id) {
       id
       firstName
       lastName
@@ -20,8 +20,8 @@ export const onCreateCustomer = /* GraphQL */ `
   }
 `;
 export const onUpdateCustomer = /* GraphQL */ `
-  subscription OnUpdateCustomer {
-    onUpdateCustomer {
+  subscription OnUpdateCustomer($id: String) {
+    onUpdateCustomer(id: $id) {
       id
       firstName
       lastName
@@ -38,8 +38,8 @@ export const onUpdateCustomer = /* GraphQL */ `
   }
 `;
 export const onDeleteCustomer = /* GraphQL */ `
-  subscription OnDeleteCustomer {
-    onDeleteCustomer {
+  subscription OnDeleteCustomer($id: String) {
+    onDeleteCustomer(id: $id) {
       id
       firstName
       lastName

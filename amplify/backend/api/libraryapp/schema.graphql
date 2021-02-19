@@ -33,9 +33,9 @@ type Book
     rules: [
       # allow admin to create, update and delete books
       { allow: groups, groups: ["Admin"] }
-      # allow all authenticated users to view books
-      { allow: public, operations: [read] }
       # allow all guest users (not authenticated) to view books
+      { allow: public, operations: [read] }
+      # allow all authenticated users to view books
       { allow: private, operations: [read] }
     ]
   ) {
@@ -99,7 +99,14 @@ type Order
   books: [BookOrder] @connection(keyName: "byOrder", fields: ["id"])
 }
 
-type Customer @model @auth(rules: [{ allow: groups, groups: ["Admin"] }]) {
+type Customer
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "id" }
+      { allow: groups, groups: ["Admin"] }
+    ]
+  ) {
   id: ID!
   firstName: String!
   lastName: String!

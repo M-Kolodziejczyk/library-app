@@ -9,6 +9,8 @@ var aws = require("aws-sdk");
 var ddb = new aws.DynamoDB({ apiVersion: "2012-10-08" });
 
 exports.handler = async (event, context) => {
+  let date = new Date();
+
   const tableName = process.env.API_LIBRARYAPP_CUSTOMERTABLE_NAME;
   const region = process.env.REGION;
 
@@ -18,9 +20,11 @@ exports.handler = async (event, context) => {
     let ddbParams = {
       Item: {
         id: { S: event.request.userAttributes.sub },
+        __typname: { S: "Customer" },
         firstName: { S: event.request.userAttributes.given_name },
         lastName: { S: event.request.userAttributes.family_name },
-        email: { S: event.request.userAttributes.email }
+        email: { S: event.request.userAttributes.email },
+        createdAt: { S: date.toISOString() }
       },
       TableName: tableName
     };
@@ -35,7 +39,7 @@ exports.handler = async (event, context) => {
     console.log("Success: Everything executed correctly");
     context.done(null, event);
   } else {
-    console.log("Nothing was written ti DDB");
+    console.log("Nothing was written to DDB");
     context.done(null, event);
   }
 };
