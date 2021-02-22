@@ -18,9 +18,11 @@ import {
   GET_BOOK_FAIL,
   ADD_TO_BASKET,
   ADD_TO_BASKET_FAIL,
-  CLEAR_FORM,
   DELETE_FROM_BASKET,
-  DELETE_BASKET
+  DELETE_BASKET,
+  CREATE_ORDER,
+  CREATE_ORDER_FAIL,
+  CLEAR_FORM
 } from "../types";
 
 export const BookState = props => {
@@ -33,7 +35,9 @@ export const BookState = props => {
     formErrorMessage: "",
     formFail: false,
     formSuccess: false,
-    errorMessage: ""
+    errorMessage: "",
+    order: "",
+    orderSuccess: false
   };
 
   const [state, dispatch] = useReducer(bookReducer, initialState);
@@ -196,6 +200,28 @@ export const BookState = props => {
     });
   };
 
+  const createOrder = async data => {
+    try {
+      const res = await API.graphql({
+        query: mutations.createOrder,
+        variables: {
+          input: data
+        }
+      });
+      console.log(res);
+      dispatch({
+        type: CREATE_ORDER,
+        payload: res
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: CREATE_ORDER_FAIL,
+        payload: error
+      });
+    }
+  };
+
   const clearForm = () => {
     dispatch({
       type: CLEAR_FORM
@@ -214,6 +240,8 @@ export const BookState = props => {
         formSuccess: state.formSuccess,
         formFail: state.formFail,
         errorMessage: state.errorMessage,
+        order: state.order,
+        orderSuccess: state.orderSuccess,
         createAuthor,
         getAuthor,
         listAuthors,
@@ -223,6 +251,7 @@ export const BookState = props => {
         addToBasket,
         deleteFromBasket,
         deleteBasket,
+        createOrder,
         clearForm
       }}
     >

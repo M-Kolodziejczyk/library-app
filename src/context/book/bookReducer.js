@@ -15,6 +15,8 @@ import {
   ADD_TO_BASKET_FAIL,
   DELETE_FROM_BASKET,
   DELETE_BASKET,
+  CREATE_ORDER,
+  CREATE_ORDER_FAIL,
   CLEAR_FORM
 } from "../types";
 
@@ -107,11 +109,24 @@ const bookReducer = (state, action) => {
         ...state,
         basket: []
       };
+    case CREATE_ORDER:
+      return {
+        ...state,
+        order: action.payload,
+        orderSuccess: true
+      };
+    case CREATE_ORDER_FAIL:
+      return {
+        ...state,
+        errorMessage: action.payload,
+        orderSuccess: false
+      };
     case CLEAR_FORM:
       return {
         ...state,
         formFail: false,
         formSuccess: false,
+        orderSuccess: false,
         formErrorMessage: "",
         author: {}
       };

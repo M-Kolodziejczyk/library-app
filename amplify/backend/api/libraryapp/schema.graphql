@@ -1,5 +1,5 @@
 type Author
-  @model
+  @model(subscriptions: null)
   @auth(
     rules: [
       # allow admin to create, update, delete authors
@@ -26,7 +26,7 @@ type S3BookImage {
 }
 
 type Book
-  @model
+  @model(subscriptions: null)
   @key(name: "byAuthor", fields: ["authorID"])
   @key(name: "byCategory", fields: ["category"], queryField: "booksByCategory")
   @auth(
@@ -93,9 +93,10 @@ type Order
     ]
   ) {
   id: ID!
-  customerID: ID!
+  user: String!
+  customerID: String!
   status: String!
-  date: String!
+  date: String
   books: [BookOrder] @connection(keyName: "byOrder", fields: ["id"])
 }
 
@@ -107,13 +108,39 @@ type Customer
       { allow: groups, groups: ["Admin"] }
     ]
   ) {
-  id: ID!
+  id: String!
   firstName: String!
   lastName: String!
-  email: String!
   ordersByDate: [Order] @connection(keyName: "ByCustomerByDate", fields: ["id"])
   ordersByStatus: [Order]
     @connection(keyName: "ByCustomerByStatusByDate", fields: ["id"])
+}
+
+type Mutation {
+  processOrder(input: ProcessOrderInput!): OrderStatus
+    @function(name: "createBookOrder-${env}")
+}
+
+enum OrderStatus {
+  NEW
+  PROCESSING
+  READY
+  RECEIVED
+  RETURN
+  CANCELED
+  HOLD
+  FAILED
+}
+
+input CartItem {
+  id: ID!
+  title: String
+}
+
+input ProcessOrderInput {
+  id: ID!
+  cart: [CartItem]
+  email: String
 }
 
 # type Employee @model {
@@ -138,9 +165,4 @@ type Customer
 #   rack: String!
 #   shelf: String!
 #   books: [Book] @connection
-# }
-
-# enum orderStatus {
-#   SUCCESS
-#   FAILED
 # }

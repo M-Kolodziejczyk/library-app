@@ -1,6 +1,11 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const processOrder = /* GraphQL */ `
+  mutation ProcessOrder($input: ProcessOrderInput!) {
+    processOrder(input: $input)
+  }
+`;
 export const createAuthor = /* GraphQL */ `
   mutation CreateAuthor(
     $input: CreateAuthorInput!
@@ -290,6 +295,7 @@ export const createOrder = /* GraphQL */ `
   ) {
     createOrder(input: $input, condition: $condition) {
       id
+      user
       customerID
       status
       date
@@ -309,6 +315,7 @@ export const updateOrder = /* GraphQL */ `
   ) {
     updateOrder(input: $input, condition: $condition) {
       id
+      user
       customerID
       status
       date
@@ -328,6 +335,7 @@ export const deleteOrder = /* GraphQL */ `
   ) {
     deleteOrder(input: $input, condition: $condition) {
       id
+      user
       customerID
       status
       date
@@ -349,7 +357,6 @@ export const createCustomer = /* GraphQL */ `
       id
       firstName
       lastName
-      email
       ordersByDate {
         nextToken
       }
@@ -370,7 +377,6 @@ export const updateCustomer = /* GraphQL */ `
       id
       firstName
       lastName
-      email
       ordersByDate {
         nextToken
       }
@@ -391,7 +397,6 @@ export const deleteCustomer = /* GraphQL */ `
       id
       firstName
       lastName
-      email
       ordersByDate {
         nextToken
       }

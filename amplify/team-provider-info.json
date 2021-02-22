@@ -18,7 +18,11 @@
       "function": {
         "libraryapp2411714d": {
           "deploymentBucketName": "amplify-libraryapp-dev-113318-deployment",
-          "s3Key": "amplify-builds/libraryapp2411714d-67632b56586e73386b65-build.zip"
+          "s3Key": "amplify-builds/libraryapp2411714d-5a634b65464b32634e69-build.zip"
+        },
+        "createBookOrder": {
+          "deploymentBucketName": "amplify-libraryapp-dev-113318-deployment",
+          "s3Key": "amplify-builds/createBookOrder-6c624171355854752b33-build.zip"
         }
       }
     }

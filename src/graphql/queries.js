@@ -5,6 +5,7 @@ export const getOrder = /* GraphQL */ `
   query GetOrder($id: ID!) {
     getOrder(id: $id) {
       id
+      user
       customerID
       status
       date
@@ -26,6 +27,7 @@ export const listOrders = /* GraphQL */ `
     listOrders(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        user
         customerID
         status
         date
@@ -43,7 +45,6 @@ export const getCustomer = /* GraphQL */ `
       id
       firstName
       lastName
-      email
       ordersByDate {
         nextToken
       }
@@ -66,7 +67,6 @@ export const listCustomers = /* GraphQL */ `
         id
         firstName
         lastName
-        email
         createdAt
         updatedAt
       }

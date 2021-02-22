@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "storage": {
+      "Book:@model(appsync)": [
+        "create",
+        "read",
+        "update"
+      ],
+      "BookOrder:@model(appsync)": [
+        "create",
+        "read",
+        "update"
+      ],
+      "Order:@model(appsync)": [
+        "create",
+        "read",
+        "update"
+      ],
+      "Customer:@model(appsync)": [
+        "create",
+        "read",
+        "update"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
