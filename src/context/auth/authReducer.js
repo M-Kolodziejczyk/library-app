@@ -8,21 +8,14 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   USER_LOADED,
-  AUTH_ERROR,
   LOGOUT_SUCCESS,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAIL,
   NEW_PASSWORD_SUCCESS,
   NEW_PASSWORD_FAIL,
-  RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAIL,
   CHANGE_PASSWORD_SUCCESS,
   CHANGE_PASSWORD_FAIL,
-  CLEAR_ERRORS,
-  CHANGE_NAME_SUCCESS,
-  CHANGE_NAME_FAIL,
-  CLEAR_MESSAGE,
-  SET_LOADING
+  CLEAR_ERRORS
 } from "../types";
 
 export default (state, action) => {
@@ -75,7 +68,9 @@ export default (state, action) => {
         loginSuccess: true,
         loginFail: false,
         isLogged: true,
-        user: action.payload.attributes
+        user: action.payload.attributes,
+        group:
+          action.payload.signInUserSession.idToken.payload["cognito:groups"]
       };
     case LOGIN_FAIL:
       return {
@@ -88,6 +83,7 @@ export default (state, action) => {
       return {
         ...state,
         user: null,
+        group: [],
         loginSuccess: false,
         isLogged: false
       };

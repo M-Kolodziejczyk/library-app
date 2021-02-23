@@ -56,7 +56,7 @@ const UserPage = () => {
                 </a>
               </li>
 
-              {group.includes("Admin") && (
+              {group && group.includes("Admin") && (
                 <li className="nav-item" role="presentation">
                   <a
                     className="userPage__navLink"
@@ -71,7 +71,7 @@ const UserPage = () => {
                   </a>
                 </li>
               )}
-              {group.includes("Admin") && (
+              {group && group.includes("Admin") && (
                 <li className="nav-item" role="presentation">
                   <a
                     className="userPage__navLink"
@@ -114,7 +114,7 @@ const UserPage = () => {
               >
                 <h2>Settings</h2>
               </div>
-              {group.includes("Admin") && (
+              {group && group.includes("Admin") && (
                 <div
                   className="tab-pane fade"
                   id="addBook"
@@ -124,7 +124,7 @@ const UserPage = () => {
                   <AddBook />
                 </div>
               )}
-              {group.includes("Admin") && (
+              {group && group.includes("Admin") && (
                 <div
                   className="tab-pane fade"
                   id="addAuthor"
