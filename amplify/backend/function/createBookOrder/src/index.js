@@ -11,7 +11,7 @@
 	ENV
 	REGION
 Amplify Params - DO NOT EDIT */
-const {v4: uuidv4} = require("uuid")
+const { v4: uuidv4 } = require("uuid");
 const AWS = require("aws-sdk");
 const documentClient = new AWS.DynamoDB.DocumentClient();
 
@@ -25,55 +25,55 @@ const createOrder = async payload => {
     TableName: orderTable,
     Item: {
       id: order_id,
-      __typname: "Order",
+      __typename: "Order",
       customer: email,
       updatedAt: new Date().toISOString(),
       createdAt: new Date().toISOString()
     }
   };
 
-  console.log(params)
-  await documentClient.put(params).promise()
+  console.log(params);
+  await documentClient.put(params).promise();
 };
 
-const createBookOrder = async (payload) => {
-    let bookOrders = [],
-    for(i=0; i<payload.cart.length; i++){
-        const cartItem = payload.cart[i];
-        bookOrders.push({
-            PutRequest: {
-                Item: {
-                    id: uuidv4(),
-                    __typname: "BookOrder",
-                    book_id: cartItem.id,
-                    order_id: payload.order_id,
-                    customer: payload.email,
-                    updatedAt: new Date().toISOString(),
-                    createdAt: new Date().toISOString()
-                }
-            }
-        })
-    }
-    let params = {
-        RequestItems: {}
-    }
-    params["RequestItems"][bookOrderTable] = bookOrders;
-    console.log(params)
-    await documentClient.batchWrite(params).promise();
-}
+const createBookOrder = async payload => {
+  let bookOrders = [];
+  for (i = 0; i < payload.cart.length; i++) {
+    const cartItem = payload.cart[i];
+    bookOrders.push({
+      PutRequest: {
+        Item: {
+          id: uuidv4(),
+          __typename: "BookOrder",
+          book_id: cartItem.id,
+          order_id: payload.order_id,
+          customer: payload.email,
+          updatedAt: new Date().toISOString(),
+          createdAt: new Date().toISOString()
+        }
+      }
+    });
+  }
+  let params = {
+    RequestItems: {}
+  };
+  params["RequestItems"][bookOrderTable] = bookOrders;
+  console.log(params);
+  await documentClient.batchWrite(params).promise();
+};
 
 exports.handler = async event => {
-    try {
-        let payload = event.arguments.input;
-        payload.order_id = uuidv4()
+  try {
+    let payload = event.arguments.input;
+    payload.order_id = uuidv4();
 
-        await createOrder(payload);
+    await createOrder(payload);
 
-        await createBookOrder(payload)
+    await createBookOrder(payload);
 
-        return "NEW"
-    } catch (error) {
-        console.log(error)
-        return new Error(error)
-    }
+    return "NEW";
+  } catch (error) {
+    console.log(error);
+    return new Error(error);
+  }
 };

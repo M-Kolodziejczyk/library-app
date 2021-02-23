@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { API, Storage } from "aws-amplify";
 import * as mutations from "../../api/mutations";
 import * as queries from "../../api/queries";
@@ -200,21 +201,22 @@ export const BookState = props => {
     });
   };
 
-  const createOrder = async data => {
+  const createOrder = async orderDetails => {
+    clearForm();
+    orderDetails.id = uuidv4();
+
     try {
       const res = await API.graphql({
-        query: mutations.createOrder,
+        query: mutations.processOrder,
         variables: {
-          input: data
+          input: orderDetails
         }
       });
-      console.log(res);
       dispatch({
         type: CREATE_ORDER,
         payload: res
       });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: CREATE_ORDER_FAIL,
         payload: error

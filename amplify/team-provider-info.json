@@ -22,7 +22,7 @@
         },
         "createBookOrder": {
           "deploymentBucketName": "amplify-libraryapp-dev-113318-deployment",
-          "s3Key": "amplify-builds/createBookOrder-6c624171355854752b33-build.zip"
+          "s3Key": "amplify-builds/createBookOrder-68652b4c65754c593536-build.zip"
         }
       }
     }

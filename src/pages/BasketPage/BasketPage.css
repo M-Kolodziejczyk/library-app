@@ -6,7 +6,7 @@
 .basketPage__header {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -42,6 +42,41 @@
   outline: none;
 }
 
-.basketPage__headerBtn > button:hover {
+.basketPage__headerBtn > button:hover,
+.basketPage__basketContent > button:hover {
   background-color: #99c1de;
+}
+
+.basketPage__basketContent > button {
+  display: flex;
+  justify-content: center;
+  background-color: #65a2cd;
+  color: #ffffff;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  border: none;
+  padding: 10px 10px;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+.basketPage__paragraph {
+  font-size: 20px;
+}
+
+.basketPage__orderSuccess {
+  color: green;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.basketPage__orderFail {
+  color: red;
+  font-size: 20px;
 }

@@ -128,6 +128,7 @@ const bookReducer = (state, action) => {
         formSuccess: false,
         orderSuccess: false,
         formErrorMessage: "",
+        errorMessage: "",
         author: {}
       };
 
