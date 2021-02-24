@@ -25,6 +25,7 @@ const BasketPage = () => {
     e.preventDefault();
     if (user !== null && "email" in user && basket.length > 0) {
       createOrder({
+        user: user.sub,
         email: user.email,
         cart: basket.map(book => ({ id: book.id, title: book.title }))
       });

@@ -19,7 +19,7 @@ const orderTable = process.env.API_LIBRARYAPP_ORDERTABLE_NAME;
 const bookOrderTable = process.env.API_LIBRARYAPP_BOOKORDERTABLE_NAME;
 
 const createOrder = async payload => {
-  const { order_id, email } = payload;
+  const { order_id, email, user } = payload;
 
   let params = {
     TableName: orderTable,
@@ -27,6 +27,8 @@ const createOrder = async payload => {
       id: order_id,
       __typename: "Order",
       customer: email,
+      customerId: user,
+      status: "NEW",
       updatedAt: new Date().toISOString(),
       createdAt: new Date().toISOString()
     }
@@ -47,7 +49,8 @@ const createBookOrder = async payload => {
           __typename: "BookOrder",
           book_id: cartItem.id,
           order_id: payload.order_id,
-          customer: payload.email,
+          customerId: payload.user,
+          status: "NEW",
           updatedAt: new Date().toISOString(),
           createdAt: new Date().toISOString()
         }

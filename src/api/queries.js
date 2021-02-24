@@ -6,6 +6,7 @@ export const getOrder = /* GraphQL */ `
     getOrder(id: $id) {
       id
       customer
+      customerId
       status
       createdAt
       books {
@@ -25,6 +26,7 @@ export const listOrders = /* GraphQL */ `
       items {
         id
         customer
+        customerId
         status
         createdAt
         updatedAt
@@ -47,7 +49,6 @@ export const getCustomer = /* GraphQL */ `
         nextToken
       }
       createdAt
-      updatedAt
     }
   }
 `;
@@ -71,6 +72,72 @@ export const listCustomers = /* GraphQL */ `
         firstName
         email
         lastName
+        createdAt
+      }
+      nextToken
+    }
+  }
+`;
+export const ordersByCustomerByDate = /* GraphQL */ `
+  query OrdersByCustomerByDate(
+    $customer: String
+    $createdAt: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelOrderFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    ordersByCustomerByDate(
+      customer: $customer
+      createdAt: $createdAt
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        customer
+        status
+        createdAt
+        updatedAt
+        books {
+          items {
+            status
+            id
+            book_id
+            book {
+              title
+            }
+          }
+        }
+      }
+      nextToken
+    }
+  }
+`;
+export const ordersByCustomerByStatusByDate = /* GraphQL */ `
+  query OrdersByCustomerByStatusByDate(
+    $customer: String
+    $statusCreatedAt: ModelOrderByCustomerByStatusByDateCompositeKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelOrderFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    ordersByCustomerByStatusByDate(
+      customer: $customer
+      statusCreatedAt: $statusCreatedAt
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        customer
+        customerId
+        status
         createdAt
         updatedAt
       }

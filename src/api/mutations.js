@@ -198,6 +198,7 @@ export const createBookOrder = /* GraphQL */ `
       book_id
       order_id
       status
+      customerId
       createdAt
       updatedAt
       book {
@@ -231,6 +232,7 @@ export const updateBookOrder = /* GraphQL */ `
       book_id
       order_id
       status
+      customerId
       createdAt
       updatedAt
       book {
@@ -264,6 +266,7 @@ export const deleteBookOrder = /* GraphQL */ `
       book_id
       order_id
       status
+      customerId
       createdAt
       updatedAt
       book {
@@ -295,6 +298,7 @@ export const createOrder = /* GraphQL */ `
     createOrder(input: $input, condition: $condition) {
       id
       customer
+      customerId
       status
       createdAt
       books {
@@ -312,6 +316,7 @@ export const updateOrder = /* GraphQL */ `
     updateOrder(input: $input, condition: $condition) {
       id
       customer
+      customerId
       status
       createdAt
       books {
@@ -329,6 +334,7 @@ export const deleteOrder = /* GraphQL */ `
     deleteOrder(input: $input, condition: $condition) {
       id
       customer
+      customerId
       status
       createdAt
       books {

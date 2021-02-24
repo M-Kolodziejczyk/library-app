@@ -68,7 +68,7 @@ type BookOrder
   @key(name: "byOrder", fields: ["order_id", "book_id"])
   @auth(
     rules: [
-      { allow: owner, ownerField: "customer" }
+      { allow: owner, ownerField: "customerId" }
       { allow: groups, groups: ["Admin"] }
     ]
   ) {
@@ -76,24 +76,31 @@ type BookOrder
   book_id: ID!
   order_id: ID!
   status: String!
+  customerId: String!
   book: Book @connection(fields: ["book_id"])
 }
 
 type Order
   @model(subscriptions: null)
-  @key(name: "ByCustomerByDate", fields: ["customer", "createdAt"])
+  @key(
+    name: "ByCustomerByDate"
+    fields: ["customer", "createdAt"]
+    queryField: "ordersByCustomerByDate"
+  )
   @key(
     name: "ByCustomerByStatusByDate"
     fields: ["customer", "status", "createdAt"]
+    queryField: "ordersByCustomerByStatusByDate"
   )
   @auth(
     rules: [
-      { allow: owner, identityClaim: "email", ownerField: "customer" }
+      { allow: owner, ownerField: "customerId" }
       { allow: groups, groups: ["Admin"] }
     ]
   ) {
   id: ID!
   customer: String!
+  customerId: String!
   status: String!
   createdAt: String
   books: [BookOrder] @connection(keyName: "byOrder", fields: ["id"])
@@ -142,6 +149,7 @@ input ProcessOrderInput {
   id: ID!
   cart: [CartItem]
   email: String
+  user: String!
 }
 
 # type Employee @model {
