@@ -2,6 +2,7 @@ import React from "react";
 import MyDetails from "./componets/MyDetails";
 import AddBook from "./componets/AddBook";
 import AddAuthor from "./componets/AddAuthor";
+import MyBooks from "./componets/MyBooks";
 import { useAuthContext } from "../../context/auth/AuthState";
 import "./UserPage.css";
 
@@ -104,7 +105,27 @@ const UserPage = () => {
                 role="tabpanel"
                 aria-labelledby="myBooks-tab"
               >
-                <h2>My Books</h2>
+                <div className="userPage__myBooksHeader">
+                  <p className="userPage__myBooksHeaderId">ID:</p>
+                  <p className="userPage__myBooksHeaderDate">Date:</p>
+                  <p className="userPage__myBooksHeaderStatus">Status:</p>
+                </div>
+                {
+                  <div>
+                    <MyBooks
+                      id="b52161a6-53fa-4fa3-96e9-5068bcd2c1fc"
+                      date="2021-02-24T11:59:48.226Z"
+                      books="3"
+                      status="NEW"
+                    />
+                    <MyBooks
+                      id="b52161a6-53fa-4fa3-96e9-5068bcdarf56"
+                      date="2021-02-24T11:59:48.226Z"
+                      books="3"
+                      status="PENDING"
+                    />
+                  </div>
+                }
               </div>
               <div
                 className="tab-pane fade"

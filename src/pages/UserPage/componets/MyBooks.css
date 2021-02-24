@@ -1,0 +1,34 @@
+.myBooks {
+  padding: 5px;
+  border: 1px solid #a1c8e1;
+  margin-top: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  color: #222222;
+}
+
+.myBooks > p {
+  margin: 0;
+}
+
+.myBooks__id {
+  min-width: 320px;
+  color: #222222;
+  text-decoration: none;
+}
+
+.myBooks__id:hover {
+  color: #65a2cd;
+}
+
+.myBooks__date {
+  min-width: 160px;
+  text-align: center;
+}
+
+.myBooks__status {
+  min-width: 80px;
+  text-align: center;
+  font-weight: 600;
+}

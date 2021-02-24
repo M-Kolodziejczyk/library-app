@@ -5,6 +5,7 @@
 .userPage__content {
   background-color: #ffffff;
   border-radius: 4px;
+  padding-bottom: 20px;
 }
 
 .userPage__navLink {
@@ -24,4 +25,32 @@
 .userPage__navLink.active {
   color: #ffffff;
   background-color: #65a2cd;
+}
+
+.userPage__myBooksHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.userPage__myBooksHeader > p {
+  font-weight: 600;
+}
+
+.userPage__myBooksHeaderId {
+  margin: 0;
+  min-width: 320px;
+  margin-left: 5px;
+}
+
+.userPage__myBooksHeaderDate {
+  margin: 0;
+  min-width: 160px;
+  text-align: center;
+}
+
+.userPage__myBooksHeaderStatus {
+  margin: 0;
+  min-width: 80px;
+  text-align: center;
 }
