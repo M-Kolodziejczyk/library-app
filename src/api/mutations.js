@@ -294,15 +294,13 @@ export const createOrder = /* GraphQL */ `
   ) {
     createOrder(input: $input, condition: $condition) {
       id
-      customerID
+      customer
       status
-      date
+      createdAt
       books {
         nextToken
       }
-      createdAt
       updatedAt
-      customer
     }
   }
 `;
@@ -313,15 +311,13 @@ export const updateOrder = /* GraphQL */ `
   ) {
     updateOrder(input: $input, condition: $condition) {
       id
-      customerID
+      customer
       status
-      date
+      createdAt
       books {
         nextToken
       }
-      createdAt
       updatedAt
-      customer
     }
   }
 `;
@@ -332,15 +328,13 @@ export const deleteOrder = /* GraphQL */ `
   ) {
     deleteOrder(input: $input, condition: $condition) {
       id
-      customerID
+      customer
       status
-      date
+      createdAt
       books {
         nextToken
       }
-      createdAt
       updatedAt
-      customer
     }
   }
 `;
@@ -352,8 +346,8 @@ export const createCustomer = /* GraphQL */ `
     createCustomer(input: $input, condition: $condition) {
       id
       firstName
-      lastName
       email
+      lastName
       ordersByDate {
         nextToken
       }
@@ -373,8 +367,8 @@ export const updateCustomer = /* GraphQL */ `
     updateCustomer(input: $input, condition: $condition) {
       id
       firstName
-      lastName
       email
+      lastName
       ordersByDate {
         nextToken
       }
@@ -394,8 +388,8 @@ export const deleteCustomer = /* GraphQL */ `
     deleteCustomer(input: $input, condition: $condition) {
       id
       firstName
-      lastName
       email
+      lastName
       ordersByDate {
         nextToken
       }

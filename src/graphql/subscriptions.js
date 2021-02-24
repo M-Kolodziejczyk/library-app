@@ -6,6 +6,7 @@ export const onCreateCustomer = /* GraphQL */ `
     onCreateCustomer(id: $id) {
       id
       firstName
+      email
       lastName
       ordersByDate {
         nextToken
@@ -23,6 +24,7 @@ export const onUpdateCustomer = /* GraphQL */ `
     onUpdateCustomer(id: $id) {
       id
       firstName
+      email
       lastName
       ordersByDate {
         nextToken
@@ -40,6 +42,7 @@ export const onDeleteCustomer = /* GraphQL */ `
     onDeleteCustomer(id: $id) {
       id
       firstName
+      email
       lastName
       ordersByDate {
         nextToken

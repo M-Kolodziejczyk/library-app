@@ -81,10 +81,10 @@ type BookOrder
 
 type Order
   @model(subscriptions: null)
-  @key(name: "ByCustomerByDate", fields: ["customerID", "date"])
+  @key(name: "ByCustomerByDate", fields: ["customer", "createdAt"])
   @key(
     name: "ByCustomerByStatusByDate"
-    fields: ["customerID", "status", "date"]
+    fields: ["customer", "status", "createdAt"]
   )
   @auth(
     rules: [
@@ -93,15 +93,15 @@ type Order
     ]
   ) {
   id: ID!
-  user: String!
-  customerID: String!
+  customer: String!
   status: String!
-  date: String
+  createdAt: String
   books: [BookOrder] @connection(keyName: "byOrder", fields: ["id"])
 }
 
 type Customer
   @model
+  @key(fields: ["email"])
   @auth(
     rules: [
       { allow: owner, ownerField: "id" }
@@ -110,6 +110,7 @@ type Customer
   ) {
   id: String!
   firstName: String!
+  email: String!
   lastName: String!
   ordersByDate: [Order] @connection(keyName: "ByCustomerByDate", fields: ["id"])
   ordersByStatus: [Order]

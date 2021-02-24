@@ -5,15 +5,13 @@ export const getOrder = /* GraphQL */ `
   query GetOrder($id: ID!) {
     getOrder(id: $id) {
       id
-      customerID
+      customer
       status
-      date
+      createdAt
       books {
         nextToken
       }
-      createdAt
       updatedAt
-      customer
     }
   }
 `;
@@ -26,45 +24,53 @@ export const listOrders = /* GraphQL */ `
     listOrders(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        customerID
+        customer
         status
-        date
         createdAt
         updatedAt
-        customer
       }
       nextToken
     }
   }
 `;
 export const getCustomer = /* GraphQL */ `
-  query GetCustomer($id: ID!) {
-    getCustomer(id: $id) {
+  query GetCustomer($email: String!) {
+    getCustomer(email: $email) {
       id
       firstName
-      lastName
       email
+      lastName
       ordersByDate {
         nextToken
       }
       ordersByStatus {
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
 export const listCustomers = /* GraphQL */ `
   query ListCustomers(
+    $email: String
     $filter: ModelCustomerFilterInput
     $limit: Int
     $nextToken: String
+    $sortDirection: ModelSortDirection
   ) {
-    listCustomers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listCustomers(
+      email: $email
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
       items {
         id
         firstName
-        lastName
         email
+        lastName
         createdAt
         updatedAt
       }

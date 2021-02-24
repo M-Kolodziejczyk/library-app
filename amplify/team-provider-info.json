@@ -26,5 +26,33 @@
         }
       }
     }
+  },
+  "devx": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-libraryapp-devx-91815-authRole",
+      "UnauthRoleArn": "arn:aws:iam::136990733032:role/amplify-libraryapp-devx-91815-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::136990733032:role/amplify-libraryapp-devx-91815-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-libraryapp-devx-91815-deployment",
+      "UnauthRoleName": "amplify-libraryapp-devx-91815-unauthRole",
+      "StackName": "amplify-libraryapp-devx-91815",
+      "StackId": "arn:aws:cloudformation:eu-central-1:136990733032:stack/amplify-libraryapp-devx-91815/d9018280-7678-11eb-8c9c-060b15be38d2",
+      "AmplifyAppId": "d17icfg1cxzgia"
+    },
+    "categories": {
+      "auth": {
+        "libraryappeac448ab": {}
+      },
+      "function": {
+        "libraryapp2411714d": {
+          "deploymentBucketName": "amplify-libraryapp-devx-91815-deployment",
+          "s3Key": "amplify-builds/libraryapp2411714d-6c684f523035776f5258-build.zip"
+        },
+        "createBookOrder": {
+          "deploymentBucketName": "amplify-libraryapp-devx-91815-deployment",
+          "s3Key": "amplify-builds/createBookOrder-68652b4c65754c593536-build.zip"
+        }
+      }
+    }
   }
 }

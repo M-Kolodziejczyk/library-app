@@ -2,12 +2,12 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateCustomer = /* GraphQL */ `
-  subscription OnCreateCustomer {
-    onCreateCustomer {
+  subscription OnCreateCustomer($id: String) {
+    onCreateCustomer(id: $id) {
       id
-      name
-      phoneNumber
+      firstName
       email
+      lastName
       ordersByDate {
         nextToken
       }
@@ -20,12 +20,12 @@ export const onCreateCustomer = /* GraphQL */ `
   }
 `;
 export const onUpdateCustomer = /* GraphQL */ `
-  subscription OnUpdateCustomer {
-    onUpdateCustomer {
+  subscription OnUpdateCustomer($id: String) {
+    onUpdateCustomer(id: $id) {
       id
-      name
-      phoneNumber
+      firstName
       email
+      lastName
       ordersByDate {
         nextToken
       }
@@ -38,12 +38,12 @@ export const onUpdateCustomer = /* GraphQL */ `
   }
 `;
 export const onDeleteCustomer = /* GraphQL */ `
-  subscription OnDeleteCustomer {
-    onDeleteCustomer {
+  subscription OnDeleteCustomer($id: String) {
+    onDeleteCustomer(id: $id) {
       id
-      name
-      phoneNumber
+      firstName
       email
+      lastName
       ordersByDate {
         nextToken
       }
@@ -52,168 +52,6 @@ export const onDeleteCustomer = /* GraphQL */ `
       }
       createdAt
       updatedAt
-    }
-  }
-`;
-export const onCreateAuthor = /* GraphQL */ `
-  subscription OnCreateAuthor {
-    onCreateAuthor {
-      id
-      firstName
-      lastName
-      birthDate
-      description
-      createdAt
-      updatedAt
-      books {
-        nextToken
-      }
-    }
-  }
-`;
-export const onUpdateAuthor = /* GraphQL */ `
-  subscription OnUpdateAuthor {
-    onUpdateAuthor {
-      id
-      firstName
-      lastName
-      birthDate
-      description
-      createdAt
-      updatedAt
-      books {
-        nextToken
-      }
-    }
-  }
-`;
-export const onDeleteAuthor = /* GraphQL */ `
-  subscription OnDeleteAuthor {
-    onDeleteAuthor {
-      id
-      firstName
-      lastName
-      birthDate
-      description
-      createdAt
-      updatedAt
-      books {
-        nextToken
-      }
-    }
-  }
-`;
-export const onCreateBook = /* GraphQL */ `
-  subscription OnCreateBook {
-    onCreateBook {
-      id
-      title
-      authorID
-      createdAt
-      publisher
-      publishedDate
-      language
-      description
-      category
-      totalPages
-      isbn
-      totalCopies
-      status
-      orders {
-        nextToken
-      }
-      image {
-        name
-        bucket
-        region
-        key
-      }
-      updatedAt
-      author {
-        id
-        firstName
-        lastName
-        birthDate
-        description
-        createdAt
-        updatedAt
-      }
-    }
-  }
-`;
-export const onUpdateBook = /* GraphQL */ `
-  subscription OnUpdateBook {
-    onUpdateBook {
-      id
-      title
-      authorID
-      createdAt
-      publisher
-      publishedDate
-      language
-      description
-      category
-      totalPages
-      isbn
-      totalCopies
-      status
-      orders {
-        nextToken
-      }
-      image {
-        name
-        bucket
-        region
-        key
-      }
-      updatedAt
-      author {
-        id
-        firstName
-        lastName
-        birthDate
-        description
-        createdAt
-        updatedAt
-      }
-    }
-  }
-`;
-export const onDeleteBook = /* GraphQL */ `
-  subscription OnDeleteBook {
-    onDeleteBook {
-      id
-      title
-      authorID
-      createdAt
-      publisher
-      publishedDate
-      language
-      description
-      category
-      totalPages
-      isbn
-      totalCopies
-      status
-      orders {
-        nextToken
-      }
-      image {
-        name
-        bucket
-        region
-        key
-      }
-      updatedAt
-      author {
-        id
-        firstName
-        lastName
-        birthDate
-        description
-        createdAt
-        updatedAt
-      }
     }
   }
 `;
