@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MyDetails from "./componets/MyDetails";
 import AddBook from "./componets/AddBook";
 import AddAuthor from "./componets/AddAuthor";
 import MyBooks from "./componets/MyBooks";
 import { useAuthContext } from "../../context/auth/AuthState";
+import { useBookContext } from "../../context/book/BookState";
 import "./UserPage.css";
 
 const UserPage = () => {
-  const { group } = useAuthContext();
+  const { group, user } = useAuthContext();
+  const { getUserOrders, orders } = useBookContext();
+
+  useEffect(() => {
+    getUserOrders(user.email);
+  }, []);
 
   return (
     <div className="userPage">
@@ -110,22 +116,13 @@ const UserPage = () => {
                   <p className="userPage__myBooksHeaderDate">Date:</p>
                   <p className="userPage__myBooksHeaderStatus">Status:</p>
                 </div>
-                {
-                  <div>
-                    <MyBooks
-                      id="b52161a6-53fa-4fa3-96e9-5068bcd2c1fc"
-                      date="2021-02-24T11:59:48.226Z"
-                      books="3"
-                      status="NEW"
-                    />
-                    <MyBooks
-                      id="b52161a6-53fa-4fa3-96e9-5068bcdarf56"
-                      date="2021-02-24T11:59:48.226Z"
-                      books="3"
-                      status="PENDING"
-                    />
-                  </div>
-                }
+                {orders.length > 0 ? (
+                  orders.map((order, id) => (
+                    <MyBooks key={order.id} order={order} id={id} />
+                  ))
+                ) : (
+                  <p>No orders</p>
+                )}
               </div>
               <div
                 className="tab-pane fade"

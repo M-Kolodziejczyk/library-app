@@ -3,12 +3,15 @@
   border: 1px solid #a1c8e1;
   margin-top: 10px;
   border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
   color: #222222;
 }
 
-.myBooks > p {
+.myBooks__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.myBooks__header > p {
   margin: 0;
 }
 
@@ -16,6 +19,8 @@
   min-width: 320px;
   color: #222222;
   text-decoration: none;
+  background-color: #ffffff;
+  border: none;
 }
 
 .myBooks__id:hover {
@@ -31,4 +36,28 @@
   min-width: 80px;
   text-align: center;
   font-weight: 600;
+}
+
+.myBooks__CollapseContent {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.myBooks__CollapseTitle {
+  margin: 0;
+  color: #222222;
+  text-decoration: none;
+}
+
+.myBooks__CollapseTitle:hover {
+  margin: 0;
+  color: #65a2cd;
+}
+
+.myBooks__CollapseStatus {
+  margin: 0;
+  font-weight: 600;
+  min-width: 80px;
+  text-align: center;
 }

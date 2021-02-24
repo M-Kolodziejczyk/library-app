@@ -17,6 +17,8 @@ import {
   DELETE_BASKET,
   CREATE_ORDER,
   CREATE_ORDER_FAIL,
+  GET_USER_ORDERS,
+  GET_USER_ORDERS_FAIL,
   CLEAR_FORM
 } from "../types";
 
@@ -121,12 +123,25 @@ const bookReducer = (state, action) => {
         errorMessage: action.payload,
         orderSuccess: false
       };
+    case GET_USER_ORDERS:
+      return {
+        ...state,
+        orders: action.payload,
+        getOrdersSuccess: true
+      };
+    case GET_USER_ORDERS_FAIL:
+      return {
+        ...state,
+        errorMessage: action.payload,
+        getOrdersSuccess: false
+      };
     case CLEAR_FORM:
       return {
         ...state,
         formFail: false,
         formSuccess: false,
         orderSuccess: false,
+        getOrdersSuccess: false,
         formErrorMessage: "",
         errorMessage: "",
         author: {}

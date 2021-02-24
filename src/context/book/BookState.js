@@ -23,6 +23,8 @@ import {
   DELETE_BASKET,
   CREATE_ORDER,
   CREATE_ORDER_FAIL,
+  GET_USER_ORDERS,
+  GET_USER_ORDERS_FAIL,
   CLEAR_FORM
 } from "../types";
 
@@ -38,7 +40,9 @@ export const BookState = props => {
     formSuccess: false,
     errorMessage: "",
     order: "",
-    orderSuccess: false
+    orderSuccess: false,
+    orders: [],
+    getOrdersSuccess: false
   };
 
   const [state, dispatch] = useReducer(bookReducer, initialState);
@@ -224,6 +228,30 @@ export const BookState = props => {
     }
   };
 
+  const getUserOrders = async email => {
+    clearForm();
+
+    try {
+      const res = await API.graphql({
+        variables: {
+          customer: email,
+          createdAt: { beginsWith: "2021" }
+        },
+        query: queries.ordersByCustomerByDate
+      });
+
+      dispatch({
+        type: GET_USER_ORDERS,
+        payload: res.data.ordersByCustomerByDate.items
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_USER_ORDERS_FAIL,
+        payload: error
+      });
+    }
+  };
+
   const clearForm = () => {
     dispatch({
       type: CLEAR_FORM
@@ -244,6 +272,8 @@ export const BookState = props => {
         errorMessage: state.errorMessage,
         order: state.order,
         orderSuccess: state.orderSuccess,
+        orders: state.orders,
+        getOrdersSuccess: state.getOrdersSuccess,
         createAuthor,
         getAuthor,
         listAuthors,
@@ -254,6 +284,7 @@ export const BookState = props => {
         deleteFromBasket,
         deleteBasket,
         createOrder,
+        getUserOrders,
         clearForm
       }}
     >

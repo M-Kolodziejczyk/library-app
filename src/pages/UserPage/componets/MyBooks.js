@@ -1,16 +1,42 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { format } from "date-fns";
-import { Link, useHistory } from "react-router-dom";
 import "./MyBooks.css";
 
-const MyBooks = ({ id, date, status }) => {
+const MyBooks = ({ order, id }) => {
   return (
     <div className="myBooks">
-      <Link to="/" className="myBooks__id">
-        {id}
-      </Link>
-      <p className="myBooks__date">{format(new Date(date), "dd-MMMM-yyyy")}</p>
-      <p className="myBooks__status">{status}</p>
+      <div className="myBooks__header">
+        <button
+          className="myBooks__id "
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target={`#order${id}`}
+          aria-expanded="false"
+          aria-controls={`order${id}`}
+        >
+          {order.id}
+        </button>
+        <p className="myBooks__date">
+          {format(new Date(order.createdAt), "dd-MMMM-yyyy")}
+        </p>
+        <p className="myBooks__status">{order.status}</p>
+      </div>
+      <div className="myBooks__Collapse">
+        <div className="collapse" id={`order${id}`}>
+          {order.books.items.map(book => (
+            <div className="myBooks__CollapseContent" key={book.id}>
+              <Link
+                to={`book/${book.book_id}`}
+                className="myBooks__CollapseTitle"
+              >
+                <b>Title:</b> {book.book.title}
+              </Link>
+              <p className="myBooks__CollapseStatus">{book.status}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
