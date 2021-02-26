@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuthContext } from "../../context/auth/AuthState";
+import Spinner from "../../components/Spinner/Spinner";
 
 import "./SignupPage.css";
 
@@ -22,7 +23,9 @@ const SignupPage = () => {
     registerFail,
     errorMessage,
     registerSuccess,
-    user
+    user,
+    clearErrors,
+    loading
   } = useAuthContext();
 
   const onChange = e => {
@@ -69,6 +72,10 @@ const SignupPage = () => {
   };
 
   useEffect(() => {
+    clearErrors();
+  }, []);
+
+  useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       registerUser(values);
       setValues(defaultState);
@@ -85,6 +92,7 @@ const SignupPage = () => {
 
   return (
     <div className="signupPage">
+      {loading && <Spinner />}
       <h1>Signup Page</h1>
       <div className="signupPage__container">
         <div className="singupPage__content">

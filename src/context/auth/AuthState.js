@@ -26,7 +26,7 @@ import {
 
 export const AuthState = props => {
   const initialState = {
-    loading: true,
+    loading: false,
     group: [],
     isLogged: false,
     logoutSuccess: false,
@@ -62,6 +62,8 @@ export const AuthState = props => {
   };
 
   const registerUser = async ({ given_name, family_name, email, password }) => {
+    setLoading();
+
     try {
       const res = await Auth.signUp({
         username: email,
@@ -85,6 +87,9 @@ export const AuthState = props => {
   };
 
   const confirmRegisterUser = async ({ username, code }) => {
+    setLoading();
+    clearErrors();
+
     try {
       const res = await Auth.confirmSignUp(username, code);
       dispatch({
@@ -115,6 +120,7 @@ export const AuthState = props => {
 
   const loginUser = async ({ email, password }) => {
     setLoading();
+    console.log("1");
     try {
       const user = await Auth.signIn(email, password);
       dispatch({
@@ -130,7 +136,7 @@ export const AuthState = props => {
   };
 
   const logout = async () => {
-    clearErros();
+    clearErrors();
 
     try {
       await Auth.signOut();
@@ -187,7 +193,7 @@ export const AuthState = props => {
     }
   };
 
-  const clearErros = () => {
+  const clearErrors = () => {
     dispatch({
       type: CLEAR_ERRORS
     });
@@ -226,7 +232,7 @@ export const AuthState = props => {
         forgotPassword,
         newPassword,
         changePassword,
-        clearErros,
+        clearErrors,
         setLoading
       }}
     >

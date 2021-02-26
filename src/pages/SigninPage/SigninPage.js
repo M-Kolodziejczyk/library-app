@@ -133,6 +133,9 @@ const SigninPage = () => {
               Signup Here
             </Link>
           </p>
+          <Link to="/confirm" className="signinPage__link">
+            Go to confirm account.
+          </Link>
         </div>
       </div>
     </div>

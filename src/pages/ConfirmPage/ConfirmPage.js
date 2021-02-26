@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/auth/AuthState";
+import Spinner from "../../components/Spinner/Spinner";
 
 import "./ConfirmPage.css";
 
@@ -15,7 +16,9 @@ const ConfirmPage = props => {
   const {
     errorMessage,
     confirmRegister,
-    confirmRegisterUser
+    confirmRegisterUser,
+    clearErrors,
+    loading
   } = useAuthContext();
 
   const onChange = e => {
@@ -56,8 +59,13 @@ const ConfirmPage = props => {
     // eslint-disable-next-line
   }, [errors, isSubmitting]);
 
+  useEffect(() => {
+    clearErrors();
+  }, []);
+
   return (
     <div className="confirmPage">
+      {loading && <Spinner />}
       <h1>Confirm Page</h1>
       <div className="confirmPage__container">
         <div className="confirmPage__content">

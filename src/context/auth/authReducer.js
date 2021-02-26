@@ -34,24 +34,28 @@ export default (state, action) => {
       return {
         ...state,
         registerSuccess: true,
-        user: action.payload
+        user: action.payload,
+        loading: false
       };
     case REGISTER_FAIL:
       return {
         ...state,
         registerFail: true,
-        errorMessage: action.payload
+        errorMessage: action.payload,
+        loading: false
       };
     case CONFIRM_REGISTER_SUCCESS:
       return {
         ...state,
-        confirmRegister: true
+        confirmRegister: true,
+        loading: false
       };
     case CONFIRM_REGISTER_FAIL:
       return {
         ...state,
         confirmRegister: false,
-        errorMessage: action.payload
+        errorMessage: action.payload,
+        loading: false
       };
     case RESEND_CODE_SUCCESS:
       return {
@@ -130,6 +134,7 @@ export default (state, action) => {
         logoutSuccess: false,
         registerSuccess: false,
         registerFail: false,
+        confirmRegister: false,
         errorMessage: ""
       };
     case SET_LOADING:
