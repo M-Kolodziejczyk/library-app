@@ -125,9 +125,14 @@ const ConfirmPage = props => {
               Cosnfirmation Succcess
             </p>
           )}
-          <Link to="/signin" className="confirmPage__link">
-            Go to Signin Page
-          </Link>
+          <div className="confirmPage__containerLinks">
+            <Link to="/signin" className="confirmPage__link">
+              Go to Signin Page
+            </Link>
+            <Link to="/resendcode" className="confirmPage__link">
+              Go to Resend Code Page
+            </Link>
+          </div>
         </div>
       </div>
     </div>

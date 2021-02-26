@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useAuthContext } from "../../context/auth/AuthState";
+import Spinner from "../../components/Spinner/Spinner";
 
 import "./ResendcodePage.css";
 
 const ResendcodePage = () => {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { resendCode, errorMessage, resendConfirmCode } = useAuthContext();
+  const {
+    resendCode,
+    errorMessage,
+    resendConfirmCode,
+    clearErrors,
+    loading
+  } = useAuthContext();
 
   const onChange = e => {
     setEmail(e.target.value);
@@ -38,8 +47,19 @@ const ResendcodePage = () => {
     }
   }, [errors, isSubmitting]);
 
+  useEffect(() => {
+    clearErrors();
+  }, []);
+
+  useEffect(() => {
+    if (resendCode) {
+      history.push(`/confirm/${email}`);
+    }
+  }, [resendCode]);
+
   return (
     <div className="resendcodePage">
+      {loading && <Spinner />}
       <h1>Resend Code</h1>
       <div className="resendcodePage__container">
         <div className="resendcodePage__content">

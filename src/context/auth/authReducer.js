@@ -60,12 +60,14 @@ export default (state, action) => {
     case RESEND_CODE_SUCCESS:
       return {
         ...state,
-        resendCode: true
+        resendCode: true,
+        loading: false
       };
     case RESEND_CODE_FAIL:
       return {
         ...state,
-        errorMessage: action.payload
+        errorMessage: action.payload,
+        loading: false
       };
     case LOGIN_SUCCESS:
       return {
@@ -141,6 +143,7 @@ export default (state, action) => {
         registerSuccess: false,
         registerFail: false,
         confirmRegister: false,
+        resendCode: false,
         errorMessage: ""
       };
     case SET_LOADING:

@@ -105,6 +105,8 @@ export const AuthState = props => {
   };
 
   const resendConfirmCode = async username => {
+    setLoading();
+
     try {
       await Auth.resendSignUp(username);
       dispatch({

@@ -72,6 +72,11 @@
   color: green;
 }
 
+.confirmPage__containerLinks {
+  display: flex;
+  justify-content: space-between;
+}
+
 .confirmPage__link {
   text-decoration: none;
 }
