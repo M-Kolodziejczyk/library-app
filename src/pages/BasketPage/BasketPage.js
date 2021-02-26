@@ -36,7 +36,9 @@ const BasketPage = () => {
     if (orderSuccess) {
       deleteBasket();
     }
-  }, [orderSuccess, deleteBasket]);
+
+    // eslint-disable-next-line
+  }, [orderSuccess]);
 
   useEffect(() => {
     clearForm();
