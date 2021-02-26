@@ -19,7 +19,8 @@ import {
   CREATE_ORDER_FAIL,
   GET_USER_ORDERS,
   GET_USER_ORDERS_FAIL,
-  CLEAR_FORM
+  CLEAR_FORM,
+  SET_LOADING
 } from "../types";
 
 const bookReducer = (state, action) => {
@@ -27,14 +28,18 @@ const bookReducer = (state, action) => {
     case CREATE_AUTHOR:
       return {
         ...state,
+        createAuthorSuccess: true,
         author: action.payload,
-        formSuccess: true
+        formSuccess: true,
+        loading: false
       };
     case CREATE_AUTHOR_FAIL:
       return {
         ...state,
+        createAuthorSuccess: false,
         formFail: true,
-        formErrorMessage: action.payload.message
+        formErrorMessage: action.payload.message,
+        loading: false
       };
     case GET_AUTHOR:
       return {
@@ -60,13 +65,17 @@ const bookReducer = (state, action) => {
       return {
         ...state,
         book: action.payload,
-        formSuccess: true
+        formSuccess: true,
+        createBookSuccess: true,
+        loading: false
       };
     case CREATE_BOOK_FAIL:
       return {
         ...state,
         formFail: true,
-        formErrorMessage: action.payload.message
+        formErrorMessage: action.payload.message,
+        createBookSuccess: false,
+        loading: false
       };
     case LIST_BOOKS:
       return {
@@ -138,6 +147,8 @@ const bookReducer = (state, action) => {
     case CLEAR_FORM:
       return {
         ...state,
+        createAuthorSuccess: false,
+        createBookSuccess: false,
         formFail: false,
         formSuccess: false,
         orderSuccess: false,
@@ -146,7 +157,11 @@ const bookReducer = (state, action) => {
         errorMessage: "",
         author: {}
       };
-
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
     default:
       return state;
   }

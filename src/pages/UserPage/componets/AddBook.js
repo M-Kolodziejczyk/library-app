@@ -6,6 +6,7 @@ import {
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import awsExports from "../../../aws-exports";
+import Spinner from "../../../components/Spinner/Spinner";
 import "./AddBook.css";
 
 const AddBook = () => {
@@ -48,7 +49,14 @@ const AddBook = () => {
   const [imageUrl, setImageUrl] = useState();
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { authors, listAuthors, createBook } = useBookContext();
+  const {
+    authors,
+    listAuthors,
+    createBook,
+    clearForm,
+    loading,
+    createBookSuccess
+  } = useBookContext();
 
   const onChange = e => {
     if (e.target) {
@@ -170,8 +178,26 @@ const AddBook = () => {
     // eslint-disable-next-line
   }, [errors, isSubmitting]);
 
+  useEffect(() => {
+    if (createBookSuccess) {
+      const timer = setTimeout(() => {
+        clearForm();
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+
+    // eslint-disable-next-line
+  }, [createBookSuccess]);
+
+  useEffect(() => {
+    clearForm();
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="addBook">
+      {loading && <Spinner />}
       <h2>Add Book</h2>
       <form onSubmit={handleSubmit} className="addBook__form">
         <div className="addBook__formGroup">
@@ -422,6 +448,11 @@ const AddBook = () => {
             name="submit"
             placeholder="Submit"
           />
+          {!loading && createBookSuccess && (
+            <label className="addBook__formLabelSuccess" htmlFor="submit">
+              Book created successfuly!
+            </label>
+          )}
         </div>
       </form>
     </div>

@@ -3,6 +3,7 @@ import { useBookContext } from "../../../context/book/BookState";
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import Spinner from "../../../components/Spinner/Spinner";
 import DateFnsUtils from "@date-io/date-fns";
 import "./AddAuthor.css";
 
@@ -39,7 +40,12 @@ const AddAuthor = () => {
   const [values, setValues] = useState(defaultState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { createAuthor } = useBookContext();
+  const {
+    createAuthor,
+    loading,
+    createAuthorSuccess,
+    clearForm
+  } = useBookContext();
 
   const onChange = e => {
     if (e.target) {
@@ -93,8 +99,24 @@ const AddAuthor = () => {
     // eslint-disable-next-line
   }, [errors, isSubmitting]);
 
+  useEffect(() => {
+    if (createAuthorSuccess) {
+      const timer = setTimeout(() => {
+        clearForm();
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [createAuthorSuccess]);
+
+  useEffect(() => {
+    clearForm();
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="addAuthor">
+      {loading && <Spinner />}
       <h2>Add Author</h2>
       <form className="addAuthor__form" onSubmit={handleSubmit}>
         <div className="addAuthor__formGroup">
@@ -176,6 +198,11 @@ const AddAuthor = () => {
             name="submit"
             placeholder="Submit"
           />
+          {!loading && createAuthorSuccess && (
+            <label className="addAuthor__formLabelSuccess" htmlFor="submit">
+              Author created successfuly!
+            </label>
+          )}
         </div>
       </form>
     </div>

@@ -25,11 +25,13 @@ import {
   CREATE_ORDER_FAIL,
   GET_USER_ORDERS,
   GET_USER_ORDERS_FAIL,
-  CLEAR_FORM
+  CLEAR_FORM,
+  SET_LOADING
 } from "../types";
 
 export const BookState = props => {
   const initialState = {
+    loading: false,
     author: {},
     authors: [],
     book: {},
@@ -42,22 +44,26 @@ export const BookState = props => {
     order: "",
     orderSuccess: false,
     orders: [],
-    getOrdersSuccess: false
+    getOrdersSuccess: false,
+    createAuthorSuccess: false,
+    createBookSuccess: false
   };
 
   const [state, dispatch] = useReducer(bookReducer, initialState);
 
   const createAuthor = async author => {
     clearForm();
+    setLoading();
 
     try {
       const res = await API.graphql({
         query: mutations.createAuthor,
         variables: { input: author }
       });
+
       dispatch({
-        tpye: CREATE_AUTHOR,
-        payload: res.data
+        type: CREATE_AUTHOR,
+        payload: res.data.createAuthor
       });
     } catch (error) {
       dispatch({
@@ -107,6 +113,7 @@ export const BookState = props => {
 
   const createBook = async (book, image) => {
     clearForm();
+    setLoading();
 
     try {
       await Storage.put(image.name, image, {
@@ -118,7 +125,7 @@ export const BookState = props => {
       });
 
       dispatch({
-        tpye: CREATE_BOOK,
+        type: CREATE_BOOK,
         payload: res.data.createBook
       });
     } catch (error) {
@@ -258,9 +265,16 @@ export const BookState = props => {
     });
   };
 
+  const setLoading = () => {
+    dispatch({
+      type: SET_LOADING
+    });
+  };
+
   return (
     <BookContext.Provider
       value={{
+        loading: state.loading,
         author: state.author,
         authors: state.authors,
         book: state.book,
@@ -274,6 +288,8 @@ export const BookState = props => {
         orderSuccess: state.orderSuccess,
         orders: state.orders,
         getOrdersSuccess: state.getOrdersSuccess,
+        createAuthorSuccess: state.createAuthorSuccess,
+        createBookSuccess: state.createBookSuccess,
         createAuthor,
         getAuthor,
         listAuthors,
@@ -285,7 +301,8 @@ export const BookState = props => {
         deleteBasket,
         createOrder,
         getUserOrders,
-        clearForm
+        clearForm,
+        setLoading
       }}
     >
       {props.children}
