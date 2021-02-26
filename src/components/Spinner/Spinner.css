@@ -1,0 +1,22 @@
+.spinner {
+  position: absolute;
+  left: 48%;
+  top: 40%;
+}
+
+.spinner-border {
+  height: 4rem;
+  width: 4rem;
+  color: #99c1de;
+}
+
+.spinner__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100vw;
+  height: 100vw;
+  background-color: #000000;
+  opacity: 0.4;
+}

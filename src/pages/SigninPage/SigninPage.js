@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuthContext } from "../../context/auth/AuthState";
+import Spinner from "../../components/Spinner/Spinner";
 
 import "./SigninPage.css";
 
@@ -13,7 +14,13 @@ const SigninPage = () => {
   const [values, setValues] = useState(defaultState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { loginUser, loginFail, loginSuccess, errorMessage } = useAuthContext();
+  const {
+    loginUser,
+    loginFail,
+    loginSuccess,
+    errorMessage,
+    loading
+  } = useAuthContext();
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -64,6 +71,7 @@ const SigninPage = () => {
 
   return (
     <div className="signinPage">
+      {loading && <Spinner />}
       <h1>Signin Page</h1>
       <div className="signinPage__container">
         <div className="signinPage__content">

@@ -20,7 +20,8 @@ import {
   NEW_PASSWORD_FAIL,
   CHANGE_PASSWORD_SUCCESS,
   CHANGE_PASSWORD_FAIL,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
+  SET_LOADING
 } from "../types";
 
 export const AuthState = props => {
@@ -28,6 +29,7 @@ export const AuthState = props => {
     loading: true,
     group: [],
     isLogged: false,
+    logoutSuccess: false,
     formSuccess: false,
     registerSuccess: false,
     registerFail: false,
@@ -112,6 +114,7 @@ export const AuthState = props => {
   };
 
   const loginUser = async ({ email, password }) => {
+    setLoading();
     try {
       const user = await Auth.signIn(email, password);
       dispatch({
@@ -127,6 +130,8 @@ export const AuthState = props => {
   };
 
   const logout = async () => {
+    clearErros();
+
     try {
       await Auth.signOut();
       dispatch({
@@ -188,13 +193,19 @@ export const AuthState = props => {
     });
   };
 
+  const setLoading = () => {
+    dispatch({
+      type: SET_LOADING
+    });
+  };
+
   return (
     <AuthContext.Provider
       value={{
         loading: state.loading,
         group: state.group,
         isLogged: state.isLogged,
-        formSuccess: state.formSuccess,
+        logoutSuccess: state.logoutSuccess,
         registerSuccess: state.registerSuccess,
         registerFail: state.registerFail,
         confirmRegister: state.confirmRegister,
@@ -215,7 +226,8 @@ export const AuthState = props => {
         forgotPassword,
         newPassword,
         changePassword,
-        clearErros
+        clearErros,
+        setLoading
       }}
     >
       {props.children}

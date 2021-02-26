@@ -15,7 +15,8 @@ import {
   NEW_PASSWORD_FAIL,
   CHANGE_PASSWORD_SUCCESS,
   CHANGE_PASSWORD_FAIL,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
+  SET_LOADING
 } from "../types";
 
 export default (state, action) => {
@@ -65,6 +66,7 @@ export default (state, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
+        loading: false,
         loginSuccess: true,
         loginFail: false,
         isLogged: true,
@@ -75,6 +77,7 @@ export default (state, action) => {
     case LOGIN_FAIL:
       return {
         ...state,
+        loading: false,
         errorMessage: action.payload,
         loginFail: true,
         loginSuccess: false
@@ -82,6 +85,7 @@ export default (state, action) => {
     case LOGOUT_SUCCESS:
       return {
         ...state,
+        logoutSuccess: true,
         user: null,
         group: [],
         loginSuccess: false,
@@ -123,9 +127,15 @@ export default (state, action) => {
     case CLEAR_ERRORS:
       return {
         ...state,
+        logoutSuccess: false,
         registerSuccess: false,
         registerFail: false,
         errorMessage: ""
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true
       };
     default:
       return state;

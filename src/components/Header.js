@@ -1,13 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { useAuthContext } from "../context/auth/AuthState";
 import { useBookContext } from "../context/book/BookState";
 
 import "./Header.css";
 
 const Header = () => {
+  const history = useHistory();
   const { basket } = useBookContext();
-  const { user, logout } = useAuthContext();
+  const { user, logout, isLogged, logoutSuccess } = useAuthContext();
+
+  useEffect(() => {
+    if (!isLogged && logoutSuccess) {
+      history.push("/");
+    }
+  }, [isLogged, logoutSuccess]);
 
   return (
     <div className="header">
@@ -40,18 +47,24 @@ const Header = () => {
               </li>
             </ul>
           </div>
-
           {user && (
             <Link to="/user" className="header__user">
               Hello, {user.given_name}
             </Link>
           )}
-
-          <Link className="header__link d-flex " to={!user ? "/signin" : "#"}>
-            <div onClick={() => logout()} className="header__linkOption">
-              <span>{user ? "Sign Out" : "Sign In"}</span>
-            </div>
-          </Link>
+          {!user ? (
+            <Link className="header__link d-flex " to="/signin">
+              <div className="header__linkOption">
+                <span>{user ? "Sign Out" : "Sign In"}</span>
+              </div>
+            </Link>
+          ) : (
+            <Link className="header__link d-flex " to="#">
+              <div onClick={() => logout()} className="header__linkOption">
+                <span>{user ? "Sign Out" : "Sign In"}</span>
+              </div>
+            </Link>
+          )}
           <Link className="header__basket" to="/user/basket">
             <svg
               xmlns="http://www.w3.org/2000/svg"
