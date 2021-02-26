@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
+import Footer from "./components/Footer/Footer";
 import Home from "./pages/HomePage/HomePage";
 import SigninPage from "./pages/SigninPage/SigninPage";
 import BooksPage from "./pages/BooksPage/BooksPage";
@@ -33,32 +34,41 @@ function App() {
   }, [localStorage]);
 
   return (
-    <Router>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/signin" component={SigninPage} />
-        <Route exact path="/signup" component={SignupPage} />
-        <Route exact path="/welcome" component={Welcome} />
-        <Route exact path="/confirm/:username" component={ConfirmPage} />
-        <Route exact path="/confirm" component={ConfirmPage} />
-        <Route exact path="/resendcode" component={ResendcodePage} />
-        <Route exact path="/forgot-password" component={ForgotPasswordPage} />
-        <Route
-          exact
-          path="/new-password/:username"
-          component={NewPasswordPage}
-        />
-        <Route exact path="/new-password" component={NewPasswordPage} />
-        <PrivateRoute exact path="/user" component={UserPage} />
+    <div className="app">
+      <div className="app__container">
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/signin" component={SigninPage} />
+            <Route exact path="/signup" component={SignupPage} />
+            <Route exact path="/welcome" component={Welcome} />
+            <Route exact path="/confirm/:username" component={ConfirmPage} />
+            <Route exact path="/confirm" component={ConfirmPage} />
+            <Route exact path="/resendcode" component={ResendcodePage} />
+            <Route
+              exact
+              path="/forgot-password"
+              component={ForgotPasswordPage}
+            />
+            <Route
+              exact
+              path="/new-password/:username"
+              component={NewPasswordPage}
+            />
+            <Route exact path="/new-password" component={NewPasswordPage} />
+            <PrivateRoute exact path="/user" component={UserPage} />
 
-        <Route exact path="/books" component={BooksPage} />
-        <Route exact path="/book/:id" component={BookPage} />
-        <Route exact path="/authors" component={AuthorsPage} />
-        <Route exact path="/author/:id" component={AuthorPage} />
-        <Route exact path="/user/basket" component={BasketPage} />
-      </Switch>
-    </Router>
+            <Route exact path="/books" component={BooksPage} />
+            <Route exact path="/book/:id" component={BookPage} />
+            <Route exact path="/authors" component={AuthorsPage} />
+            <Route exact path="/author/:id" component={AuthorPage} />
+            <Route exact path="/user/basket" component={BasketPage} />
+          </Switch>
+        </Router>
+      </div>
+      <Footer />
+    </div>
   );
 }
 
