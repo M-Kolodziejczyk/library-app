@@ -47,21 +47,21 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          {user && (
+          {Object.keys(user).length > 0 && (
             <Link to="/user" className="header__user">
               Hello, {user.given_name}
             </Link>
           )}
-          {!user ? (
+          {Object.keys(user).length === 0 ? (
             <Link className="header__link d-flex " to="/signin">
               <div className="header__linkOption">
-                <span>{user ? "Sign Out" : "Sign In"}</span>
+                <span>Sign In</span>
               </div>
             </Link>
           ) : (
             <Link className="header__link d-flex " to="#">
               <div onClick={() => logout()} className="header__linkOption">
-                <span>{user ? "Sign Out" : "Sign In"}</span>
+                <span>Sign Out</span>
               </div>
             </Link>
           )}

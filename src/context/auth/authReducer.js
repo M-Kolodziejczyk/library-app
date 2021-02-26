@@ -92,7 +92,7 @@ export default (state, action) => {
       return {
         ...state,
         logoutSuccess: true,
-        user: null,
+        user: {},
         group: [],
         loginSuccess: false,
         isLogged: false
@@ -126,17 +126,20 @@ export default (state, action) => {
       return {
         ...state,
         changePasswordSuccess: true,
-        errorMessage: true
+        errorMessage: true,
+        loading: false
       };
     case CHANGE_PASSWORD_FAIL:
       return {
         ...state,
         changePasswordSuccess: false,
-        errorMessage: action.payload
+        errorMessage: action.payload,
+        loading: false
       };
     case CLEAR_ERRORS:
       return {
         ...state,
+        changePasswordSuccess: false,
         newPasswordSuccess: false,
         forgotPasswordSuccess: false,
         logoutSuccess: false,

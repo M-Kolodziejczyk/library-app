@@ -41,7 +41,7 @@ export const AuthState = props => {
     newPasswordSuccess: false,
     changePasswordSuccess: false,
     errorMessage: "",
-    user: null
+    user: {}
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -184,6 +184,8 @@ export const AuthState = props => {
   };
 
   const changePassword = async ({ oldPassword, newPassword }) => {
+    setLoading();
+
     try {
       const user = await Auth.currentAuthenticatedUser();
       const res = await Auth.changePassword(user, oldPassword, newPassword);

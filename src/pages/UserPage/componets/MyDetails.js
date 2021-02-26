@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAuthContext } from "../../../context/auth/AuthState";
+import Spinner from "../../../components/Spinner/Spinner";
 import "./MyDetails.css";
 
 const MyDetails = () => {
@@ -15,7 +16,9 @@ const MyDetails = () => {
     user,
     errorMessage,
     changePassword,
-    changePasswordSuccess
+    changePasswordSuccess,
+    loading,
+    clearErrors
   } = useAuthContext();
 
   const onChange = e => {
@@ -61,10 +64,19 @@ const MyDetails = () => {
       changePassword(values);
       setValues(defaultState);
     }
+
+    // eslint-disable-next-line
   }, [errors, isSubmitting]);
+
+  useEffect(() => {
+    clearErrors();
+
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="myDetails">
+      {loading && <Spinner />}
       <h2>My Details</h2>
       <div className="myDetails__personalInformation">
         <h5>Personal Information</h5>

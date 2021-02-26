@@ -12,8 +12,10 @@ const UserPage = () => {
   const { getUserOrders, orders } = useBookContext();
 
   useEffect(() => {
-    getUserOrders(user.email);
-  }, []);
+    if (user) {
+      getUserOrders(user.email);
+    }
+  }, [user]);
 
   return (
     <div className="userPage">
