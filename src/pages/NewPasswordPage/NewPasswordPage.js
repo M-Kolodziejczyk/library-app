@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/auth/AuthState";
+import Spinner from "../../components/Spinner/Spinner";
 
 import "./NewPasswordPage.css";
 
@@ -13,7 +14,13 @@ const NewPasswordPage = props => {
   const [values, setValues] = useState(defaultState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { errorMessage, newPasswordSuccess, newPassword } = useAuthContext();
+  const {
+    errorMessage,
+    newPasswordSuccess,
+    newPassword,
+    loading,
+    clearErrors
+  } = useAuthContext();
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -59,8 +66,13 @@ const NewPasswordPage = props => {
     // eslint-disable-next-line
   }, [errors, isSubmitting]);
 
+  useEffect(() => {
+    clearErrors();
+  }, []);
+
   return (
     <div className="newPasswordPage">
+      {loading && <Spinner />}
       <h1>New Password Page</h1>
       <div className="newPasswordPage__container">
         <div className="newPasswordPage__content">
@@ -121,27 +133,24 @@ const NewPasswordPage = props => {
                 </label>
               )}
             </div>
-            <div className="forgotPasswordPage__submitGroup">
-              <Link
-                to={`/signin`}
-                className="forgotPasswordPage__submitGroupLink"
-              >
+            <div className="newPasswordPage__submitGroup">
+              <Link to={`/signin`} className="newPasswordPage__submitGroupLink">
                 Go to Signin Page
               </Link>
               <input
                 type="submit"
                 name="submit"
                 placeholder="SUBMIT"
-                className="forgotPasswordPage__submitGroupSubmit"
+                className="newPasswordPage__submitGroupSubmit"
               />
             </div>
             {errorMessage && (
-              <p className="forgotPasswordPage__errorMessage" htmlFor="submit">
+              <p className="newPasswordPage__errorMessage" htmlFor="submit">
                 {errorMessage}
               </p>
             )}
             {newPasswordSuccess && (
-              <p className="forgotPasswordPage__successMessage">
+              <p className="newPasswordPage__successMessage">
                 Change Password Success!
               </p>
             )}

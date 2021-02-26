@@ -68,6 +68,15 @@
   background-color: #99c1de;
 }
 
+.signinPage__links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.signinPage__register {
+  margin-bottom: 0;
+}
+
 .signinPage__link {
   margin-bottom: 0;
   text-decoration: none;

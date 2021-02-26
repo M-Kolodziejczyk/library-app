@@ -120,7 +120,7 @@ export const AuthState = props => {
 
   const loginUser = async ({ email, password }) => {
     setLoading();
-    console.log("1");
+
     try {
       const user = await Auth.signIn(email, password);
       dispatch({
@@ -149,6 +149,8 @@ export const AuthState = props => {
   };
 
   const forgotPassword = async username => {
+    setLoading();
+
     try {
       await Auth.forgotPassword(username);
 
@@ -164,8 +166,10 @@ export const AuthState = props => {
   };
 
   const newPassword = async ({ username, code, newPassword }) => {
+    setLoading();
+
     try {
-      Auth.forgotPasswordSubmit(username, code, newPassword);
+      await Auth.forgotPasswordSubmit(username, code, newPassword);
       dispatch({
         type: NEW_PASSWORD_SUCCESS
       });

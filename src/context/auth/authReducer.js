@@ -98,23 +98,27 @@ export default (state, action) => {
     case FORGOT_PASSWORD_SUCCESS:
       return {
         ...state,
-        forgotPasswordSuccess: true
+        forgotPasswordSuccess: true,
+        loading: false
       };
     case FORGOT_PASSWORD_FAIL:
       return {
         ...state,
-        errorMessage: action.payload
+        errorMessage: action.payload,
+        loading: false
       };
     case NEW_PASSWORD_SUCCESS:
       return {
         ...state,
-        newPasswordSuccess: true
+        newPasswordSuccess: true,
+        loading: false
       };
     case NEW_PASSWORD_FAIL:
       return {
         ...state,
         newPasswordSuccess: false,
-        errorMessage: action.payload
+        errorMessage: action.payload,
+        loading: false
       };
     case CHANGE_PASSWORD_SUCCESS:
       return {
@@ -131,6 +135,8 @@ export default (state, action) => {
     case CLEAR_ERRORS:
       return {
         ...state,
+        newPasswordSuccess: false,
+        forgotPasswordSuccess: false,
         logoutSuccess: false,
         registerSuccess: false,
         registerFail: false,

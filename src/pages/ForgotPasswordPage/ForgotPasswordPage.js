@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuthContext } from "../../context/auth/AuthState";
+import Spinner from "../../components/Spinner/Spinner";
 
 import "./ForgotPasswordPage.css";
 
@@ -12,7 +13,9 @@ const ForgotPasswordPage = () => {
   const {
     forgotPasswordSuccess,
     errorMessage,
-    forgotPassword
+    forgotPassword,
+    loading,
+    clearErrors
   } = useAuthContext();
 
   const onChange = e => {
@@ -49,8 +52,13 @@ const ForgotPasswordPage = () => {
     }
   }, [forgotPasswordSuccess]);
 
+  useEffect(() => {
+    clearErrors();
+  }, []);
+
   return (
     <div className="forgotPasswordPage">
+      {loading && <Spinner />}
       <h1>Forgot Password</h1>
       <div className="forgotPasswordPage__container">
         <div className="forgotPasswordPage__content">
