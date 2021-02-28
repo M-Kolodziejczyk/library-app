@@ -3,11 +3,19 @@
   text-decoration: none;
   border-radius: 5px;
   transition: box-shadow 0.3s ease-in-out;
+  margin-top: 50px;
+  padding-top: 30px;
 }
 
 .homePageBook:hover {
   box-shadow: 0 0 10px 2px #bcd4e6;
   color: #222222;
+}
+
+.homePageBook__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .homePageBook__containerImg > img {
@@ -29,4 +37,26 @@
   margin-top: 10px;
   font-size: 20px;
   color: #535659;
+}
+
+@media (min-width: 576px) {
+  .homePageBook {
+    max-width: 350px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  .homePageBook {
+    max-width: 350px;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .homePageBook {
+    max-width: 400px;
+    padding: 0;
+  }
 }

@@ -6,8 +6,6 @@ import "./HomePageBook.css";
 const HomePageBook = ({ book }) => {
   const [img, setImg] = useState("");
 
-  console.log(book);
-
   const getBookImg = async id => {
     try {
       setImg(await Storage.get(id));

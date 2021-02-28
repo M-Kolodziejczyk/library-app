@@ -13,8 +13,27 @@
   margin: 0 auto;
 }
 
+.header__container {
+  flex-direction: column;
+}
+
 .nav {
   justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-item {
+  display: flex;
+  border: 1px solid #ffffff;
+  width: 100%;
+  justify-content: center;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.nav_link {
+  text-align: center;
 }
 
 .singupBtn {
@@ -22,11 +41,33 @@
 }
 
 .navbar-brand {
+  display: flex;
+  align-items: center;
+  color: #65a2cd;
+  margin-right: 0;
+}
+
+.navbar-brand:hover {
   color: #65a2cd;
 }
 
 .navbar-brand.light {
   color: #ffffff;
+}
+
+.navbar-brand > span {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.navbar-brand-icon {
+  height: 30px;
+  margin-right: 5px;
+  fill: #65a2cd;
+}
+
+.navbar-brand-icon.light {
+  fill: #ffffff;
 }
 
 .nav-link {
@@ -37,7 +78,8 @@
 }
 
 .nav-link:hover {
-  color: #99c1de;
+  color: #ffffff;
+  background-color: #99c1de;
 }
 
 .nav-link.light {
@@ -50,9 +92,23 @@
   opacity: 0.8;
 }
 
+.header__containerUser {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.header__containerUserContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .header__user {
-  margin-right: 10px;
-  text-align: center;
+  flex-basis: 48%;
+  text-align: left;
   min-width: 150px;
   font-weight: 600;
   border-radius: 25px;
@@ -63,7 +119,8 @@
 }
 
 .header__user:hover {
-  color: #99c1de;
+  color: #ffffff;
+  background-color: #99c1de;
 }
 
 .header__user.light {
@@ -77,6 +134,7 @@
 }
 
 .header__link {
+  flex-basis: 48%;
   color: #65a2cd;
   min-width: 100px;
   text-align: center;
@@ -88,8 +146,8 @@
 }
 
 .header__link:hover {
-  color: #99c1de;
-  border-color: #99c1de;
+  color: #ffffff;
+  background-color: #99c1de;
 }
 
 .header__link.light {
@@ -117,7 +175,7 @@
   text-decoration: none;
   color: #65a2cd;
   fill: #65a2cd;
-  /* margin-left: 5px; */
+  margin: 10px auto 0;
 }
 
 .header__basket:hover {
@@ -148,4 +206,80 @@
 
 .header__basketCount.hide {
   color: transparent;
+}
+
+@media (min-width: 576px) {
+  .nav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-item {
+    width: auto;
+    padding: auto;
+    flex-basis: 24%;
+  }
+
+  .header__containerUser {
+    flex-direction: row;
+  }
+
+  .header__containerUserContent {
+    flex-basis: 66%;
+  }
+
+  .header__basket {
+    margin: 0;
+    flex-basis: 33%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 992px) {
+  .header__container {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .navbar-brand {
+    flex-basis: 15%;
+  }
+
+  .navbar-collapse {
+    flex-basis: 50%;
+  }
+
+  .header__containerUser {
+    margin-top: 0;
+    flex-basis: 35%;
+  }
+
+  .nav {
+    justify-content: flex-start;
+  }
+
+  .nav-item {
+    border: none;
+    font-size: 20px;
+  }
+
+  .header__user {
+    text-align: center;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+
+  .header__linkOption > span {
+    font-size: 20px;
+  }
+
+  .header__containerUserContent {
+    flex-basis: 80%;
+  }
+
+  .header__basket {
+    flex-basis: 20%;
+    align-items: center;
+  }
 }
