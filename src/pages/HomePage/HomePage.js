@@ -1,57 +1,52 @@
 import React, { useState, useEffect } from "react";
 import "./HomePage.css";
-import { API, Storage } from "aws-amplify";
-import { useBookContext } from "../../context/book/BookState";
-import * as mutations from "../../api/mutations";
-import * as queries from "../../api/queries";
+import HomePageBook from "./components/HomePageBook";
 
 const HomePage = () => {
-  const { createOrder } = useBookContext();
-
-  const handleClick = async e => {
-    e.preventDefault();
-
-    try {
-      // const res = await API.graphql({
-      //   variables: {
-      //     email: "mkolodziejczyk269@gmail.com"
-      //   },
-      //   query: queries.getCustomer
-      const res = await API.graphql({
-        variables: {
-          id: "567bc32e-a901-4e41-b7a0-ef24f8532b9a"
-        },
-        query: queries.getOrder
-        // const res = await API.graphql({
-        //   variables: {
-        //     customer: "mkolodziejczyk269@gmail.com",
-        //     createdAt: { beginsWith: "2021" }
-        //   },
-        //   query: queries.ordersByCustomerByDate
-      });
-
-      console.log(res);
-    } catch (error) {
-      console.log(error);
+  const books = [
+    {
+      id: "bc501371-f465-42ef-aa0f-02de3f9ae823",
+      title: "Ashes of Victory",
+      authorName: "David Weber",
+      authorId: "a5c3095f-f574-46d6-82f3-23497aa455b7",
+      image: "ashes_of-Victory.jpg"
+    },
+    {
+      id: "85e4160d-d4e7-462a-bb9b-9e31dca51710",
+      title: "Uncompromising Honor",
+      authorName: "David Weber",
+      authorId: "a5c3095f-f574-46d6-82f3-23497aa455b7",
+      image: "uncompromising_honor.jpg"
+    },
+    {
+      id: "67d17b4c-5d4b-4b5d-a798-3f1ad4d58b91",
+      title: "Kris Longknife: Deserter",
+      authorName: "Mike Sheperd",
+      authorId: "f64cca56-928e-4b0e-9944-611f96c2d24a",
+      image: "deserter.jpg"
     }
-  };
-
-  // const handleClickMutation = async e => {
-  //   e.preventDefault();
-  //   const date = new Date();
-  //   const order = {
-  //     customerID: "c7d8691a-7e19-45c8-a8dc-af55157a9c14",
-  //     status: "New",
-  //     date: date
-  //   };
-  //   createOrder(order);
-  // };
+  ];
 
   return (
-    <div className="homePage">
-      <h1>Home Page</h1>
-      {/* <button onClick={handleClick}>click</button> */}
-      {/* <button onClick={handleClickMutation}>Create Mutation</button> */}
+    <div>
+      <div className="homePage">
+        <div className="homePage__container">
+          <h1 className="homePage__containerH1">
+            The Wonderful World of Reading
+          </h1>
+          <p className="homePage__containerParagraph">
+            The library is a place for everyone to explore, discover, and engage
+          </p>
+        </div>
+      </div>
+      <div className="homePage__booksContainer">
+        <h2 className="homePage__booksContainerHeader">Our New Books</h2>
+        <div className="homePage__booksContainerContent">
+          {books.map(book => (
+            <HomePageBook key={book.id} book={book} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

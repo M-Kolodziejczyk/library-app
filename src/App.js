@@ -37,7 +37,7 @@ function App() {
     <div className="app">
       <div className="app__container">
         <Router>
-          <Header />
+          <Header theme="light" />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/signin" component={SigninPage} />

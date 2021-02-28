@@ -1,4 +1,53 @@
 .homePage {
+  background-image: url("../../assets/isaac-benhesed-RqtElNpHcs8-unsplash.jpg");
+  height: 100%;
+  display: flex;
+  height: 800px;
+  width: 100%;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  filter: brightness(80%);
+}
+
+.homePage__container {
   width: 1280px;
   margin: 0 auto;
+}
+
+.homePage__containerH1 {
+  filter: none;
+  width: 850px;
+  font-size: 95px;
+  margin-top: 300px;
+  color: #ffffff;
+  /* font-weight: 700; */
+  line-height: 1;
+}
+
+.homePage__containerParagraph {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.homePage__booksContainer {
+  width: 1280px;
+  margin: 800px auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.homePage__booksContainerHeader {
+  text-align: center;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  color: #535659;
+}
+
+.homePage__booksContainerContent {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 100px;
 }

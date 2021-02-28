@@ -1,14 +1,24 @@
-import React, { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { useAuthContext } from "../context/auth/AuthState";
 import { useBookContext } from "../context/book/BookState";
 
 import "./Header.css";
 
 const Header = () => {
+  const location = useLocation();
   const history = useHistory();
+  const [theme, setTheme] = useState("");
   const { basket } = useBookContext();
   const { user, logout, isLogged, logoutSuccess } = useAuthContext();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setTheme("light");
+    } else {
+      setTheme("");
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     if (!isLogged && logoutSuccess) {
@@ -17,55 +27,58 @@ const Header = () => {
   }, [isLogged, logoutSuccess]);
 
   return (
-    <div className="header">
+    <div className={`header ${theme}`}>
       <nav className="navbar">
         <div className="container-fluid flex-nowrap">
-          <Link to="#" className="navbar-brand">
+          <Link to="#" className={`navbar-brand ${theme}`}>
             Logo
           </Link>
           <div className="navbar-collapse">
             <ul className="nav">
               <li className="nav-item">
-                <Link to="/" className="nav-link">
+                <Link to="/" className={`nav-link ${theme}`}>
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/books" className="nav-link">
+                <Link to="/books" className={`nav-link ${theme}`}>
                   Books
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/authors" className="nav-link">
+                <Link to="/authors" className={`nav-link ${theme}`}>
                   Authors
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/signup" className="nav-link">
+                <Link to="/signup" className={`nav-link ${theme}`}>
                   Contact
                 </Link>
               </li>
             </ul>
           </div>
           {Object.keys(user).length > 0 && (
-            <Link to="/user" className="header__user">
+            <Link to="/user" className={`header__user ${theme}`}>
               Hello, {user.given_name}
             </Link>
           )}
           {Object.keys(user).length === 0 ? (
-            <Link className="header__link d-flex " to="/signin">
-              <div className="header__linkOption">
+            <Link className={`header__link d-flex ${theme}`} to="/signin">
+              <div className={`header__linkOption ${theme}`}>
                 <span>Sign In</span>
               </div>
             </Link>
           ) : (
-            <Link className="header__link d-flex " to="#">
-              <div onClick={() => logout()} className="header__linkOption">
+            <Link className={`header__link d-flex ${theme}`} to="#">
+              <div
+                onClick={() => logout()}
+                className={`header__linkOption ${theme}`}
+              >
                 <span>Sign Out</span>
               </div>
             </Link>
           )}
-          <Link className="header__basket" to="/user/basket">
+          <Link className={`header__basket ${theme}`} to="/user/basket">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="header__basketIcon bi bi-cart-fill"

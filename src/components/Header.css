@@ -1,5 +1,11 @@
 .header {
   background-color: white;
+  z-index: 3;
+  position: relative;
+}
+
+.header.light {
+  background-color: transparent;
 }
 
 .navbar {
@@ -7,53 +13,126 @@
   margin: 0 auto;
 }
 
+.nav {
+  justify-content: space-evenly;
+}
+
 .singupBtn {
   min-width: 80px;
 }
 
 .navbar-brand {
-  color: #468fc3;
+  color: #65a2cd;
+}
+
+.navbar-brand.light {
+  color: #ffffff;
 }
 
 .nav-link {
-  color: #468fc3;
+  font-weight: 600;
+  color: #65a2cd;
+  border-radius: 25px;
+  transition: background-color 0.5s ease-in-out, color 0.4s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #99c1de;
+}
+
+.nav-link.light {
+  color: #ffffff;
+}
+
+.nav-link.light:hover {
+  color: #535659;
+  background-color: #ffffff;
+  opacity: 0.8;
 }
 
 .header__user {
+  margin-right: 10px;
+  text-align: center;
   min-width: 150px;
-  color: #468fc3;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 8px 0;
+  color: #65a2cd;
   text-decoration: none;
+  transition: background-color 0.5s ease-in-out, color 0.4s ease-in-out;
+}
+
+.header__user:hover {
+  color: #99c1de;
+}
+
+.header__user.light {
+  color: #ffffff;
+}
+
+.header__user.light:hover {
+  color: #535659;
+  background-color: #ffffff;
+  opacity: 0.8;
 }
 
 .header__link {
-  color: #468fc3;
+  color: #65a2cd;
   min-width: 100px;
   text-align: center;
   text-decoration: none;
-  border: 1px solid #468fc3;
+  border: 1px solid #65a2cd;
   padding: 6px 12px;
   border-radius: 4px;
+  transition: background-color 0.5s ease-in-out, color 0.4s ease-in-out;
 }
 
 .header__link:hover {
-  color: skyblue;
-  border-color: skyblue;
+  color: #99c1de;
+  border-color: #99c1de;
+}
+
+.header__link.light {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.header__link.light:hover {
+  color: #535659;
+  background-color: #ffffff;
+  opacity: 0.8;
+  border: 1px solid #ffffff;
 }
 
 .header__linkOption {
   margin: 0 auto;
 }
 
+.header__linkOption > span {
+  font-weight: 600;
+}
+
 .header__basket {
   display: flex;
   text-decoration: none;
-  color: #468fc3;
-  fill: #468fc3;
+  color: #65a2cd;
+  fill: #65a2cd;
+  /* margin-left: 5px; */
 }
 
 .header__basket:hover {
-  color: #87ceeb;
-  fill: #87ceeb;
+  color: #99c1de;
+  fill: #99c1de;
+}
+
+.header__basket.light {
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+.header__basket.light:hover {
+  color: #535659;
+  fill: #535659;
 }
 
 .header__basketIcon {
