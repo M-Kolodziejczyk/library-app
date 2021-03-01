@@ -42,24 +42,33 @@ const Header = () => {
             <span>Library</span>
           </Link>
           <div className="navbar-collapse">
-            <ul className="nav">
-              <li className="nav-item">
-                <Link to="/" className={`nav-link ${theme}`}>
+            <ul className="nav nav-container">
+              <li className="nav-item nav-container-item">
+                <Link to="/" className={`nav-link nav-container-link ${theme}`}>
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/books" className={`nav-link ${theme}`}>
+              <li className="nav-item nav-container-item">
+                <Link
+                  to="/books"
+                  className={`nav-link nav-container-link ${theme}`}
+                >
                   Books
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/authors" className={`nav-link ${theme}`}>
+              <li className="nav-item nav-container-item">
+                <Link
+                  to="/authors"
+                  className={`nav-link nav-container-link ${theme}`}
+                >
                   Authors
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/signup" className={`nav-link ${theme}`}>
+              <li className="nav-item nav-container-item">
+                <Link
+                  to="/signup"
+                  className={`nav-link nav-container-link ${theme}`}
+                >
                   Contact
                 </Link>
               </li>
