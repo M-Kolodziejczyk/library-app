@@ -14,35 +14,50 @@
   color: #222222;
 }
 
-.book__img > img {
-  width: 100%;
-  max-width: 130px;
+.book__container {
+  display: flex;
+  flex-direction: column;
 }
 
-.book__title {
+.book__img > img {
+  width: 100%;
+  max-width: 310px;
+}
+
+.book__Content {
+  margin-top: 15px;
+  line-height: 1;
+}
+
+.book__ContentTitle {
   font-size: 26px;
   margin-bottom: 0;
 }
 
-.book__author {
+.book__ContentAuthor {
   font-size: 18px;
+  margin: 5px 0 0 0;
 }
 
-.book__author:hover {
+.book__ContentAuthor:hover {
   color: #65a2cd;
 }
 
-.book__totalPages {
-  margin-bottom: 2px;
+.book__ContentCategory {
+  margin: 5px 0 0 0;
+}
+
+.book__ContentTotalPages {
+  margin: 5px 0 10px 0;
   display: flex;
   justify-content: space-between;
 }
 
-.book__basketError {
+.book__ContentBasketError {
   color: red;
 }
 
-.book__status {
+.book__InfoStatus {
   display: flex;
   background-color: #198754;
   padding: 10px 20px;
@@ -55,7 +70,8 @@
   justify-content: center;
 }
 
-.book__cartBtn {
+.book__InfoCartBtn {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   background-color: #65a2cd;
@@ -73,6 +89,64 @@
   outline: none;
 }
 
-.book__cartBtn:hover {
+.book__InfoCartBtn:hover {
   background-color: #99c1de;
+}
+
+@media (min-width: 576px) {
+  .book {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: calc(100% - 10px);
+  }
+  .book__img > img {
+    max-width: 200px;
+    height: 260px;
+  }
+
+  .book__container {
+    flex-direction: row;
+  }
+  .book__containerContent {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+  }
+
+  .book__Content {
+    margin: 0;
+  }
+
+  .book__ContentAuthor {
+    margin-top: 10px;
+  }
+  .book__ContentCategory {
+    margin-top: 20px;
+  }
+  .book__ContentTotalPages {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .book__containerContent {
+    flex-direction: row;
+  }
+
+  .book__Content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 10px;
+  }
+
+  .book__Info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }

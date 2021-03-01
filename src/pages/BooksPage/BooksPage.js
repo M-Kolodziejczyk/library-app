@@ -43,50 +43,48 @@ const BooksPage = () => {
 
   return (
     <div className="booksPage">
-      <div className="container-xl">
-        <div className="row">
-          <div className="col-3 booksPage__nav">
-            <h2>Category</h2>
-            <div>
-              {categories.map((category, id) => (
-                <div className="form-check" key={id}>
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="radioInput"
-                    id={category}
-                    onChange={handleCategory}
-                    value={category}
-                    checked={categoryInput === category}
-                  />
-                  <label className="form-check-label" htmlFor={category}>
-                    {category}
-                  </label>
-                </div>
-              ))}
-            </div>
+      <div className="booksPage__container">
+        <div className="booksPage__containerNav">
+          <h2>Category</h2>
+          <div>
+            {categories.map((category, id) => (
+              <div className="form-check" key={id}>
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="radioInput"
+                  id={category}
+                  onChange={handleCategory}
+                  value={category}
+                  checked={categoryInput === category}
+                />
+                <label className="form-check-label" htmlFor={category}>
+                  {category}
+                </label>
+              </div>
+            ))}
           </div>
-          <div className="col-9 booksPage__content">
-            <h1>Books</h1>
-            <input
-              type="text"
-              className="booksPage__contentSearch"
-              onChange={handleSearch}
-              value={search}
-              placeholder="Search Book"
-              autoFocus
-            />
-            {Object.keys(books).includes(categoryInput) &&
-              books[categoryInput].length > 0 &&
-              books[categoryInput].map(
-                book =>
-                  book.title
-                    .toLowerCase()
-                    .includes(search.toLocaleLowerCase()) && (
-                    <Book key={book.id} book={book} />
-                  )
-              )}
-          </div>
+        </div>
+        <div className="booksPage__containerBooks">
+          <h1>Books</h1>
+          <input
+            type="text"
+            className="booksPage__containerBooksSearch"
+            onChange={handleSearch}
+            value={search}
+            placeholder="Search Book"
+            autoFocus
+          />
+          {Object.keys(books).includes(categoryInput) &&
+            books[categoryInput].length > 0 &&
+            books[categoryInput].map(
+              book =>
+                book.title
+                  .toLowerCase()
+                  .includes(search.toLocaleLowerCase()) && (
+                  <Book key={book.id} book={book} />
+                )
+            )}
         </div>
       </div>
     </div>

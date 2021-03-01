@@ -66,35 +66,33 @@ const Book = ({ book }) => {
 
   return (
     <Link to={{ pathname: `/book/${book.id}`, book: book }} className="book">
-      <div className="book__container">
-        <div className="book__containerImg">
+      <div className="row">
+        <div className="col-2">
           <div className="book__img">
             <img src={img} alt="" />
           </div>
         </div>
-        <div className="book__containerContent">
-          <div className="book__Content">
-            <p className="book__ContentTitle">{book.title}</p>
-            <p onClick={handleClick} className="book__ContentAuthor">
-              {book.authorName}
-            </p>
-            <p className="book__ContentCategory">{book.category}</p>
-            <p className="book__ContentTotalPages">
-              Total pages: {book.totalPages}
-              {error && (
-                <span className="book__ContentBasketError">
-                  Already added to basket!
-                </span>
-              )}
-            </p>
-          </div>
-          <div className="book__Info">
-            <span className="book__InfoStatus">Available</span>
+        <div className="col-8 d-flex flex-column justify-content-between">
+          <p className="book__title">{book.title}</p>
+          <p onClick={handleClick} className="book__author">
+            {book.authorName}
+          </p>
+          <p className="book__category">{book.category}</p>
+          <p className="book__totalPages">
+            Total pages: {book.totalPages}
+            {error && (
+              <span className="book__basketError">
+                Already added to basket!
+              </span>
+            )}
+          </p>
+        </div>
+        <div className="col-2 d-flex flex-column justify-content-between">
+          <span className="book__status">Available</span>
 
-            <button className="book__InfoCartBtn" onClick={handleBasket}>
-              Add to cart
-            </button>
-          </div>
+          <button className="book__cartBtn" onClick={handleBasket}>
+            Add to cart
+          </button>
         </div>
       </div>
     </Link>
