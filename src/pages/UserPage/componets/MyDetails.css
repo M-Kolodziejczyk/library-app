@@ -1,9 +1,6 @@
 .myDetails {
-  margin: 0 20px;
-}
-
-.myDetails > h2 {
-  margin-top: 40px;
+  padding-top: 20px;
+  margin: 0 5px;
 }
 
 .myDetails__personalInformation {
@@ -22,7 +19,7 @@ h5 {
 
 .myDetails__personalInformationContent,
 .myDetails__passwordContent {
-  max-width: 50%;
+  /* max-width: 50%; */
   padding: 10px;
   background-color: #f2f6f8;
   border: 1px solid #d7e3ea;
@@ -35,6 +32,8 @@ h5 {
 }
 
 .myDetails__passwordCollapseBtn {
+  width: 100%;
+  /* margin: 0 auto; */
   display: block;
   color: #ffffff;
   background-color: #65a2cd;
@@ -55,9 +54,9 @@ h5 {
   margin-top: 30px;
 }
 
-.myDetails__passwordForm {
+/* .myDetails__passwordForm {
   width: 50%;
-}
+} */
 
 .myDetails__passwordFormGroup {
   margin-bottom: 20px;
@@ -90,6 +89,7 @@ h5 {
   padding: 10px 20px;
   box-sizing: border-box;
   text-transform: uppercase;
+  margin: 0 auto;
   /* font-size: 16px; */
   /* font-weight: 500; */
 }
@@ -100,4 +100,18 @@ h5 {
 
 .myDetails__passwordFormSuccess {
   color: green;
+}
+
+@media (min-width: 576px) {
+  .myDetails {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  .myDetails {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }

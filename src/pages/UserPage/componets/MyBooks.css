@@ -1,7 +1,7 @@
 .myBooks {
   padding: 5px;
   border: 1px solid #a1c8e1;
-  margin-top: 10px;
+  margin: 5px;
   border-radius: 5px;
   color: #222222;
 }
@@ -9,6 +9,15 @@
 .myBooks__header {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+}
+
+.myBooks__containerId {
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .myBooks__header > p {
@@ -60,4 +69,24 @@
   font-weight: 600;
   min-width: 80px;
   text-align: center;
+}
+
+@media (min-width: 576px) {
+  .myBooks {
+    margin: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  .myBooks {
+    margin: 20px;
+  }
+
+  .myBooks__header {
+    flex-direction: row;
+  }
+
+  .myBooks__containerId {
+    text-align: left;
+  }
 }

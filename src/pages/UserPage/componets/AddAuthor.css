@@ -1,9 +1,10 @@
 .addAuthor {
-  margin: 0 20px;
+  margin: 0 5px;
 }
 
 .addAuthor > h2 {
-  margin-top: 40px;
+  /* margin-top: 40px; */
+  padding-top: 20px;
 }
 
 .addAuthor__formGroup {
@@ -48,4 +49,18 @@
 .addAuthor__formLabelSuccess {
   margin-top: 5px;
   color: green;
+}
+
+@media (min-width: 576px) {
+  .addAuthor {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  .addAuthor {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }

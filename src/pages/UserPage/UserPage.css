@@ -1,14 +1,25 @@
-.userPage__container > h1 {
+.userPage > h1 {
   margin: 50px 0;
+  text-align: center;
+}
+
+.userPage__container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: calc(100% - 10px);
 }
 
 .userPage__content {
+  margin-top: 10px;
   background-color: #ffffff;
   border-radius: 4px;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 }
 
 .userPage__navLink {
+  text-align: center;
   display: block;
   color: #65a2cd;
   padding: 10px 40px;
@@ -28,7 +39,7 @@
 }
 
 .userPage__myBooksHeader {
-  display: flex;
+  display: none;
   justify-content: space-between;
   margin-top: 10px;
 }
@@ -53,4 +64,33 @@
   margin: 0;
   min-width: 80px;
   text-align: center;
+}
+
+.tab-settings > h2 {
+  margin: 20px;
+}
+
+@media (min-width: 576px) {
+  .userPage__container {
+    width: calc(100% - 20px);
+    margin: 0 auto;
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 992px) {
+  .userPage__container {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1320px;
+  }
+
+  .userPage__nav {
+    width: 250px;
+  }
+
+  .userPage__content {
+    flex: 1;
+    margin: 0 0 0 10px;
+  }
 }

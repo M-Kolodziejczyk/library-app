@@ -7,16 +7,18 @@ const MyBooks = ({ order, id }) => {
   return (
     <div className="myBooks">
       <div className="myBooks__header">
-        <button
-          className="myBooks__id "
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target={`#order${id}`}
-          aria-expanded="false"
-          aria-controls={`order${id}`}
-        >
-          {order.id}
-        </button>
+        <p className="myBooks__containerId">
+          <button
+            className="myBooks__id "
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target={`#order${id}`}
+            aria-expanded="false"
+            aria-controls={`order${id}`}
+          >
+            {order.id}
+          </button>
+        </p>
         <p className="myBooks__date">
           {format(new Date(order.createdAt), "dd-MMMM-yyyy")}
         </p>

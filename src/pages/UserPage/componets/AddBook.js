@@ -441,7 +441,7 @@ const AddBook = () => {
           )}
         </div>
 
-        <div className="addBook__fromGroup">
+        <div className="addBook__formGroup">
           <input
             className="addBook__formSubmit"
             type="submit"

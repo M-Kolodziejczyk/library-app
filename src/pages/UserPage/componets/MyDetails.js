@@ -105,16 +105,18 @@ const MyDetails = () => {
           <p className="myDetails__passwordLabel">Password:</p>
           <p className="myDetails__passwordContent">********* </p>
         </div>
-        <button
-          className="myDetails__passwordCollapseBtn"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#passwordForm"
-          aria-expanded="false"
-          aria-controls="passwordForm"
-        >
-          Change Password
-        </button>
+        <div className="myDetails__passwordGroup">
+          <button
+            className="myDetails__passwordCollapseBtn"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#passwordForm"
+            aria-expanded="false"
+            aria-controls="passwordForm"
+          >
+            Change Password
+          </button>
+        </div>
         <div className="collapse myDetails__passwordCollapse" id="passwordForm">
           <h5>Change Password</h5>
           <form
