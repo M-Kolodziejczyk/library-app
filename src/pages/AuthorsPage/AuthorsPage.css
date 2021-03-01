@@ -1,5 +1,9 @@
 .authorsPage__content {
-  margin: 0 auto;
+  margin: 0 5px;
+  width: calc(100% - 10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .authorsPage__content > h1 {
@@ -14,4 +18,17 @@
   box-sizing: border-box;
   font-size: 14px;
   font-weight: 500;
+}
+
+@media (min-width: 992px) {
+  .authorsPage__content {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1280px) {
+  .authorsPage {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
 }

@@ -16,6 +16,8 @@
 }
 
 .authorPage {
+  max-width: 1320px;
+
   display: flex;
   flex-direction: column;
   margin: 30px auto;
@@ -30,6 +32,7 @@
 }
 
 .authorPage__description {
+  text-align: justify;
   font-size: 20px;
 }
 
@@ -42,5 +45,35 @@
   margin: 0;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+@media (min-width: 576px) {
+  .authorPage {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: calc(100% - 10px);
+  }
+}
+
+@media (min-width: 992px) {
+  .authorPage__booksContainer {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1280px) {
+  .authorPage {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100% - 40px);
+  }
+}
+
+@media (min-width: 1320px) {
+  .authorPage {
+    max-width: 1320px;
+    margin: 30px auto;
+  }
 }

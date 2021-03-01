@@ -42,7 +42,7 @@ const AuthorPage = props => {
     );
   } else {
     return (
-      <div className="authorPage container-xl">
+      <div className="authorPage">
         <h1 className="authorPage__name">{`${state.firstName} ${state.lastName}`}</h1>
         <p className="authorPage__birthDate">
           Born: {format(new Date(state.birthDate), "yyyy-MM-dd")}

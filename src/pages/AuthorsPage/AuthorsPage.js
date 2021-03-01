@@ -19,31 +19,25 @@ const AuthorsPage = () => {
 
   return (
     <div className="authorsPage">
-      <div className="container-xl">
-        <div className="row">
-          <div className="col-9 authorsPage__content">
-            <h1>Authors</h1>
-            <input
-              type="text"
-              className="authorsPage__contentSearch"
-              onChange={handleSearch}
-              value={search}
-              placeholder="Search Author"
-              autoFocus
-            />
-            {authors.map(
-              author =>
-                (author.firstName
-                  .toLowerCase()
-                  .includes(search.toLocaleLowerCase()) ||
-                  author.lastName
-                    .toLowerCase()
-                    .includes(search.toLowerCase())) && (
-                  <Author key={author.id} author={author} />
-                )
-            )}
-          </div>
-        </div>
+      <div className="authorsPage__content">
+        <h1>Authors</h1>
+        <input
+          type="text"
+          className="authorsPage__contentSearch"
+          onChange={handleSearch}
+          value={search}
+          placeholder="Search Author"
+          autoFocus
+        />
+        {authors.map(
+          author =>
+            (author.firstName
+              .toLowerCase()
+              .includes(search.toLocaleLowerCase()) ||
+              author.lastName.toLowerCase().includes(search.toLowerCase())) && (
+              <Author key={author.id} author={author} />
+            )
+        )}
       </div>
     </div>
   );
