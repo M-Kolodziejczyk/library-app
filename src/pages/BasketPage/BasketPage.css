@@ -6,22 +6,12 @@
 .basketPage__header {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-}
-
-.basketPage__headerH1 {
-  flex: 0 0 auto;
-  width: 50%;
 }
 
 .basketPage__header > h1 {
   margin-top: 30px;
-}
-
-.basketPage__headerBtn {
-  flex: 0 0 auto;
-  width: 20%;
 }
 
 .basketPage__headerBtn > button {
@@ -79,4 +69,14 @@
 .basketPage__orderFail {
   color: red;
   font-size: 20px;
+}
+
+@media (min-width: 992px) {
+  .basketPage__header {
+    flex-direction: row;
+    align-items: center;
+  }
+  .basketPage__headerBtn {
+    width: 30%;
+  }
 }

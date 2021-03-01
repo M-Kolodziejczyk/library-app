@@ -1,4 +1,7 @@
 .basketPageBook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #222222;
   background-color: #ffffff;
   border-radius: 5px;
@@ -9,7 +12,8 @@
 
 .basketPageBook__img > img {
   width: 100%;
-  max-width: 130px;
+  /* max-width: 130px; */
+  max-width: 320px;
 }
 
 .basketPageBook__title {
@@ -47,4 +51,34 @@
 
 .basketPageBook__deleteBtn:hover {
   background-color: #99c1de;
+}
+
+@media (min-width: 576px) {
+  .basketPageBook__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .basketPageBook {
+    align-items: unset;
+  }
+
+  .basketPageBook__img > img {
+    max-width: 130px;
+  }
+
+  .basketPageBook__containerDescription {
+    flex: 1;
+    margin-left: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 992px) {
+  .basketPageBook__img > img {
+    max-width: 230px;
+  }
 }

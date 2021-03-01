@@ -74,7 +74,7 @@ const BookPage = props => {
     );
   } else {
     return (
-      <div className="bookPage container-xl">
+      <div className="bookPage">
         <div className="bookPage__img">
           <img src={state.link} alt="" />
         </div>
