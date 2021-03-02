@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import "./BasketPage.css";
+import { useHistory } from "react-router-dom";
 import { useBookContext } from "../../context/book/BookState";
 import { useAuthContext } from "../../context/auth/AuthState";
 import BasketBookPage from "./components/BasketPageBook";
 
 const BasketPage = () => {
+  const history = useHistory();
   const { user } = useAuthContext();
   const {
     basket,
@@ -29,6 +31,13 @@ const BasketPage = () => {
         email: user.email,
         cart: basket.map(book => ({ id: book.id, title: book.title }))
       });
+    } else if (Object.keys(user).length === 0) {
+      history.push({
+        pathname: "/signin",
+        state: {
+          basket: true
+        }
+      });
     }
   };
 
@@ -42,6 +51,8 @@ const BasketPage = () => {
 
   useEffect(() => {
     clearForm();
+
+    // eslint-disable-next-line
   }, []);
 
   return (

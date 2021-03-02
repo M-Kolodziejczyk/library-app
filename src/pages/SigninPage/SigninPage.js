@@ -5,7 +5,7 @@ import Spinner from "../../components/Spinner/Spinner";
 
 import "./SigninPage.css";
 
-const SigninPage = () => {
+const SigninPage = props => {
   const defaultState = {
     email: "",
     password: ""
@@ -65,8 +65,19 @@ const SigninPage = () => {
 
   useEffect(() => {
     if (loginSuccess) {
-      history.push("/");
+      if (
+        props.location &&
+        props.location.state &&
+        props.location.state.basket &&
+        props.location.state.basket === true
+      ) {
+        console.log("basket");
+      } else {
+        history.push("/");
+      }
     }
+
+    // eslint-disable-next-line
   }, [loginSuccess, history]);
 
   return (
