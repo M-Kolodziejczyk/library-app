@@ -95,7 +95,7 @@ const SignupPage = () => {
       {loading && <Spinner />}
       <h1>Signup Page</h1>
       <div className="signupPage__container">
-        <div className="singupPage__content">
+        <div className="signupPage__content">
           <h2>Create Account</h2>
           <form className="singupPage__form" onSubmit={handleSubmit}>
             <div className="signupPage__formGroup">

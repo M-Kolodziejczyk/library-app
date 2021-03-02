@@ -4,19 +4,19 @@
 }
 
 .signupPage__container {
-  width: 660px;
+  max-width: 660px;
   margin: 0 auto;
+  width: calc(100% - 10px);
 }
 
-.singupPage__content {
+.signupPage__content {
   background: white;
-  padding: 50px 85px;
+  padding: 10px;
   border-radius: 5px;
 }
 
-.singupPage__content > h2 {
-  margin: 0;
-  margin-bottom: 40px;
+.signupPage__content > h2 {
+  margin: 20px 0 40px 0;
   padding: 0px;
   color: #222222;
   font-size: 24px;
@@ -66,4 +66,24 @@
 
 .signupPage__formSubmit:hover {
   background-color: #99c1de;
+}
+
+@media (min-width: 576px) {
+  .signupPage__container {
+    width: calc(100% - 40px);
+  }
+
+  .signupPage__content {
+    padding: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  .signupPage__content {
+    padding: 50px 85px;
+  }
+
+  .signupPage__content > h2 {
+    margin: 0 0 40px 0;
+  }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { useAuthContext } from "../context/auth/AuthState";
-import { useBookContext } from "../context/book/BookState";
+import { useAuthContext } from "../../context/auth/AuthState";
+import { useBookContext } from "../../context/book/BookState";
 
 import "./Header.css";
 
@@ -24,6 +24,8 @@ const Header = () => {
     if (!isLogged && logoutSuccess) {
       history.push("/");
     }
+
+    //eslint-disable-next-line
   }, [isLogged, logoutSuccess]);
 
   return (

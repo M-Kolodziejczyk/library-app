@@ -4,19 +4,19 @@
 }
 
 .resendcodePage__container {
-  width: 660px;
+  max-width: 660px;
   margin: 0 auto;
+  width: calc(100% - 10px);
 }
 
 .resendcodePage__content {
   background: white;
-  padding: 50px 85px;
+  padding: 10px;
   border-radius: 5px;
 }
 
 .resendcodePage__content > h2 {
-  margin: 0;
-  margin-bottom: 40px;
+  margin: 20px 0 40px 0;
   padding: 0px;
   color: #222222;
   font-size: 24px;
@@ -56,15 +56,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 }
 
 .resendcodePage__submitGroupLink {
+  margin-top: 10px;
+  order: 2;
   flex: 1;
   color: #99c1de;
   text-decoration: none;
 }
 
 .resendcodePage__submitGroupSubmit {
+  order: 1;
   flex: 1;
   background-color: #65a2cd;
   color: #fff;
@@ -95,4 +99,37 @@
 
 .resendcodePage__successMessage {
   color: green;
+}
+
+@media (min-width: 576px) {
+  .resendcodePage__container {
+    width: calc(100% - 40px);
+  }
+
+  .resendcodePage__content {
+    padding: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  .resendcodePage__content {
+    padding: 50px 85px;
+  }
+
+  .resendcodePage__content > h2 {
+    margin: 0 0 40px 0;
+  }
+
+  .resendcodePage__submitGroup {
+    flex-direction: row;
+  }
+
+  .resendcodePage__submitGroupLink {
+    margin-top: 0;
+    order: 1;
+  }
+
+  .resendcodePage__submitGroupSubmit {
+    order: 2;
+  }
 }

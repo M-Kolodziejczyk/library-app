@@ -127,20 +127,22 @@ const SigninPage = () => {
               )}
             </div>
           </form>
-          <div className="signinPage__links">
-            <p className="signinPage__register">
-              Don't have account?{" "}
-              <Link to="/signup" className="signinPage__link">
-                Signup Here
+          <div className="signinPage__containerLinks">
+            <div className="signinPage__links">
+              <p className="signinPage__register">
+                Don't have account?{" "}
+                <Link to="/signup" className="signinPage__link">
+                  Signup Here
+                </Link>
+              </p>
+              <Link to="/forgot-password" className="signinPage__link">
+                Forgot password?
               </Link>
-            </p>
-            <Link to="/forgot-password" className="signinPage__link">
-              Forgot password?
+            </div>
+            <Link to="/confirm" className="signinPage__link">
+              Go to confirm account.
             </Link>
           </div>
-          <Link to="/confirm" className="signinPage__link">
-            Go to confirm account.
-          </Link>
         </div>
       </div>
     </div>
