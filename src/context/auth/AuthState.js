@@ -47,6 +47,8 @@ export const AuthState = props => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   const loadUser = async () => {
+    setLoading();
+
     try {
       const user = await Auth.currentAuthenticatedUser();
       dispatch({
