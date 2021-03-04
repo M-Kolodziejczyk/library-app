@@ -121,7 +121,7 @@ const UserPage = () => {
                   <MyBooks key={order.id} order={order} id={id} />
                 ))
               ) : (
-                <p>No orders</p>
+                <p className="myBooksTab__empty">No orders</p>
               )}
             </div>
             <div

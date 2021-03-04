@@ -70,6 +70,11 @@
   margin: 20px;
 }
 
+.myBooksTab__empty {
+  margin: 20px;
+  font-size: 20px;
+}
+
 @media (min-width: 576px) {
   .userPage__container {
     width: calc(100% - 20px);
@@ -92,5 +97,9 @@
   .userPage__content {
     flex: 1;
     margin: 0 0 0 10px;
+  }
+
+  .userPage__navLink {
+    text-align: left;
   }
 }

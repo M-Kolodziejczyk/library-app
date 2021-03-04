@@ -17,12 +17,7 @@ const BooksPage = () => {
     "Horror",
     "Literary Fiction",
     "Romance",
-    "Science Fiction",
-    "Thrillers",
-    "Biographies and Autobiographies",
-    "History",
-    "Poetry",
-    "Travel"
+    "Science Fiction"
   ];
 
   const handleCategory = e => {
