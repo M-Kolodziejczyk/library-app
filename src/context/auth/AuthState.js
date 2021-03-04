@@ -41,7 +41,8 @@ export const AuthState = props => {
     newPasswordSuccess: false,
     changePasswordSuccess: false,
     errorMessage: "",
-    user: {}
+    user: {},
+    loadingUser: true
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -233,6 +234,7 @@ export const AuthState = props => {
         changePasswordSuccess: state.changePasswordSuccess,
         errorMessage: state.errorMessage,
         user: state.user,
+        loadingUser: state.loadingUser,
         loadUser,
         registerUser,
         confirmRegisterUser,

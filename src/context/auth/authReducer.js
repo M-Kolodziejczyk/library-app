@@ -26,6 +26,7 @@ export default (state, action) => {
       return {
         ...state,
         isLogged: true,
+        loadingUser: false,
         loading: false,
         user: action.payload.attributes,
         group:
@@ -34,6 +35,7 @@ export default (state, action) => {
     case AUTH_ERROR:
       return {
         ...state,
+        loadingUser: false,
         isLogged: false,
         loading: false,
         user: {},
@@ -83,6 +85,7 @@ export default (state, action) => {
         ...state,
         loading: false,
         loginSuccess: true,
+        loadingUser: false,
         loginFail: false,
         isLogged: true,
         user: action.payload.attributes,
@@ -93,6 +96,7 @@ export default (state, action) => {
       return {
         ...state,
         loading: false,
+        loadingUser: false,
         errorMessage: action.payload,
         loginFail: true,
         loginSuccess: false

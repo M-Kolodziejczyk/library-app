@@ -26,9 +26,7 @@ function App() {
   const { loadUser } = useAuthContext();
 
   useEffect(() => {
-    if (localStorage["amplify-authenticator-authState"] === "signedIn") {
-      loadUser();
-    }
+    loadUser();
 
     // eslint-disable-next-line
   }, [localStorage]);
