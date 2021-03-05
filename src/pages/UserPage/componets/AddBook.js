@@ -445,6 +445,7 @@ const AddBook = () => {
           <input
             className="addBook__formSubmit"
             type="submit"
+            value="SUBMIT"
             name="submit"
             placeholder="Submit"
           />

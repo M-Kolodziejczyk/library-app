@@ -195,6 +195,7 @@ const AddAuthor = () => {
           <input
             className="addAuthor__formSubmit"
             type="submit"
+            value="SUBMIT"
             name="submit"
             placeholder="Submit"
           />

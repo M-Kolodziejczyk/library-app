@@ -91,6 +91,7 @@ const ResendcodePage = () => {
               </Link>
               <input
                 type="submit"
+                value="SUBMIT"
                 name="submit"
                 placeholder="SUBMIT"
                 className="resendcodePage__submitGroupSubmit"

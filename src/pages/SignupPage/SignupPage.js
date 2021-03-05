@@ -189,6 +189,7 @@ const SignupPage = () => {
             <div className="signupPage__formGroup">
               <input
                 type="submit"
+                value="SUBMIT"
                 className="signupPage__formSubmit"
                 placeholder="SUBMIT"
                 name="submit"

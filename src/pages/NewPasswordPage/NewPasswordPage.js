@@ -139,6 +139,7 @@ const NewPasswordPage = props => {
               </Link>
               <input
                 type="submit"
+                value="SUBMIT"
                 name="submit"
                 placeholder="SUBMIT"
                 className="newPasswordPage__submitGroupSubmit"

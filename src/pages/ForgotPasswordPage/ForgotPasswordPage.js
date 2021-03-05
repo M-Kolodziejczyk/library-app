@@ -93,6 +93,7 @@ const ForgotPasswordPage = () => {
               </Link>
               <input
                 type="submit"
+                value="SUBMIT"
                 name="submit"
                 placeholder="SUBMIT"
                 className="forgotPasswordPage__submitGroupSubmit"

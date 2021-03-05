@@ -127,6 +127,7 @@ const SigninPage = props => {
             <div className="signinPage__formGroup">
               <input
                 type="submit"
+                value="SUBMIT"
                 className="signinPage__formSubmit"
                 placeholder="SUBMIT"
                 name="submit"

@@ -189,6 +189,7 @@ const MyDetails = () => {
             <div className="myDetails__passwordFormGroup">
               <input
                 type="submit"
+                value="SUBMIT"
                 className="myDetails__passwordFormSubmit"
                 placeholder="SUBMIT"
                 name="submit"

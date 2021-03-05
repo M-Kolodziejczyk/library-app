@@ -110,6 +110,7 @@ const ConfirmPage = props => {
               <input
                 type="submit"
                 name="submit"
+                value="SUBMIT"
                 placeholder="SUBMIT"
                 className="confirmPage__formSubmit"
               />
