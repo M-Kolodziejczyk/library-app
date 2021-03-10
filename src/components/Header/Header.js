@@ -66,14 +66,6 @@ const Header = () => {
                   Authors
                 </Link>
               </li>
-              <li className="nav-item nav-container-item">
-                <Link
-                  to="/signup"
-                  className={`nav-link nav-container-link ${theme}`}
-                >
-                  Contact
-                </Link>
-              </li>
             </ul>
           </div>
           <div className="header__containerUser">
